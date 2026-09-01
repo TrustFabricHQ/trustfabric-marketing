@@ -82,14 +82,20 @@
         .cta-section p { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; }
 
         /* FOOTER */
-        .footer { background: #0F172A; color: #94A3B8; padding: 64px 0 32px; }
+        .footer { background: #0F172A; color: #94A3B8; padding: 80px 0 0; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
-        .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 16px; color: #64748B; max-width: 240px; }
+        .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 16px; color: #64748B; max-width: 280px; }
         .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 16px; }
         .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .footer-col ul li a { font-size: 13px; color: #64748B; transition: color 0.2s; }
+        .footer-col ul li a { font-size: 13px; color: #64748B; text-decoration: none; transition: color 0.2s; }
         .footer-col ul li a:hover { color: #ffffff; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 13px; color: #475569; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #475569; }
+        .footer-copy a { color: #64748B; text-decoration: none; transition: color 0.2s; }
+        .footer-copy a:hover { color: #ffffff; }
+        .social-links { display: flex; gap: 12px; }
+        .social-link { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #64748B; transition: all 0.2s; text-decoration: none; }
+        .social-link:hover { background: rgba(255,255,255,0.12); color: #ffffff; }
+        .nav-logo-img { height: 88px; width: auto; margin-top: 12px; }
 
         @media (max-width: 768px) {
             .page-hero-inner { grid-template-columns: 1fr; }
@@ -249,47 +255,79 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" id="resources">
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="/"><img src="/assets/logo.png" alt="TrustFabric" style="height:40px;width:auto;filter:brightness(0) invert(1);"></a>
+                <a href="https://www.trustfabric.in" class="nav-logo" style="text-decoration:none;">
+                    <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
+                </a>
                 <p>India's consent management platform for DPDP Act 2023 compliance. Built in India, for India's data privacy moment.</p>
+                <a href="https://maps.app.goo.gl/MS9eh9a5FA6sRVXB9" target="_blank" rel="noopener noreferrer" style="margin-top:16px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;text-decoration:none;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='#9CA3AF'">
+                    <svg style="flex-shrink:0;margin-top:2px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    TrustFabric, 44, Regal Building, 2nd Floor, Connaught Place, New Delhi, 110001
+                </a>
             </div>
+
             <div class="footer-col">
                 <h4>Product</h4>
                 <ul>
-                    <li><a href="/#platform">Features</a></li>
-                    <li><a href="/#pricing">Pricing</a></li>
-                    <li><a href="/consent-management.html">Consent Management</a></li>
+                    <li><a href="https://www.trustfabric.in">Features</a></li>
+                    <li><a href="https://www.trustfabric.in">Pricing</a></li>
+                    <li><a href="https://www.trustfabric.in">Changelog</a></li>
+                    <li><a href="https://www.trustfabric.in">Roadmap</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
                 <h4>Solutions</h4>
                 <ul>
-                    <li><a href="/">BFSI</a></li>
-                    <li><a href="/">Healthcare</a></li>
-                    <li><a href="/">E-commerce</a></li>
-                    <li><a href="/">SaaS</a></li>
+                    <li><a href="https://www.trustfabric.in">BFSI</a></li>
+                    <li><a href="https://www.trustfabric.in">Healthcare</a></li>
+                    <li><a href="https://www.trustfabric.in">E-commerce</a></li>
+                    <li><a href="https://www.trustfabric.in">SaaS</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="/careers.html">Careers</a></li>
-                    <li><a href="/">DPDP Act Guide</a></li>
-                    <li><a href="/">Blog</a></li>
+                    <li><a href="https://www.trustfabric.in">DPDP Act Guide</a></li>
+                    <li><a href="https://www.trustfabric.in">Blog</a></li>
+                    <li><a href="https://www.trustfabric.in">Documentation</a></li>
+                    <li><a href="https://www.trustfabric.in">API Docs</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
                     <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="https://www.trustfabric.in">Terms of Service</a></li>
                     <li><a href="/cookie-policy.html">Cookie Policy</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">© 2025 TrustFabric · <a href="mailto:info@trustfabric.in" style="color:#64748b;">info@trustfabric.in</a></div>
+
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                © 2025 TrustFabric · <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.trustfabric.in" class="social-link" aria-label="LinkedIn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://www.trustfabric.in" class="social-link" aria-label="Twitter / X">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </div>
 </footer>
 
