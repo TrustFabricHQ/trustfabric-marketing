@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started — TrustFabric</title>
+    <meta name="description" content="Start your DPDP Act compliance journey. Request a free demo of TrustFabric's consent management and data privacy platform.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --accent-red: #E31E24;
+            --accent-blue: #1E3A8A;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --border: rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #F8FAFC;
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* NAV */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo img { height: 56px; width: auto; }
+        .nav-back {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text-primary); }
+
+        /* PAGE LAYOUT */
+        .page-wrapper {
+            min-height: 100vh;
+            padding-top: 64px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /* LEFT PANEL */
+        .left-panel {
+            background: var(--accent-blue);
+            padding: 64px 56px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -120px;
+            width: 400px; height: 400px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .left-panel::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 280px; height: 280px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+        .lp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(227,30,36,0.15);
+            border: 1px solid rgba(227,30,36,0.3);
+            color: #FCA5A5;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+            width: fit-content;
+        }
+        .lp-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: #E31E24;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+        .left-panel h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        .left-panel h1 span { color: #FCA5A5; }
+        .left-panel p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 48px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .feature-icon {
+            width: 22px; height: 22px;
+            background: rgba(227,30,36,0.2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .feature-icon svg { width: 12px; height: 12px; }
+        .feature-item span {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+        }
+        .stat-row {
+            display: flex;
+            gap: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-item { display: flex; flex-direction: column; gap: 4px; }
+        .stat-number {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+        }
+
+        /* RIGHT PANEL — FORM */
+        .right-panel {
+            background: #ffffff;
+            padding: 56px 56px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .form-header { margin-bottom: 32px; }
+        .form-header h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .form-header p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--text-primary);
+            background: #F8FAFC;
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-blue);
+            background: #ffffff;
+        }
+        .form-group textarea { resize: vertical; min-height: 90px; }
+        .form-group select { appearance: none; cursor: pointer; }
+
+        .req { color: var(--accent-red); }
+
+        .consent-area {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .consent-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .consent-row input[type="checkbox"] {
+            flex-shrink: 0;
+            width: 16px; height: 16px;
+            margin-top: 2px;
+            accent-color: var(--accent-red);
+            cursor: pointer;
+        }
+
+        /* reCAPTCHA */
+        .recaptcha-wrapper {
+            margin: 20px 0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-red);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+            letter-spacing: 0.01em;
+        }
+        .submit-btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .privacy-note {
+            margin-top: 14px;
+            font-size: 12px;
+            color: #94A3B8;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .privacy-note a { color: #94A3B8; text-decoration: underline; }
+
+        /* SUCCESS STATE */
+        .success-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .success-icon {
+            width: 64px; height: 64px;
+            background: #DCFCE7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .success-icon svg { width: 32px; height: 32px; color: #16A34A; }
+        .success-state h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        .success-state p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 340px;
+        }
+        .success-email { font-weight: 700; color: var(--accent-blue); }
+
+        /* ERROR MESSAGE */
+        .error-msg {
+            display: none;
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            color: #DC2626;
+            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+
+        /* FOOTER */
+        .page-footer {
+            grid-column: 1 / -1;
+            background: #ffffff;
+            border-top: 1px solid var(--border);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #94A3B8;
+        }
+        .page-footer a { color: #94A3B8; text-decoration: none; }
+        .page-footer a:hover { color: var(--text-primary); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .page-wrapper { grid-template-columns: 1fr; }
+            .left-panel { padding: 48px 28px; }
+            .left-panel h1 { font-size: 28px; }
+            .right-panel { padding: 40px 28px; }
+            .form-row { grid-template-columns: 1fr; }
+            .stat-row { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">
+            <img src="/assets/logo.png" alt="TrustFabric">
+        </a>
+        <a href="/" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to home
+        </a>
+    </div>
+</nav>
+
+<div class="page-wrapper">
+
+    <!-- LEFT: Value prop -->
+    <div class="left-panel">
+        <div class="lp-badge">DPDP Act Compliant</div>
+        <h1>Your path to <span>data privacy</span> compliance starts here</h1>
+        <p>Join hundreds of Indian businesses using TrustFabric to stay compliant with the Digital Personal Data Protection Act, 2023.</p>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span>Consent Management — multilingual, audit-ready</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span>ROPA Registry & Data Subject Rights portal</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span>Breach notification workflows in 72 hours</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span>DPO as a Service — expert guidance on-demand</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span>Free self-assessment & compliance gap report</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="right-panel">
+        <div id="leadFormWrap">
+            <div class="form-header">
+                <h2>Request a Free Demo</h2>
+                <p>Fill in your details and our team will reach out within 24 hours to schedule a personalised walkthrough.</p>
+            </div>
+
+            <div class="error-msg" id="errorMsg"></div>
+
+            <form id="leadForm" onsubmit="submitLead(event)" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name <span class="req">*</span></label>
+                        <input type="text" id="l-name" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company <span class="req">*</span></label>
+                        <input type="text" id="l-company" placeholder="" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Work Email <span class="req">*</span></label>
+                        <input type="email" id="l-email" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone <span class="req">*</span></label>
+                        <input type="tel" id="l-phone" placeholder="" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Company Size</label>
+                    <select id="l-size">
+                        <option value="">Select company size</option>
+                        <option value="1-10">1–10 employees</option>
+                        <option value="11-50">11–50 employees</option>
+                        <option value="51-200">51–200 employees</option>
+                        <option value="201-1000">201–1000 employees</option>
+                        <option value="1000+">1000+ employees</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>What are you looking for? (optional)</label>
+                    <textarea id="l-message" placeholder=""></textarea>
+                </div>
+
+                <div class="consent-area">
+                    <label id="l-mkt-label" class="consent-row" style="opacity:0.4;cursor:not-allowed;">
+                        <input type="checkbox" id="l-marketing" disabled style="cursor:not-allowed;">
+                        <span>I agree to receive other communications from TrustFabric</span>
+                    </label>
+                    <label class="consent-row">
+                        <input type="checkbox" id="l-gdpr" required>
+                        <span>I agree to allow TrustFabric to store and process my personal data <span class="req">*</span></span>
+                    </label>
+                </div>
+
+                <div class="recaptcha-wrapper">
+                    <div class="g-recaptcha" data-sitekey="6Lc1NaMtAAAAALLhSaE03PkRLkeEg31mayqd2L0U"></div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="leadSubmitBtn">Get Started — Request Demo →</button>
+
+                <p class="privacy-note">
+                    By submitting, you agree to our <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/cookie-policy.html">Cookie Policy</a>.<br>
+                    We never share your data with third parties.
+                </p>
+            </form>
+        </div>
+
+        <!-- Success -->
+        <div class="success-state" id="leadSuccess">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>You're all set!</h3>
+            <p>Thanks for reaching out. Our team will contact <span class="success-email" id="leadSuccessEmail"></span> within 24 hours to schedule your demo.</p>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        © 2025 TrustFabric &nbsp;·&nbsp;
+        <a href="/privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="/cookie-policy.html">Cookie Policy</a> &nbsp;·&nbsp;
+        <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
+    </footer>
+
+</div>
+
+<script>
+// Gate marketing checkbox on GDPR checkbox
+(function() {
+    var gdpr = document.getElementById('l-gdpr');
+    var mkt  = document.getElementById('l-marketing');
+    var lbl  = document.getElementById('l-mkt-label');
+    gdpr.addEventListener('change', function() {
+        if (this.checked) {
+            mkt.disabled = false;
+            lbl.style.opacity = '1';
+            lbl.style.cursor  = 'pointer';
+            mkt.style.cursor  = 'pointer';
+        } else {
+            mkt.disabled = true;
+            mkt.checked  = false;
+            lbl.style.opacity = '0.4';
+            lbl.style.cursor  = 'not-allowed';
+            mkt.style.cursor  = 'not-allowed';
+        }
+    });
+})();
+
+async function submitLead(e) {
+    e.preventDefault();
+
+    var name    = document.getElementById('l-name').value.trim();
+    var company = document.getElementById('l-company').value.trim();
+    var email   = document.getElementById('l-email').value.trim();
+    var phone   = document.getElementById('l-phone').value.trim();
+    var size    = document.getElementById('l-size').value;
+    var message = document.getElementById('l-message').value.trim();
+    var gdpr    = document.getElementById('l-gdpr').checked;
+    var errorEl = document.getElementById('errorMsg');
+
+    errorEl.style.display = 'none';
+
+    if (!name || !company || !email || !phone) {
+        errorEl.textContent = 'Please fill in all required fields (Name, Company, Email, Phone).';
+        errorEl.style.display = 'block';
+        return;
+    }
+    if (!gdpr) {
+        errorEl.textContent = 'Please consent to allow TrustFabric to store and process your personal data.';
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    var recaptchaToken = grecaptcha.getResponse();
+    if (!recaptchaToken) {
+        errorEl.textContent = 'Please complete the CAPTCHA verification.';
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    var btn = document.getElementById('leadSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    try {
+        var res = await fetch('/api/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, company, email, phone, size, message, recaptchaToken,
+                consentMarketing: document.getElementById('l-marketing').checked, consentData: gdpr })
+        });
+        if (res.ok) {
+            document.getElementById('leadFormWrap').style.display = 'none';
+            document.getElementById('leadSuccessEmail').textContent = email;
+            var s = document.getElementById('leadSuccess');
+            s.style.display = 'flex';
+        } else {
+            var data = await res.json();
+            throw new Error(data.error || 'Server error');
+        }
+    } catch(err) {
+        errorEl.textContent = err.message || 'Something went wrong. Please email us at info@trustfabric.in';
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Get Started — Request Demo →';
+        grecaptcha.reset();
+    }
+}
+</script>
+</body>
+</html>

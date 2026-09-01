@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy — TrustFabric</title>
+    <meta name="description" content="TrustFabric's Cookie Policy — what cookies we use, why, and how to control them.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --accent-red: #E31E24;
+            --accent-blue: #1E3A8A;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --border: rgba(0,0,0,0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #ffffff; color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-red); color: #fff; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(227,30,36,0.3); text-decoration: none; }
+
+        /* NAVBAR */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: rgba(255,255,255,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 72px; width: auto; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; text-decoration: none; }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* PAGE LAYOUT */
+        .page-header { padding: 120px 0 48px; background: #f8fafc; border-bottom: 1px solid var(--border); }
+        .page-header h1 { font-size: clamp(24px, 3vw, 38px); font-weight: 400; color: var(--text-primary); margin-bottom: 12px; }
+        .page-header .meta { font-size: 14px; color: var(--text-secondary); }
+
+        .policy-layout { display: grid; grid-template-columns: 220px 1fr; gap: 64px; padding: 64px 0 100px; align-items: start; }
+        .policy-toc { position: sticky; top: 88px; }
+        .policy-toc h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 16px; }
+        .policy-toc ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .policy-toc ul li a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .policy-toc ul li a:hover { color: var(--text-primary); }
+
+        .policy-content h2 { font-size: 20px; font-weight: 400; color: var(--text-primary); margin: 48px 0 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+        .policy-content h2:first-child { margin-top: 0; border-top: none; }
+        .policy-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
+        .policy-content ul, .policy-content ol { margin: 0 0 16px 24px; }
+        .policy-content ul li, .policy-content ol li { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+        .policy-content strong { color: var(--text-primary); font-weight: 600; }
+        .policy-content a { color: var(--accent-blue); }
+        .notice-box { background: #f0f4ff; border-left: 3px solid var(--accent-blue); border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 16px; }
+        .notice-box p { margin: 0; font-size: 14px; }
+
+        /* COOKIE TABLE */
+        .cookie-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px; }
+        .cookie-table th { background: #f8fafc; text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--border); }
+        .cookie-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); line-height: 1.6; vertical-align: top; }
+        .cookie-table td strong { color: var(--text-primary); }
+        .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+        .badge-essential { background: #DCFCE7; color: #166534; }
+        .badge-analytics { background: #FEF3C7; color: #92400E; }
+        .badge-marketing { background: #FEE2E2; color: #991B1B; }
+        .badge-functional { background: #E0E7FF; color: #3730A3; }
+
+        /* FOOTER */
+        .footer { background: #0F172A; color: #94A3B8; padding: 64px 0 32px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+        .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 16px; color: #64748B; max-width: 240px; }
+        .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col ul li a { font-size: 13px; color: #64748B; transition: color 0.2s; text-decoration: none; }
+        .footer-col ul li a:hover { color: #ffffff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 13px; color: #475569; }
+
+        @media (max-width: 768px) {
+            .policy-layout { grid-template-columns: 1fr; }
+            .policy-toc { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: none; }
+            .cookie-table { font-size: 12px; }
+            .cookie-table th, .cookie-table td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="/" class="nav-logo">
+            <img src="/assets/logo.png" alt="TrustFabric">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/#platform">Product</a></li>
+            <li><a href="/#dpdp">Solutions</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+        </ul>
+        <a href="/#request-demo" class="btn-primary">Request Demo</a>
+    </div>
+</nav>
+
+<div class="page-header">
+    <div class="container">
+        <h1>Cookie Policy</h1>
+        <p class="meta">Last updated: 1 August 2025</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="policy-layout">
+        <aside class="policy-toc">
+            <h4>Contents</h4>
+            <ul>
+                <li><a href="#what-are-cookies">What Are Cookies</a></li>
+                <li><a href="#why-we-use">Why We Use Cookies</a></li>
+                <li><a href="#types">Types of Cookies</a></li>
+                <li><a href="#cookie-list">Cookie List</a></li>
+                <li><a href="#your-choices">Your Choices</a></li>
+                <li><a href="#third-party">Third-Party Cookies</a></li>
+                <li><a href="#changes">Changes</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </aside>
+
+        <main class="policy-content">
+
+            <div class="notice-box">
+                <p>This Cookie Policy explains how TrustFabric uses cookies and similar technologies. By using our website, you consent to our use of cookies in accordance with this policy. You can manage your preferences at any time.</p>
+            </div>
+
+            <h2 id="what-are-cookies">1. What Are Cookies?</h2>
+            <p>Cookies are small text files stored on your device (computer, tablet, or mobile) when you visit a website. They allow the website to remember your actions and preferences over a period of time, so you don't have to re-enter them whenever you return.</p>
+            <p>Similar technologies include:</p>
+            <ul>
+                <li><strong>Web beacons / pixel tags</strong> — small transparent images used to track page visits and email opens</li>
+                <li><strong>Local storage</strong> — browser-based storage for session and preference data</li>
+                <li><strong>Session storage</strong> — temporary storage that is cleared when your browser tab closes</li>
+            </ul>
+
+            <h2 id="why-we-use">2. Why We Use Cookies</h2>
+            <p>TrustFabric uses cookies to:</p>
+            <ul>
+                <li>Keep our website functioning correctly (essential cookies)</li>
+                <li>Remember your preferences and personalise your experience</li>
+                <li>Understand how visitors use our website so we can improve it</li>
+                <li>Measure the effectiveness of our marketing campaigns</li>
+                <li>Provide relevant content and advertising</li>
+            </ul>
+
+            <h2 id="types">3. Types of Cookies We Use</h2>
+            <p><strong>Essential Cookies</strong> — These cookies are strictly necessary for the website to function. They cannot be disabled without affecting core functionality. No consent is required for these cookies.</p>
+            <p><strong>Functional Cookies</strong> — These remember your preferences (such as language or region) to provide a more personalised experience. They require your consent.</p>
+            <p><strong>Analytics Cookies</strong> — These help us understand how visitors interact with our website by collecting anonymised information. They require your consent.</p>
+            <p><strong>Marketing Cookies</strong> — These track your browsing activity across websites to display relevant advertising. They require your consent.</p>
+
+            <h2 id="cookie-list">4. Cookie List</h2>
+            <p>Below is a list of the main cookies we use on trustfabric.in:</p>
+
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th>Cookie Name</th>
+                        <th>Type</th>
+                        <th>Purpose</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>_session</strong></td>
+                        <td><span class="badge badge-essential">Essential</span></td>
+                        <td>Maintains your logged-in session on the TrustFabric platform</td>
+                        <td>Session</td>
+                    </tr>
+                    <tr>
+                        <td><strong>tf_csrf</strong></td>
+                        <td><span class="badge badge-essential">Essential</span></td>
+                        <td>Cross-site request forgery protection token</td>
+                        <td>Session</td>
+                    </tr>
+                    <tr>
+                        <td><strong>tf_consent</strong></td>
+                        <td><span class="badge badge-essential">Essential</span></td>
+                        <td>Stores your cookie consent preferences</td>
+                        <td>1 year</td>
+                    </tr>
+                    <tr>
+                        <td><strong>_ga</strong></td>
+                        <td><span class="badge badge-analytics">Analytics</span></td>
+                        <td>Google Analytics — distinguishes unique users (anonymised)</td>
+                        <td>2 years</td>
+                    </tr>
+                    <tr>
+                        <td><strong>_ga_*</strong></td>
+                        <td><span class="badge badge-analytics">Analytics</span></td>
+                        <td>Google Analytics — maintains session state</td>
+                        <td>2 years</td>
+                    </tr>
+                    <tr>
+                        <td><strong>_gid</strong></td>
+                        <td><span class="badge badge-analytics">Analytics</span></td>
+                        <td>Google Analytics — distinguishes users (session)</td>
+                        <td>24 hours</td>
+                    </tr>
+                    <tr>
+                        <td><strong>hs_*</strong></td>
+                        <td><span class="badge badge-marketing">Marketing</span></td>
+                        <td>HubSpot — tracks marketing interactions and form submissions</td>
+                        <td>13 months</td>
+                    </tr>
+                    <tr>
+                        <td><strong>tf_lang</strong></td>
+                        <td><span class="badge badge-functional">Functional</span></td>
+                        <td>Remembers your language and region preference</td>
+                        <td>1 year</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="your-choices">5. Your Choices &amp; How to Manage Cookies</h2>
+            <p>You can control and manage cookies in several ways:</p>
+            <p><strong>Cookie consent banner</strong> — When you first visit our website, you can accept or decline non-essential cookies via our consent banner. You can update your preferences at any time by clicking "Cookie Settings" in the footer.</p>
+            <p><strong>Browser settings</strong> — Most browsers allow you to refuse or delete cookies. Instructions for common browsers:</p>
+            <ul>
+                <li><strong>Chrome</strong> — Settings &gt; Privacy and Security &gt; Cookies and other site data</li>
+                <li><strong>Firefox</strong> — Options &gt; Privacy &amp; Security &gt; Cookies and Site Data</li>
+                <li><strong>Safari</strong> — Preferences &gt; Privacy &gt; Manage Website Data</li>
+                <li><strong>Edge</strong> — Settings &gt; Site permissions &gt; Cookies and site data</li>
+            </ul>
+            <p>Please note that disabling certain cookies may affect the functionality of our website.</p>
+            <p><strong>Opt-out tools</strong>:</p>
+            <ul>
+                <li>Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a></li>
+                <li>HubSpot: <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">HubSpot Privacy Policy</a></li>
+            </ul>
+
+            <h2 id="third-party">6. Third-Party Cookies</h2>
+            <p>Some cookies on our website are set by third-party services that appear on our pages. These third parties have their own privacy policies and we do not control how they use their cookies. The main third parties whose cookies may be present on our site are:</p>
+            <ul>
+                <li><strong>Google Analytics</strong> — website analytics</li>
+                <li><strong>HubSpot</strong> — CRM and marketing automation</li>
+                <li><strong>Intercom</strong> — customer support chat (if enabled)</li>
+            </ul>
+
+            <h2 id="changes">7. Changes to This Policy</h2>
+            <p>We may update this Cookie Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically.</p>
+
+            <h2 id="contact">8. Contact Us</h2>
+            <p>If you have any questions about our use of cookies, please contact us:</p>
+            <p>
+                <strong>TrustFabric</strong><br>
+                Email: <a href="mailto:info@trustfabric.in">info@trustfabric.in</a><br>
+                Website: <a href="https://www.trustfabric.in">www.trustfabric.in</a>
+            </p>
+            <p>For detailed information about how we handle your personal data more broadly, please read our <a href="/privacy-policy.html">Privacy Policy</a>.</p>
+
+        </main>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/"><img src="/assets/logo.png" alt="TrustFabric" style="height:40px;width:auto;filter:brightness(0) invert(1);"></a>
+                <p>India's consent management platform for DPDP Act 2023 compliance. Built in India, for India's data privacy moment.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/#platform">Features</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/consent-management.html">Consent Management</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="/">BFSI</a></li>
+                    <li><a href="/">Healthcare</a></li>
+                    <li><a href="/">E-commerce</a></li>
+                    <li><a href="/">SaaS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/careers.html">Careers</a></li>
+                    <li><a href="/">DPDP Act Guide</a></li>
+                    <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 TrustFabric · <a href="mailto:info@trustfabric.in" style="color:#64748b;">info@trustfabric.in</a></div>
+    </div>
+</footer>
+
+</body>
+</html>

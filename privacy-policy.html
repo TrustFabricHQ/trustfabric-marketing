@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — TrustFabric</title>
+    <meta name="description" content="TrustFabric's Privacy Policy — how we collect, use, and protect personal data in accordance with the DPDP Act 2023.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --accent-red: #E31E24;
+            --accent-blue: #1E3A8A;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --border: rgba(0,0,0,0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #ffffff; color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-red); color: #fff; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(227,30,36,0.3); text-decoration: none; }
+
+        /* NAVBAR */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: rgba(255,255,255,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 72px; width: auto; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; text-decoration: none; }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* PAGE LAYOUT */
+        .page-header { padding: 120px 0 48px; background: #f8fafc; border-bottom: 1px solid var(--border); }
+        .page-header h1 { font-size: clamp(24px, 3vw, 38px); font-weight: 400; color: var(--text-primary); margin-bottom: 12px; }
+        .page-header .meta { font-size: 14px; color: var(--text-secondary); }
+
+        .policy-layout { display: grid; grid-template-columns: 220px 1fr; gap: 64px; padding: 64px 0 100px; align-items: start; }
+        .policy-toc { position: sticky; top: 88px; }
+        .policy-toc h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 16px; }
+        .policy-toc ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .policy-toc ul li a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .policy-toc ul li a:hover { color: var(--text-primary); }
+
+        .policy-content h2 { font-size: 20px; font-weight: 400; color: var(--text-primary); margin: 48px 0 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+        .policy-content h2:first-child { margin-top: 0; border-top: none; }
+        .policy-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
+        .policy-content ul, .policy-content ol { margin: 0 0 16px 24px; }
+        .policy-content ul li, .policy-content ol li { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+        .policy-content strong { color: var(--text-primary); font-weight: 600; }
+        .policy-content a { color: var(--accent-blue); }
+        .notice-box { background: #f0f4ff; border-left: 3px solid var(--accent-blue); border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 16px; }
+        .notice-box p { margin: 0; font-size: 14px; }
+
+        /* FOOTER */
+        .footer { background: #0F172A; color: #94A3B8; padding: 64px 0 32px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+        .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 16px; color: #64748B; max-width: 240px; }
+        .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col ul li a { font-size: 13px; color: #64748B; transition: color 0.2s; text-decoration: none; }
+        .footer-col ul li a:hover { color: #ffffff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 13px; color: #475569; }
+
+        @media (max-width: 768px) {
+            .policy-layout { grid-template-columns: 1fr; }
+            .policy-toc { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="/" class="nav-logo">
+            <img src="/assets/logo.png" alt="TrustFabric">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/#platform">Product</a></li>
+            <li><a href="/#dpdp">Solutions</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+        </ul>
+        <a href="/#request-demo" class="btn-primary">Request Demo</a>
+    </div>
+</nav>
+
+<div class="page-header">
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p class="meta">Last updated: 1 August 2025</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="policy-layout">
+        <aside class="policy-toc">
+            <h4>Contents</h4>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#data-we-collect">Data We Collect</a></li>
+                <li><a href="#how-we-use">How We Use Data</a></li>
+                <li><a href="#lawful-basis">Lawful Basis</a></li>
+                <li><a href="#sharing">Sharing &amp; Disclosure</a></li>
+                <li><a href="#retention">Data Retention</a></li>
+                <li><a href="#your-rights">Your Rights</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#cookies">Cookies</a></li>
+                <li><a href="#children">Children</a></li>
+                <li><a href="#changes">Changes</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </aside>
+
+        <main class="policy-content">
+
+            <div class="notice-box">
+                <p>TrustFabric is committed to protecting your personal data in accordance with the <strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong>. This policy explains how we handle your data when you use our website and platform.</p>
+            </div>
+
+            <h2 id="overview">1. Overview</h2>
+            <p>This Privacy Policy applies to <strong>TrustFabric</strong> (hereinafter "TrustFabric", "we", "us", or "our") and covers how we collect, use, store, and protect personal data of individuals ("you") who visit our website at <strong>trustfabric.in</strong> or use our compliance platform services.</p>
+            <p>By using our website or platform, you acknowledge that you have read and understood this Privacy Policy.</p>
+
+            <h2 id="data-we-collect">2. Data We Collect</h2>
+            <p>We collect personal data in the following ways:</p>
+            <p><strong>a) Information you provide directly</strong></p>
+            <ul>
+                <li>Name, email address, phone number, and company name when you fill out our contact or demo request form</li>
+                <li>Messages and communications you send us via email or contact forms</li>
+                <li>Account credentials when you register for or use our platform</li>
+                <li>Payment information (processed securely by our payment processor — we do not store card data)</li>
+            </ul>
+            <p><strong>b) Information collected automatically</strong></p>
+            <ul>
+                <li>IP address, browser type, operating system, and device information</li>
+                <li>Pages visited, time spent on pages, and referring URLs</li>
+                <li>Cookie data (see our <a href="/cookie-policy.html">Cookie Policy</a> for details)</li>
+            </ul>
+            <p><strong>c) Information from third parties</strong></p>
+            <ul>
+                <li>Professional information from LinkedIn or other integrations when you connect them</li>
+                <li>Analytics data from Google Analytics (anonymised)</li>
+            </ul>
+
+            <h2 id="how-we-use">3. How We Use Your Data</h2>
+            <p>We use your personal data for the following purposes:</p>
+            <ul>
+                <li><strong>Service delivery</strong> — To operate, maintain, and improve the TrustFabric platform</li>
+                <li><strong>Communication</strong> — To respond to your enquiries, demo requests, and support tickets</li>
+                <li><strong>Account management</strong> — To manage your platform account and subscriptions</li>
+                <li><strong>Marketing</strong> — To send product updates, newsletters, and event invitations (only with your consent)</li>
+                <li><strong>Analytics</strong> — To understand how our website and platform are used and improve user experience</li>
+                <li><strong>Legal &amp; compliance</strong> — To comply with applicable laws, regulations, and our legal obligations</li>
+                <li><strong>Security</strong> — To detect, investigate, and prevent fraud or other security incidents</li>
+            </ul>
+
+            <h2 id="lawful-basis">4. Lawful Basis for Processing</h2>
+            <p>Under the DPDP Act 2023, we process your personal data on the following lawful bases:</p>
+            <ul>
+                <li><strong>Consent</strong> — Where you have given us clear consent (e.g., marketing communications, non-essential cookies)</li>
+                <li><strong>Contract</strong> — Where processing is necessary to fulfil a contract with you (e.g., providing platform access)</li>
+                <li><strong>Legal obligation</strong> — Where we are required by law to process your data</li>
+                <li><strong>Legitimate interest</strong> — For analytics, security, and fraud prevention, where our interests are balanced against your rights</li>
+            </ul>
+
+            <h2 id="sharing">5. Sharing &amp; Disclosure</h2>
+            <p>We do not sell your personal data. We may share it with:</p>
+            <ul>
+                <li><strong>Service providers</strong> — Cloud hosting (AWS/Google Cloud), email delivery (e.g., SendGrid), CRM (e.g., HubSpot), and analytics providers operating under data processing agreements</li>
+                <li><strong>Legal authorities</strong> — When required by law, court order, or to protect our legal rights</li>
+                <li><strong>Business transfers</strong> — In the event of a merger, acquisition, or sale of assets, your data may be transferred with appropriate notice</li>
+            </ul>
+            <p>All third-party processors are contractually bound to protect your data and use it only for the specific purposes we specify.</p>
+
+            <h2 id="retention">6. Data Retention</h2>
+            <p>We retain your personal data only for as long as necessary for the purposes for which it was collected:</p>
+            <ul>
+                <li>Website enquiry and contact form data: 3 years</li>
+                <li>Platform account data: Duration of your subscription plus 2 years</li>
+                <li>Marketing consent records: Until consent is withdrawn plus 1 year</li>
+                <li>Financial records: 7 years (as required by Indian tax law)</li>
+                <li>Server logs: 90 days</li>
+            </ul>
+            <p>After these periods, data is securely deleted or anonymised.</p>
+
+            <h2 id="your-rights">7. Your Rights as a Data Principal</h2>
+            <p>Under the DPDP Act 2023, you have the following rights:</p>
+            <ul>
+                <li><strong>Right to Access</strong> — Request a summary of the personal data we hold about you</li>
+                <li><strong>Right to Correction</strong> — Request correction of inaccurate or incomplete data</li>
+                <li><strong>Right to Erasure</strong> — Request deletion of your personal data (subject to legal obligations)</li>
+                <li><strong>Right to Grievance Redressal</strong> — Raise a grievance about how your data is handled, to be resolved within 30 days</li>
+                <li><strong>Right to Withdraw Consent</strong> — Withdraw consent for consent-based processing at any time</li>
+                <li><strong>Right to Nominate</strong> — Nominate another person to exercise your rights in case of incapacity or death</li>
+            </ul>
+            <p>To exercise any of these rights, email us at <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>. We will respond within 30 days.</p>
+
+            <h2 id="security">8. Security</h2>
+            <p>We implement appropriate technical and organisational security measures to protect your personal data, including:</p>
+            <ul>
+                <li>TLS/SSL encryption for all data in transit</li>
+                <li>AES-256 encryption for data at rest</li>
+                <li>Role-based access controls and multi-factor authentication</li>
+                <li>Regular security audits and vulnerability assessments</li>
+                <li>ISO 27001-aligned information security practices</li>
+            </ul>
+            <p>In the event of a data breach that is likely to result in a risk to your rights, we will notify the Data Protection Board of India within 72 hours and inform affected individuals promptly.</p>
+
+            <h2 id="cookies">9. Cookies</h2>
+            <p>We use cookies and similar tracking technologies on our website. For full details on what cookies we use, their purpose, and how to manage your preferences, please read our <a href="/cookie-policy.html">Cookie Policy</a>.</p>
+
+            <h2 id="children">10. Children's Data</h2>
+            <p>Our website and platform are not directed at children under the age of 18. We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us at <a href="mailto:info@trustfabric.in">info@trustfabric.in</a> and we will delete it promptly.</p>
+
+            <h2 id="changes">11. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of significant changes by email (if you are a registered user) or by posting a notice on our website. The "Last updated" date at the top of this page indicates when the policy was last revised.</p>
+            <p>Continued use of our services after changes are posted constitutes acceptance of the updated policy.</p>
+
+            <h2 id="contact">12. Contact &amp; Grievance Officer</h2>
+            <p>For any privacy-related questions, requests, or grievances, please contact:</p>
+            <p>
+                <strong>Data Protection Officer / Grievance Officer</strong><br>
+                TrustFabric<br>
+                Email: <a href="mailto:info@trustfabric.in">info@trustfabric.in</a><br>
+                Website: <a href="https://www.trustfabric.in">www.trustfabric.in</a>
+            </p>
+            <p>If you are not satisfied with our response, you have the right to file a complaint with the <strong>Data Protection Board of India</strong>.</p>
+
+        </main>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/"><img src="/assets/logo.png" alt="TrustFabric" style="height:40px;width:auto;filter:brightness(0) invert(1);"></a>
+                <p>India's consent management platform for DPDP Act 2023 compliance. Built in India, for India's data privacy moment.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/#platform">Features</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/consent-management.html">Consent Management</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="/">BFSI</a></li>
+                    <li><a href="/">Healthcare</a></li>
+                    <li><a href="/">E-commerce</a></li>
+                    <li><a href="/">SaaS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/careers.html">Careers</a></li>
+                    <li><a href="/">DPDP Act Guide</a></li>
+                    <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 TrustFabric · <a href="mailto:info@trustfabric.in" style="color:#64748b;">info@trustfabric.in</a></div>
+    </div>
+</footer>
+
+</body>
+</html>

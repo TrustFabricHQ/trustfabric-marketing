@@ -1,0 +1,9 @@
+{
+  "name": "trustfabric-marketing",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.3",
+    "nodemailer": "^6.9.14"
+  }
+}
