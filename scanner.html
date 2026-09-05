@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free DPDP Cookie & Consent Scanner — Check Your Website | TrustFabric</title>
+  <meta name="description" content="Free tool to instantly scan any website for cookie and consent violations under India's DPDP Act 2023. Check trackers, consent banners, and compliance gaps in seconds." />
+  <meta name="keywords" content="DPDP cookie scanner, DPDP compliance checker, cookie consent India, DPDP Act 2023 tool, cookie tracker scanner India, consent banner checker, data privacy India" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://trustfabric.in/dpdp-cookie-scanner" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trustfabric.in/dpdp-cookie-scanner" />
+  <meta property="og:title" content="Free DPDP Cookie & Consent Scanner — TrustFabric" />
+  <meta property="og:description" content="Instantly scan any website for cookie and consent violations under India's DPDP Act 2023. Free, automated, built for Indian enterprises." />
+  <meta property="og:site_name" content="TrustFabric" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free DPDP Cookie & Consent Scanner — TrustFabric" />
+  <meta name="twitter:description" content="Instantly scan any website for cookie and consent violations under India's DPDP Act 2023. Free, automated, built for Indian enterprises." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "TrustFabric DPDP Cookie & Consent Scanner",
+    "url": "https://trustfabric.in/dpdp-cookie-scanner",
+    "description": "Free tool to scan any website for cookie and consent violations under India's Digital Personal Data Protection Act 2023.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "TrustFabric",
+      "url": "https://trustfabric.in"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1E3A8A;
+      --navy-hover: #1e40af;
+      --red: #E31E24;
+      --text-dark: #111827;
+      --text-mid: #374151;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --bg: #ffffff;
+      --bg-subtle: #F9FAFB;
+      --success-bg: #ECFDF5;
+      --success-border: #6EE7B7;
+      --success-text: #065F46;
+      --error-bg: #FEF2F2;
+      --error-border: #FECACA;
+      --error-text: #991B1B;
+    }
+
+    html, body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-logo { height: 75px; width: auto; object-fit: contain; border-radius: 6px; }
+    .nav-badge {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--navy);
+      background: #EFF6FF; border: 1px solid #BFDBFE;
+      padding: 4px 12px; border-radius: 999px;
+    }
+
+    /* ── Page shell ── */
+    .page { display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative; flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 120px 24px 80px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    /* subtle dot grid */
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    /* soft colour blobs */
+    .blob { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+    .blob-1 {
+      width: 480px; height: 480px; top: -80px; right: -80px;
+      background: rgba(30,58,138,0.07);
+      animation: blobFloat 9s ease-in-out infinite alternate;
+    }
+    .blob-2 {
+      width: 340px; height: 340px; bottom: -60px; left: -60px;
+      background: rgba(227,30,36,0.05);
+      animation: blobFloat 11s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes blobFloat {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(24px,-16px) scale(1.06); }
+    }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; max-width: 720px; width: 100%; gap: 24px;
+    }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em;
+      color: var(--navy); background: #EFF6FF;
+      border: 1px solid #BFDBFE; padding: 6px 16px;
+      border-radius: 999px; animation: fadeDown 0.5s ease both;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800;
+      line-height: 1.15; letter-spacing: -0.03em; color: var(--text-dark);
+      animation: fadeDown 0.55s 0.08s ease both;
+    }
+    .hero-title-accent { color: var(--navy); }
+
+    .hero-sub {
+      font-size: 1.05rem; font-weight: 400; line-height: 1.65;
+      color: var(--text-muted); max-width: 560px;
+      animation: fadeDown 0.55s 0.16s ease both;
+    }
+
+    /* ── Scanner card ── */
+    .scanner-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 28px 28px 24px;
+      display: flex; flex-direction: column; gap: 14px;
+      animation: fadeUp 0.6s 0.24s ease both;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .scanner-label {
+      text-align: left; font-size: 0.82rem; font-weight: 600;
+      color: var(--text-mid); letter-spacing: 0.01em;
+    }
+    .input-row { display: flex; gap: 10px; align-items: stretch; }
+    .input-wrap {
+      flex: 1; display: flex; align-items: center;
+      background: var(--bg-subtle); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 0 14px; transition: border-color 0.2s, background 0.2s;
+    }
+    .input-wrap:focus-within { border-color: var(--navy); background: #ffffff; }
+    .input-wrap--error { border-color: #DC2626 !important; }
+    .input-prefix { color: #9CA3AF; margin-right: 8px; display: flex; align-items: center; flex-shrink: 0; }
+    .url-input {
+      flex: 1; background: transparent; border: none; outline: none;
+      color: var(--text-dark); font-family: inherit; font-size: 0.95rem; padding: 14px 0;
+    }
+    .url-input::placeholder { color: #9CA3AF; }
+    .url-input:disabled { opacity: 0.5; }
+
+    .scan-btn {
+      flex-shrink: 0; background: var(--navy); color: #ffffff;
+      border: none; border-radius: 12px; padding: 0 28px;
+      font-family: inherit; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.01em; white-space: nowrap;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(30,58,138,0.25);
+    }
+    .scan-btn:hover:not(:disabled) { background: var(--navy-hover); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,58,138,0.35); }
+    .scan-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .btn-loading { display: flex; align-items: center; gap: 8px; }
+    .spinner {
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.4); border-top-color: #ffffff;
+      border-radius: 50%; animation: spin 0.75s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .field-error { text-align: left; font-size: 0.8rem; color: #DC2626; font-weight: 500; }
+
+    /* ── Result cards ── */
+    .result-card {
+      width: 100%; border-radius: 16px; padding: 20px 22px;
+      text-align: left; animation: fadeUp 0.4s ease both;
+    }
+    .result-card--error {
+      background: var(--error-bg); border: 1px solid var(--error-border);
+      color: var(--error-text); display: flex; align-items: flex-start;
+      gap: 10px; font-size: 0.9rem; line-height: 1.5;
+    }
+    .result-card--error h3 { color: var(--error-text); }
+    .result-card--success {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    /* ── Download button ── */
+    .dl-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; background: var(--navy); color: #ffffff;
+      border: none; border-radius: 12px; font-family: inherit;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 2px 12px rgba(30,58,138,0.25);
+    }
+    .dl-btn:hover:not(:disabled) { background: var(--navy-hover); transform: translateY(-1px); }
+    .dl-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 20px 24px; text-align: center;
+      font-size: 0.78rem; color: var(--text-muted);
+      background: var(--bg-subtle); border-top: 1px solid var(--border);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Popup overlay ── */
+    .popup-overlay {
+      position: fixed; inset: 0;
+      background: rgba(9,30,66,0.45); z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .popup-content {
+      background: white; padding: 32px; border-radius: 16px;
+      width: 90%; max-width: 400px;
+      box-shadow: 0 20px 60px rgba(9,30,66,0.18);
+    }
+    .popup-content h3 { margin: 0 0 8px; color: var(--text-dark); font-size: 18px; font-weight: 800; }
+    .popup-content p  { margin: 0 0 24px; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+    .popup-field { margin-bottom: 16px; }
+    .popup-field label { display: block; font-size: 12px; font-weight: 700; color: var(--text-mid); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .popup-field input {
+      width: 100%; padding: 10px 12px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 14px; font-family: inherit; outline: none; color: var(--text-dark);
+      transition: border-color 0.15s; background: var(--bg-subtle);
+    }
+    .popup-field input:focus { border-color: var(--navy); background: #fff; }
+    .popup-field input.field-invalid { border-color: #DC2626; }
+    .popup-field .popup-err { color: #DC2626; font-size: 12px; margin-top: 4px; display: none; }
+    .popup-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 4px; }
+    .popup-cancel {
+      padding: 10px 16px; background: transparent; border: none;
+      color: var(--text-muted); cursor: pointer; font-weight: 500; font-family: inherit;
+    }
+    .popup-proceed {
+      padding: 10px 20px; background: var(--navy); border: none;
+      color: white; border-radius: 8px; cursor: pointer;
+      font-weight: 700; font-family: inherit; transition: background 0.15s;
+    }
+    .popup-proceed:hover { background: var(--navy-hover); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .input-row { flex-direction: column; }
+      .scan-btn { padding: 14px; border-radius: 12px; }
+      .scanner-card { padding: 20px 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Nav -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <a href="./index.html">
+          <img src="./assets/logo.png" alt="TrustFabric" class="brand-logo" />
+        </a>
+      </div>
+      <span class="nav-badge">DPDP Act 2023</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="pill">🇮🇳 DPDP Cookie & Consent Scanner</div>
+
+      <h1 class="hero-title">
+        Cookie & Consent Scanner,<br>
+        <span class="hero-title-accent">Built for India's DPDP Act.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Instantly scan any website for cookie and tracker violations under
+        India's Digital Personal Data Protection Act 2023. Free, accurate,
+        and built for Indian enterprises.
+      </p>
+
+      <!-- Scanner card -->
+      <div class="scanner-card">
+        <label class="scanner-label" for="url-input">Website URL *</label>
+        <div class="input-row">
+          <div class="input-wrap" id="input-wrap">
+            <span class="input-prefix" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.5a1 1 0 00-1 1v3.19l-1.65 1.64a1 1 0 101.41 1.41L8.71 9.3A1 1 0 009 8.59V5a1 1 0 00-1-1z" fill="currentColor"/>
+              </svg>
+            </span>
+            <input id="url-input" type="url" class="url-input"
+              placeholder="https://example.com"
+              autocomplete="off" spellcheck="false"
+              onkeydown="if(event.key==='Enter') handleScanClick()" />
+          </div>
+          <button id="scan-btn" class="scan-btn" onclick="handleScanClick()">
+            Scan Website →
+          </button>
+        </div>
+        <p id="url-error" class="field-error" style="display:none"></p>
+      </div>
+
+      <!-- Scan error -->
+      <div id="scan-error" class="result-card result-card--error" role="alert" style="display:none;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span style="font-size:1.1rem;flex-shrink:0">⚠️</span>
+          <div>
+            <h3 style="margin:0 0 6px;font-size:15px;font-weight:700">Scan Incomplete</h3>
+            <p id="scan-error-msg" style="margin:0;font-size:14px"></p>
+          </div>
+        </div>
+        <button onclick="retryLastScan()"
+          style="align-self:flex-start;padding:9px 18px;background:#991B1B;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">
+          Try Again →
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div id="results" class="result-card result-card--success" role="status"
+           style="display:none; text-align:center; padding:48px 24px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;color:#9CA3AF;text-transform:uppercase;margin-bottom:20px">
+          DPDP COMPLIANCE ASSESSMENT
+        </div>
+        <h2 id="verdict-text" style="font-size:22px;font-weight:800;max-width:500px;margin:0 auto 36px;line-height:1.35;letter-spacing:-0.02em"></h2>
+        <div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:14px;padding:24px;max-width:360px;margin:0 auto 36px">
+          <div style="font-size:13px;color:#374151;margin-bottom:14px;font-weight:700">
+            Core Rules &nbsp;
+            <span id="assessed-label" style="font-size:12px;font-weight:400;color:#6B7280"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;border-top:1px solid #E5E7EB;padding-top:16px">
+            <div>
+              <div style="font-size:10px;font-weight:800;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Pass</div>
+              <div id="score-pass" style="font-size:28px;font-weight:800;color:#065F46">—</div>
+            </div>
+            <div style="border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB">
+              <div style="font-size:10px;font-weight:800;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fail</div>
+              <div id="score-fail" style="font-size:28px;font-weight:800;color:#991B1B">—</div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:800;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Unknown</div>
+              <div id="score-unknown" style="font-size:28px;font-weight:800;color:#92400E">—</div>
+            </div>
+          </div>
+        </div>
+        <button id="dl-btn" class="dl-btn" onclick="downloadPdf()">
+          ⬇ Download PDF Report
+        </button>
+        <p id="dl-error" style="color:#DC2626;font-size:13px;margin-top:10px;display:none"></p>
+        <button onclick="resetScanner()"
+          style="display:block;width:100%;max-width:360px;margin:12px auto 0;padding:11px;background:none;border:1.5px solid #E5E7EB;border-radius:10px;color:#6B7280;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:border-color 0.15s"
+          onmouseover="this.style.borderColor='#9CA3AF'" onmouseout="this.style.borderColor='#E5E7EB'">
+          Scan Another Website
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SEO Content -->
+  <section style="max-width:760px;margin:48px auto 0;padding:0 24px 64px;font-family:'Inter',sans-serif;color:#475569;">
+    <h2 style="font-size:20px;font-weight:700;color:#1F2937;margin-bottom:12px;">What does this scanner check?</h2>
+    <p style="font-size:14px;line-height:1.8;margin-bottom:24px;">TrustFabric's free DPDP cookie scanner analyses any website for cookie and consent violations under India's Digital Personal Data Protection Act 2023. It detects trackers loaded before consent, missing or weak consent banners, third-party cookies, and gaps between your privacy policy and actual cookie behaviour.</p>
+
+    <h2 style="font-size:20px;font-weight:700;color:#1F2937;margin-bottom:12px;">Who needs a DPDP cookie compliance check?</h2>
+    <p style="font-size:14px;line-height:1.8;margin-bottom:24px;">Any website that collects personal data from users in India — including e-commerce stores, SaaS platforms, news websites, and enterprise portals — must comply with the DPDP Act 2023. A cookie compliance check is the first step to understanding your exposure and fixing consent management gaps before enforcement begins.</p>
+
+    <h2 style="font-size:20px;font-weight:700;color:#1F2937;margin-bottom:12px;">How does the scanner work?</h2>
+    <p style="font-size:14px;line-height:1.8;">Enter your website URL and our scanner visits your site just like a real user — capturing all cookies and network requests before and after consent is given. It then maps these against DPDP Act requirements and generates a detailed compliance report you can download instantly.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 TrustFabric · Built for DPDP Act 2023 Compliance · India</p>
+  </footer>
+</div>
+
+<!-- Name + Email popup -->
+<div id="popup" class="popup-overlay" style="display:none">
+  <div class="popup-content">
+    <h3>Prepare Your Report</h3>
+    <p>Enter your details so we can personalise the DPDP compliance report.</p>
+    <div class="popup-field">
+      <label for="name-input">Full Name *</label>
+      <input id="name-input" type="text" placeholder="e.g. Priya Sharma"
+        oninput="clearErr('name')" onkeydown="if(event.key==='Enter') proceedScan()" />
+      <div id="name-err" class="popup-err"></div>
+    </div>
+    <div class="popup-field">
+      <label for="email-input">Email Address *</label>
+      <input id="email-input" type="email" placeholder="priya@company.com"
+        oninput="clearErr('email')" onkeydown="if(event.key==='Enter') proceedScan()" />
+      <div id="email-err" class="popup-err"></div>
+    </div>
+    <div class="popup-actions">
+      <button class="popup-cancel" onclick="closePopup()">Cancel</button>
+      <button class="popup-proceed" onclick="proceedScan()">Proceed →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var API = 'https://trustfabric-cookie-scanner-h2nu.onrender.com';
+  var _scanResult = null;
+  var _pendingUrl = '';
+  var _userName = '';
+  var _userEmail = '';
+
+  // ── URL validation ────────────────────────────────────────────────────
+  function normalizeUrl(raw) {
+    var s = (raw || '').trim();
+    if (!s) return { error: 'Please enter a website URL.', url: '' };
+    if (!/^https?:\/\//i.test(s)) s = 'https://' + s;
+    try {
+      var u = new URL(s);
+      if (u.protocol !== 'http:' && u.protocol !== 'https:') throw '';
+      return { error: '', url: s };
+    } catch (e) {
+      return { error: 'Enter a valid URL starting with https:// or http://', url: '' };
+    }
+  }
+
+  function setUrlError(msg) {
+    var el = document.getElementById('url-error');
+    var wrap = document.getElementById('input-wrap');
+    el.textContent = msg;
+    el.style.display = msg ? '' : 'none';
+    wrap.classList.toggle('input-wrap--error', !!msg);
+  }
+
+  // ── Step 1: click Scan ────────────────────────────────────────────────
+  window.handleScanClick = function () {
+    var r = normalizeUrl(document.getElementById('url-input').value);
+    if (r.error) { setUrlError(r.error); return; }
+    setUrlError('');
+    document.getElementById('url-input').value = r.url;
+    _pendingUrl = r.url;
+    hideResults();
+    document.getElementById('popup').style.display = 'flex';
+    setTimeout(function () { document.getElementById('name-input').focus(); }, 80);
+  };
+
+  window.closePopup = function () {
+    document.getElementById('popup').style.display = 'none';
+  };
+
+  window.clearErr = function (field) {
+    var errEl = document.getElementById(field + '-err');
+    errEl.style.display = 'none';
+    document.getElementById(field + '-input').classList.remove('field-invalid');
+  };
+
+  // ── Step 2: validate details + run scan ───────────────────────────────
+  window.proceedScan = function () {
+    var name  = (document.getElementById('name-input').value || '').trim();
+    var email = (document.getElementById('email-input').value || '').trim();
+    var nameErr  = (!name || name.length < 2) ? 'Please enter your name.' : '';
+    var emailErr = (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) ? 'Please enter a valid email.' : '';
+
+    showFieldErr('name', nameErr);
+    showFieldErr('email', emailErr);
+    if (nameErr || emailErr) return;
+
+    _userName  = name;
+    _userEmail = email;
+    closePopup();
+    runScan(_pendingUrl);
+  };
+
+  function showFieldErr(field, msg) {
+    var errEl = document.getElementById(field + '-err');
+    var input = document.getElementById(field + '-input');
+    errEl.textContent = msg;
+    errEl.style.display = msg ? '' : 'none';
+    input.classList.toggle('field-invalid', !!msg);
+  }
+
+  // ── Scan ─────────────────────────────────────────────────────────────
+  function setScanningState(on, msg) {
+    var btn = document.getElementById('scan-btn');
+    var input = document.getElementById('url-input');
+    btn.disabled = on;
+    input.disabled = on;
+    btn.innerHTML = on
+      ? '<span class="btn-loading"><span class="spinner"></span>' + (msg || 'Scanning…') + '</span>'
+      : 'Scan Website →';
+  }
+
+  function hideResults() {
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('scan-error').style.display = 'none';
+  }
+
+  function showError(msg) {
+    setScanningState(false);
+    document.getElementById('scan-error-msg').textContent = msg;
+    document.getElementById('scan-error').style.display = 'flex';
+  }
+
+  var _statusInterval = null;
+
+  function startStatusCycle(messages, intervalMs) {
+    var i = 0;
+    setScanningState(true, messages[0]);
+    _statusInterval = setInterval(function() {
+      i = (i + 1) % messages.length;
+      setScanningState(true, messages[i]);
+    }, intervalMs);
+  }
+
+  function stopStatusCycle() {
+    if (_statusInterval) { clearInterval(_statusInterval); _statusInterval = null; }
+  }
+
+  function runScan(url) {
+    _scanResult = null;
+    hideResults();
+    stopStatusCycle();
+
+    // Cycle messages so user knows progress is happening
+    startStatusCycle([
+      'Waking up scanner…',
+      'This may take up to 90 seconds…',
+      'Still working — almost there…',
+      'Running DPDP checks…',
+      'Analysing cookies & trackers…',
+    ], 12000);
+
+    var controller = new AbortController();
+    var timer = setTimeout(function() { controller.abort(); }, 220000);
+
+    // Ping health first to wake Render, then scan — all under one timeout
+    fetch(API + '/api/health', { signal: controller.signal })
+    .then(function() {
+      setScanningState(true, 'Scanning…');
+      return fetch(API + '/api/scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: url }),
+        signal: controller.signal,
+      });
+    })
+    .then(function(res) {
+      return res.json().then(function(d) { return { ok: res.ok, data: d }; });
+    })
+    .then(function(r) {
+      clearTimeout(timer);
+      stopStatusCycle();
+      setScanningState(false);
+      if (!r.ok) throw new Error(r.data.error || 'Scan failed. Please try again.');
+      _scanResult = r.data;
+      showResults(r.data);
+    })
+    .catch(function(e) {
+      clearTimeout(timer);
+      stopStatusCycle();
+      setScanningState(false);
+      if (e.name === 'AbortError') {
+        showError('The scan timed out. Please click "Try Again" — subsequent scans are faster once the server is warm.');
+      } else {
+        showError(e.message || 'Could not reach the scanner. Please try again.');
+      }
+    });
+  }
+
+  function showResults(data) {
+    var s = (data.dpdpCompliance && data.dpdpCompliance.summary) || {};
+    var pass = s.passCount || 0;
+    var fail = s.failCount || 0;
+    var unk  = s.unknownCount || 0;
+    var assessed = s.assessedCount || 0;
+    var verdict = s.overallResult || 'NO DATA';
+
+    var isNoViolation = verdict.includes('NO POTENTIAL');
+    var isIncomplete  = verdict.includes('INCOMPLETE');
+    var color = isNoViolation ? '#006644' : isIncomplete ? '#ff8b00' : '#bf2600';
+
+    var vEl = document.getElementById('verdict-text');
+    vEl.textContent = verdict;
+    vEl.style.color = color;
+
+    document.getElementById('score-pass').textContent    = pass;
+    document.getElementById('score-fail').textContent    = fail;
+    document.getElementById('score-unknown').textContent = unk;
+    document.getElementById('assessed-label').textContent = assessed + ' assessed';
+    document.getElementById('dl-error').style.display = 'none';
+    document.getElementById('dl-btn').disabled = false;
+    document.getElementById('dl-btn').textContent = '⬇ Download PDF Report';
+
+    document.getElementById('results').style.display = '';
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ── Download PDF ──────────────────────────────────────────────────────
+  window.downloadPdf = function () {
+    if (!_scanResult) return;
+    var btn = document.getElementById('dl-btn');
+    btn.disabled = true;
+    btn.textContent = 'Generating…';
+    document.getElementById('dl-error').style.display = 'none';
+
+    fetch(API + '/api/report/pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ scanResult: _scanResult, name: _userName, email: _userEmail }),
+    })
+    .then(function (res) {
+      if (!res.ok) return res.json().then(function (d) { throw new Error(d.error || 'Failed to generate report'); });
+      return res.blob();
+    })
+    .then(function (blob) {
+      var hostname = '';
+      try { hostname = new URL(_scanResult.url).hostname.replace(/\./g, '-'); } catch (e) { hostname = 'report'; }
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'dpdp-report-' + hostname + '.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      btn.disabled = false;
+      btn.textContent = '⬇ Download PDF Report';
+    })
+    .catch(function (e) {
+      btn.disabled = false;
+      btn.textContent = '⬇ Download PDF Report';
+      var errEl = document.getElementById('dl-error');
+      errEl.textContent = e.message;
+      errEl.style.display = '';
+    });
+  };
+
+  // ── Retry last scan ──────────────────────────────────────────────────
+  window.retryLastScan = function () {
+    if (!_pendingUrl) return;
+    hideResults();
+    runScan(_pendingUrl);
+  };
+
+  // ── Reset ─────────────────────────────────────────────────────────────
+  window.resetScanner = function () {
+    _scanResult = null;
+    document.getElementById('url-input').value = '';
+    hideResults();
+    document.getElementById('url-input').focus();
+  };
+
+  // close popup on overlay click
+  document.getElementById('popup').addEventListener('click', function (e) {
+    if (e.target === this) closePopup();
+  });
+
+  // close popup on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup();
+  });
+})();
+</script>
+</body>
+</html>
