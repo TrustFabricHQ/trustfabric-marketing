@@ -1665,29 +1665,6 @@
 
         .p-cta { width: 100%; text-align: center; justify-content: center; }
 
-        .btn-ghost.p-cta {
-            position: relative;
-            overflow: hidden;
-            z-index: 0;
-            transition: color 0.35s ease, border-color 0.35s ease, transform 0.2s ease;
-        }
-        .btn-ghost.p-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--accent-blue);
-            transform: translateX(-100%);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-        .btn-ghost.p-cta:hover::before { transform: translateX(0); }
-        .btn-ghost.p-cta:hover {
-            color: #ffffff;
-            border-color: var(--accent-blue);
-            transform: none;
-            background: transparent;
-        }
-
         /* ===========================
            FINAL CTA
         =========================== */
@@ -2704,7 +2681,7 @@
         </ul>
 
         <div class="nav-actions">
-            <a href="/get-started" class="btn-primary nav-demo-btn">Request Demo</a>
+            <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-primary nav-demo-btn">Request Demo</a>
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -2722,7 +2699,7 @@
     <a href="/dpo-as-a-service.html">DPO as a Service</a>
     <a href="#resources">Resources</a>
     <div class="mobile-menu-actions">
-        <a href="/get-started" class="btn-primary">Request Demo</a>
+        <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-primary">Request Demo</a>
     </div>
 </div>
 
@@ -2746,7 +2723,7 @@
             </p>
 
             <div class="hero-ctas">
-                <a href="/get-started" class="btn-primary">Get Started Free →</a>
+                <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-primary">Get Started Free →</a>
                 <a href="https://www.trustfabric.in" class="btn-ghost">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     Watch Demo
@@ -3473,7 +3450,7 @@
                     <li><span class="p-check">✓</span> ROPA registry (up to 10 activities)</li>
                     <li><span class="p-check">✓</span> Email support</li>
                 </ul>
-                <a href="/get-started" class="btn-ghost p-cta">Get Started Free</a>
+                <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-ghost p-cta">Get Started Free</a>
             </div>
 
             <!-- Growth -->
@@ -3496,7 +3473,7 @@
                     <li><span class="p-check">✓</span> PII Dictionary</li>
                     <li><span class="p-check">✓</span> Priority support (24h SLA)</li>
                 </ul>
-                <a href="/get-started" class="btn-primary p-cta">Start 14-Day Trial →</a>
+                <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-primary p-cta">Start 14-Day Trial →</a>
             </div>
 
             <!-- Enterprise -->
@@ -3516,7 +3493,7 @@
                     <li><span class="p-check">✓</span> Custom SLA agreements</li>
                     <li><span class="p-check">✓</span> Security review &amp; pen test reports</li>
                 </ul>
-                <a href="/get-started" class="btn-ghost p-cta">Talk to Sales</a>
+                <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-ghost p-cta">Talk to Sales</a>
             </div>
 
         </div>
@@ -3643,7 +3620,7 @@
                 <div class="cl-cta-card">
                     <h4>Get a full gap report</h4>
                     <p>Book a 30-minute call. We'll map your gaps and give you a step-by-step remediation plan.</p>
-                    <a href="/get-started" class="cl-cta-btn">Book Free Assessment →</a>
+                    <a href="#" onclick="closeChecklistModal();document.getElementById('request-demo').scrollIntoView({behavior:'smooth'});return false;" class="cl-cta-btn">Book Free Assessment →</a>
                 </div>
             </div>
         </div>
@@ -3725,8 +3702,8 @@
             <h2>Ready to make compliance effortless?</h2>
             <p>Join the early access programme and be among the first Indian organisations fully prepared for the DPDP Act — before enforcement begins.</p>
             <div class="cta-buttons">
-                <a href="/get-started" class="btn-primary">Request Demo →</a>
-                <a href="/get-started" class="btn-ghost">Talk to Sales</a>
+                <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-primary">Request Demo →</a>
+                <a href="#" onclick="document.getElementById('request-demo').scrollIntoView({behavior:'smooth'}); return false;" class="btn-ghost">Talk to Sales</a>
             </div>
         </div>
     </div>
@@ -3736,11 +3713,71 @@
      REQUEST DEMO SECTION
 ============================= -->
 <section id="request-demo" style="background:#F8FAFC; padding: 100px 24px;">
-    <div style="max-width:620px; margin:0 auto; text-align:center;">
-        <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-red);margin-bottom:12px;">✦ Early Access</p>
-        <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:900;letter-spacing:-0.025em;color:#0D3D4A;line-height:1.2;margin-bottom:16px;">Get DPDP compliant<br>in <span style="position:relative;display:inline-block;color:#0D3D4A;font-weight:900;">months<svg style="position:absolute;left:-4px;top:50%;width:calc(100% + 8px);height:14px;transform:translateY(-40%);" viewBox="0 0 100 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 Q25 3 50 8 Q75 13 98 5" stroke="#29B6C8" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span> <span style="color:#29B6C8;font-weight:900;">weeks.</span></h2>
-        <p style="font-size:15px;color:var(--text-secondary);margin-bottom:32px;line-height:1.6;">Our team will give you a personalised walkthrough of TrustFabric and help you build your compliance roadmap — free.</p>
-        <a href="/get-started" style="display:inline-block;padding:14px 40px;background:var(--accent-red);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;border-radius:10px;text-decoration:none;transition:opacity 0.2s,transform 0.2s;" onmouseover="this.style.opacity='0.9';this.style.transform='translateY(-1px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">Request a Free Demo →</a>
+    <div style="max-width:620px; margin:0 auto;">
+
+        <!-- Form -->
+        <div style="padding:0;">
+            <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-red);margin-bottom:12px;">✦ Early Access</p>
+            <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:900;letter-spacing:-0.025em;color:#0D3D4A;line-height:1.2;margin-bottom:10px;">Get DPDP compliant<br>in <span style="position:relative;display:inline-block;color:#0D3D4A;font-weight:900;">months<svg style="position:absolute;left:-4px;top:50%;width:calc(100% + 8px);height:14px;transform:translateY(-40%);" viewBox="0 0 100 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 Q25 3 50 8 Q75 13 98 5" stroke="#29B6C8" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span> <span style="color:#29B6C8;font-weight:900;">weeks.</span></h2>
+
+            <div id="inlineDemoForm">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+                    <div>
+                        <label style="display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;letter-spacing:0.03em;text-transform:uppercase;">Full Name *</label>
+                        <input type="text" id="idf-name" style="width:100%;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;outline:none;transition:border-color 0.2s;color:var(--text-primary);">
+                    </div>
+                    <div>
+                        <label style="display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;letter-spacing:0.03em;text-transform:uppercase;">Company *</label>
+                        <input type="text" id="idf-company" style="width:100%;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;outline:none;transition:border-color 0.2s;color:var(--text-primary);">
+                    </div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+                    <div>
+                        <label style="display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;letter-spacing:0.03em;text-transform:uppercase;">Work Email *</label>
+                        <input type="email" id="idf-email" style="width:100%;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;outline:none;transition:border-color 0.2s;color:var(--text-primary);">
+                    </div>
+                    <div>
+                        <label style="display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;letter-spacing:0.03em;text-transform:uppercase;">Phone Number *</label>
+                        <input type="tel" id="idf-phone" style="width:100%;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;outline:none;transition:border-color 0.2s;color:var(--text-primary);">
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label style="display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;letter-spacing:0.03em;text-transform:uppercase;">Company Size</label>
+                    <select id="idf-size" style="width:100%;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;outline:none;background:#fff;color:var(--text-primary);">
+                        <option value="">Select company size</option>
+                        <option>1–10 employees</option>
+                        <option>11–50 employees</option>
+                        <option>51–200 employees</option>
+                        <option>201–1000 employees</option>
+                        <option>1000+ employees</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;letter-spacing:0.03em;text-transform:uppercase;">How can we help? (optional)</label>
+                    <textarea id="idf-message" rows="3" style="width:100%;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;outline:none;resize:vertical;color:var(--text-primary);"></textarea>
+                </div>
+                <div style="background:#F9FAFB;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:16px;margin-bottom:20px;display:flex;flex-direction:column;gap:10px;">
+                    <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:#1F2937;font-weight:500;line-height:1.4;">
+                        <input type="checkbox" id="idf-marketing" style="flex-shrink:0;width:16px;height:16px;margin-top:2px;accent-color:var(--accent-red);cursor:pointer;">
+                        <span>I agree to receive other communications from TrustFabric</span>
+                    </label>
+                    <p style="font-size:12px;color:#6B7280;line-height:1.6;padding-left:26px;">In order to provide you the content requested, we need to store and process your personal data. If you consent, please tick the checkbox below.</p>
+                    <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:#1F2937;font-weight:500;line-height:1.4;">
+                        <input type="checkbox" id="idf-gdpr" style="flex-shrink:0;width:16px;height:16px;margin-top:2px;accent-color:var(--accent-red);cursor:pointer;">
+                        <span>I agree to allow TrustFabric to store and process my personal data. <span style="color:var(--accent-red)">*</span></span>
+                    </label>
+                    <p style="font-size:12px;color:#6B7280;line-height:1.6;padding-left:26px;">You can unsubscribe at any time. See our <a href="/privacy-policy.html" target="_blank" style="color:var(--accent-red);text-decoration:underline;">Privacy Policy</a>.</p>
+                </div>
+                <button id="inlineDemoBtn" onclick="submitInlineDemo()" style="display:block;margin:0 auto;width:auto;padding:11px 32px;background:var(--accent-red);color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;">Request Demo →</button>
+            </div>
+
+            <div id="inlineDemoSuccess" style="display:none;text-align:center;padding:40px 0;">
+                <div style="font-size:48px;margin-bottom:16px;">✅</div>
+                <h3 style="font-size:22px;font-weight:800;color:var(--text-primary);margin-bottom:8px;">You're on the list!</h3>
+                <p style="font-size:15px;color:var(--text-secondary);">Our team will reach out to <strong id="inlineDemoEmail"></strong> within 24 hours.</p>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -3755,10 +3792,10 @@
                     <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
                 </a>
                 <p>India's consent management platform for DPDP Act 2023 compliance. Built in India, for India's data privacy moment.</p>
-                <a href="https://maps.app.goo.gl/MS9eh9a5FA6sRVXB9" target="_blank" rel="noopener noreferrer" style="margin-top:16px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;text-decoration:none;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='#9CA3AF'">
+                <p style="margin-top:16px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;">
                     <svg style="flex-shrink:0;margin-top:2px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     TrustFabric, 44, Regal Building, 2nd Floor, Connaught Place, New Delhi, 110001
-                </a>
+                </p>
             </div>
 
             <div class="footer-col">
@@ -3807,7 +3844,7 @@
                 © 2025 TrustFabric · <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
             </div>
             <div class="social-links">
-                <a href="https://www.linkedin.com/company/trustfabricindia/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                <a href="https://www.trustfabric.in" class="social-link" aria-label="LinkedIn">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
                         <circle cx="4" cy="4" r="2"/>
@@ -4015,7 +4052,6 @@ function closeDemoModal() {
 document.getElementById('demoOverlay').addEventListener('click', function(e) {
     if (e.target === this) closeDemoModal();
 });
-
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeDemoModal();
 });
@@ -4332,10 +4368,11 @@ updateChecklist();
                 <textarea id="df-message" placeholder="Tell us about your DPDP compliance goals…"></textarea>
             </div>
             <div class="demo-consent">
-                <label class="consent-label" id="df-marketing-label" style="opacity:0.4;cursor:not-allowed;">
-                    <input type="checkbox" id="df-marketing" disabled style="cursor:not-allowed;">
+                <label class="consent-label">
+                    <input type="checkbox" id="df-marketing">
                     <span>I agree to receive other communications from TrustFabric</span>
                 </label>
+                <p class="consent-desc">In order to provide you the content requested, we need to store and process your personal data. If you consent to us storing your personal data for this purpose, please tick the checkbox below.</p>
                 <label class="consent-label">
                     <input type="checkbox" id="df-gdpr">
                     <span>I agree to allow TrustFabric to store and process my personal data. <span style="color:var(--accent-red)">*</span></span>
@@ -4354,31 +4391,619 @@ updateChecklist();
     </div>
 </div>
 
+
+<!-- ═══════════════════════════════════════════════════
+     DPDP SCANNER — Floating CTA + Modal
+     API: https://trustfabric-cookie-scanner-h2nu.onrender.com
+════════════════════════════════════════════════════ -->
+<style>
+/* Floating button */
+#dpdp-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 20px;
+  background: #1E3A8A;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(30,58,138,0.40);
+  letter-spacing: 0.01em;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  font-family: inherit;
+  text-decoration: none;
+}
+#dpdp-fab:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(30,58,138,0.45);
+}
+#dpdp-fab .dpdp-fab-icon { font-size: 16px; }
+
+/* Modal overlay */
+#dpdp-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(9,30,66,0.6);
+  z-index: 9100;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+#dpdp-overlay.open { display: flex; }
+
+/* Modal card */
+#dpdp-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(9,30,66,0.28);
+  animation: dpdp-slide-in 0.22s ease;
+}
+@keyframes dpdp-slide-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Modal header */
+.dpdp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 28px 28px 0;
+}
+.dpdp-header-text .dpdp-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #1E3A8A;
+  background: #EFF6FF;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.dpdp-header-text h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.25;
+}
+.dpdp-header-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #6B7280;
+}
+.dpdp-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9CA3AF;
+  font-size: 20px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+.dpdp-close:hover { color: #111827; background: #F3F4F6; }
+
+/* Modal body */
+.dpdp-body { padding: 24px 28px 28px; }
+
+/* URL step */
+.dpdp-url-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.dpdp-url-input {
+  flex: 1;
+  padding: 11px 14px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+.dpdp-url-input:focus { border-color: #1E3A8A; }
+.dpdp-url-input.error { border-color: #DC2626; }
+.dpdp-scan-btn {
+  padding: 11px 18px;
+  background: #1E3A8A;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.dpdp-scan-btn:hover:not(:disabled) { background: #1e40af; }
+.dpdp-scan-btn:disabled { background: #9CA3AF; cursor: not-allowed; }
+.dpdp-field-error { color: #DC2626; font-size: 12px; margin: 0 0 4px; }
+
+/* Details step */
+.dpdp-details-intro {
+  font-size: 13px;
+  color: #6B7280;
+  margin: 0 0 16px;
+}
+.dpdp-field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.dpdp-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  margin-bottom: 4px;
+}
+.dpdp-input:focus { border-color: #1E3A8A; }
+.dpdp-input.error { border-color: #DC2626; }
+.dpdp-details-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.dpdp-back-btn {
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  color: #6B7280;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+.dpdp-proceed-btn {
+  padding: 10px 20px;
+  background: #1E3A8A;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.dpdp-proceed-btn:hover { background: #1e40af; }
+
+/* Scanning step */
+.dpdp-scanning {
+  text-align: center;
+  padding: 32px 0;
+}
+.dpdp-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #E5E7EB;
+  border-top-color: #1E3A8A;
+  border-radius: 50%;
+  animation: dpdp-spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes dpdp-spin { to { transform: rotate(360deg); } }
+.dpdp-scanning-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+}
+.dpdp-scanning-sub {
+  font-size: 13px;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Results step */
+.dpdp-result-verdict {
+  text-align: center;
+  padding: 24px 0 20px;
+  border-bottom: 1px solid #F3F4F6;
+  margin-bottom: 20px;
+}
+.dpdp-verdict-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.dpdp-verdict-text {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 auto 20px;
+  max-width: 380px;
+}
+.dpdp-verdict-text.pass { color: #065F46; }
+.dpdp-verdict-text.fail { color: #991B1B; }
+.dpdp-verdict-text.unknown { color: #92400E; }
+.dpdp-scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  background: #F9FAFB;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.dpdp-score-cell { text-align: center; }
+.dpdp-score-cell + .dpdp-score-cell { border-left: 1px solid #E5E7EB; }
+.dpdp-score-label { font-size: 10px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; margin-bottom: 6px; }
+.dpdp-score-num { font-size: 26px; font-weight: 800; }
+.dpdp-score-num.pass { color: #065F46; }
+.dpdp-score-num.fail { color: #991B1B; }
+.dpdp-score-num.unknown { color: #92400E; }
+.dpdp-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  background: #1E3A8A;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  margin-top: 20px;
+}
+.dpdp-download-btn:hover:not(:disabled) { background: #1e40af; }
+.dpdp-download-btn:disabled { background: #9CA3AF; cursor: not-allowed; }
+.dpdp-new-scan-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+  background: none;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+.dpdp-new-scan-btn:hover { border-color: #9CA3AF; }
+
+/* Error step */
+.dpdp-error-box {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.dpdp-error-icon { font-size: 18px; flex-shrink: 0; }
+.dpdp-error-msg { font-size: 14px; color: #991B1B; margin: 0; line-height: 1.5; }
+.dpdp-retry-btn {
+  margin-top: 16px;
+  padding: 10px 18px;
+  background: none;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  font-family: inherit;
+}
+</style>
+
+<!-- Floating Button -->
+<a id="dpdp-fab" href="/dpdp-cookie-scanner">
+  <span class="dpdp-fab-icon">🛡</span>
+  Free DPDP Check
+</a>
+
+<!-- Modal (kept as hidden shell — no longer used) -->
+<div id="dpdp-overlay" style="display:none" onclick="dpdpOverlayClick(event)">
+  <div id="dpdp-modal" role="dialog" aria-modal="true" aria-label="DPDP Assessment">
+
+    <!-- Header -->
+    <div class="dpdp-header">
+      <div class="dpdp-header-text">
+        <div class="dpdp-badge">🇮🇳 DPDP Act 2023</div>
+        <h2>Free DPDP Compliance Check</h2>
+        <p>Instantly scan any website for cookie &amp; consent violations</p>
+      </div>
+      <button class="dpdp-close" onclick="closeDpdpModal()" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Body -->
+    <div class="dpdp-body">
+
+      <!-- Step 1: URL -->
+      <div id="dpdp-step-url">
+        <div class="dpdp-url-row">
+          <input
+            id="dpdp-url-input"
+            class="dpdp-url-input"
+            type="url"
+            placeholder="https://example.com"
+            autocomplete="off"
+            spellcheck="false"
+            onkeydown="if(event.key==='Enter') dpdpGoToDetails()"
+          />
+          <button class="dpdp-scan-btn" onclick="dpdpGoToDetails()">Scan →</button>
+        </div>
+        <p id="dpdp-url-error" class="dpdp-field-error" style="display:none"></p>
+      </div>
+
+      <!-- Step 2: Name + Email -->
+      <div id="dpdp-step-details" style="display:none">
+        <p class="dpdp-details-intro">Enter your details to receive and download the full PDF report.</p>
+        <label class="dpdp-field-label" for="dpdp-name-input">Full Name *</label>
+        <input id="dpdp-name-input" class="dpdp-input" type="text" placeholder="e.g. Priya Sharma" />
+        <p id="dpdp-name-error" class="dpdp-field-error" style="display:none"></p>
+        <label class="dpdp-field-label" for="dpdp-email-input" style="margin-top:12px">Email Address *</label>
+        <input id="dpdp-email-input" class="dpdp-input" type="email" placeholder="priya@company.com" onkeydown="if(event.key==='Enter') dpdpRunScan()" />
+        <p id="dpdp-email-error" class="dpdp-field-error" style="display:none"></p>
+        <div class="dpdp-details-actions">
+          <button class="dpdp-back-btn" onclick="dpdpShowStep('url')">← Back</button>
+          <button class="dpdp-proceed-btn" onclick="dpdpRunScan()">Start Scan →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Scanning -->
+      <div id="dpdp-step-scanning" style="display:none">
+        <div class="dpdp-scanning">
+          <div class="dpdp-spinner"></div>
+          <p class="dpdp-scanning-title">Scanning your website…</p>
+          <p class="dpdp-scanning-sub" id="dpdp-scanning-sub">This takes 30–60 seconds. Please wait.</p>
+        </div>
+      </div>
+
+      <!-- Step 4: Results -->
+      <div id="dpdp-step-results" style="display:none">
+        <div class="dpdp-result-verdict">
+          <div class="dpdp-verdict-label">DPDP Compliance Assessment</div>
+          <p id="dpdp-verdict-text" class="dpdp-verdict-text"></p>
+          <div class="dpdp-scores">
+            <div class="dpdp-score-cell">
+              <div class="dpdp-score-label">Pass</div>
+              <div id="dpdp-score-pass" class="dpdp-score-num pass">—</div>
+            </div>
+            <div class="dpdp-score-cell">
+              <div class="dpdp-score-label">Fail</div>
+              <div id="dpdp-score-fail" class="dpdp-score-num fail">—</div>
+            </div>
+            <div class="dpdp-score-cell">
+              <div class="dpdp-score-label">Unknown</div>
+              <div id="dpdp-score-unknown" class="dpdp-score-num unknown">—</div>
+            </div>
+          </div>
+        </div>
+        <button class="dpdp-download-btn" id="dpdp-dl-btn" onclick="dpdpDownload()">
+          ⬇ Download Full PDF Report
+        </button>
+        <button class="dpdp-new-scan-btn" onclick="dpdpReset()">Scan Another Website</button>
+      </div>
+
+      <!-- Error -->
+      <div id="dpdp-step-error" style="display:none">
+        <div class="dpdp-error-box">
+          <span class="dpdp-error-icon">⚠️</span>
+          <p class="dpdp-error-msg" id="dpdp-error-msg">Something went wrong.</p>
+        </div>
+        <button class="dpdp-retry-btn" onclick="dpdpShowStep('url')">← Try Again</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
-(function() {
-    function wireGdprGate(gdprId, marketingId, labelId) {
-        var gdpr = document.getElementById(gdprId);
-        var mkt  = document.getElementById(marketingId);
-        var lbl  = document.getElementById(labelId);
-        if (!gdpr || !mkt || !lbl) return;
-        gdpr.addEventListener('change', function() {
-            if (this.checked) {
-                mkt.disabled = false;
-                lbl.style.opacity = '1';
-                lbl.style.cursor  = 'pointer';
-                mkt.style.cursor  = 'pointer';
-            } else {
-                mkt.disabled = true;
-                mkt.checked  = false;
-                lbl.style.opacity = '0.4';
-                lbl.style.cursor  = 'not-allowed';
-                mkt.style.cursor  = 'not-allowed';
-            }
-        });
+(function () {
+  var API = 'https://trustfabric-cookie-scanner-h2nu.onrender.com';
+  var _scanResult = null;
+  var _userName = '';
+  var _userEmail = '';
+  var _scanUrl = '';
+
+  // ── helpers ──────────────────────────────────────────────────────────
+  function show(id) { document.getElementById(id).style.display = ''; }
+  function hide(id) { document.getElementById(id).style.display = 'none'; }
+  function val(id)  { return (document.getElementById(id).value || '').trim(); }
+  function err(id, msg) {
+    var el = document.getElementById(id);
+    el.textContent = msg;
+    el.style.display = msg ? '' : 'none';
+  }
+
+  function dpdpShowStep(step) {
+    ['url','details','scanning','results','error'].forEach(function(s) {
+      document.getElementById('dpdp-step-' + s).style.display = 'none';
+    });
+    document.getElementById('dpdp-step-' + step).style.display = '';
+  }
+  window.dpdpShowStep = dpdpShowStep;
+
+  // ── open / close ──────────────────────────────────────────────────────
+  window.openDpdpModal = function() {
+    document.getElementById('dpdp-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() { document.getElementById('dpdp-url-input').focus(); }, 120);
+  };
+
+  window.closeDpdpModal = function() {
+    document.getElementById('dpdp-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  window.dpdpOverlayClick = function(e) {
+    if (e.target === document.getElementById('dpdp-overlay')) closeDpdpModal();
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDpdpModal();
+  });
+
+  // ── URL validation ─────────────────────────────────────────────────────
+  function normalizeUrl(raw) {
+    var s = raw.trim();
+    if (!s) return { error: 'Please enter a website URL.', url: '' };
+    if (!/^https?:\/\//i.test(s)) s = 'https://' + s;
+    try {
+      var u = new URL(s);
+      if (u.protocol !== 'http:' && u.protocol !== 'https:') throw new Error();
+      return { error: '', url: s };
+    } catch(e) {
+      return { error: 'Enter a valid URL (e.g. https://example.com)', url: '' };
     }
-    wireGdprGate('idf-gdpr', 'idf-marketing', 'idf-marketing-label');
-    wireGdprGate('df-gdpr',  'df-marketing',  'df-marketing-label');
+  }
+
+  window.dpdpGoToDetails = function() {
+    var r = normalizeUrl(document.getElementById('dpdp-url-input').value);
+    if (r.error) { err('dpdp-url-error', r.error); document.getElementById('dpdp-url-input').classList.add('error'); return; }
+    err('dpdp-url-error', '');
+    document.getElementById('dpdp-url-input').classList.remove('error');
+    document.getElementById('dpdp-url-input').value = r.url;
+    _scanUrl = r.url;
+    dpdpShowStep('details');
+    setTimeout(function() { document.getElementById('dpdp-name-input').focus(); }, 80);
+  };
+
+  // ── Scan ────────────────────────────────────────────────────────────
+  window.dpdpRunScan = function() {
+    var name = val('dpdp-name-input');
+    var email = val('dpdp-email-input');
+    var nameErr = (!name || name.length < 2) ? 'Please enter your name.' : '';
+    var emailErr = (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) ? 'Please enter a valid email.' : '';
+    err('dpdp-name-error', nameErr);
+    err('dpdp-email-error', emailErr);
+    document.getElementById('dpdp-name-input').classList.toggle('error', !!nameErr);
+    document.getElementById('dpdp-email-input').classList.toggle('error', !!emailErr);
+    if (nameErr || emailErr) return;
+
+    _userName = name;
+    _userEmail = email;
+    _scanResult = null;
+    dpdpShowStep('scanning');
+
+    // After 8s hint that the server might be waking up
+    var hintTimer = setTimeout(function() {
+      var sub = document.getElementById('dpdp-scanning-sub');
+      if (sub) sub.textContent = 'Server is waking up — almost ready…';
+    }, 8000);
+
+    fetch(API + '/api/scan', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: _scanUrl }),
+    })
+    .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
+    .then(function(r) {
+      clearTimeout(hintTimer);
+      if (!r.ok) throw new Error(r.data.error || 'Scan failed');
+      _scanResult = r.data;
+      var s = (r.data.dpdpCompliance && r.data.dpdpCompliance.summary) || {};
+      var pass = s.passCount || 0, fail = s.failCount || 0, unk = s.unknownCount || 0;
+      var verdict = s.overallResult || '';
+      var vClass = verdict.includes('NO POTENTIAL') ? 'pass' : verdict.includes('INCOMPLETE') ? 'unknown' : 'fail';
+      var vEl = document.getElementById('dpdp-verdict-text');
+      vEl.textContent = verdict;
+      vEl.className = 'dpdp-verdict-text ' + vClass;
+      document.getElementById('dpdp-score-pass').textContent = pass;
+      document.getElementById('dpdp-score-fail').textContent = fail;
+      document.getElementById('dpdp-score-unknown').textContent = unk;
+      dpdpShowStep('results');
+    })
+    .catch(function(e) {
+      clearTimeout(hintTimer);
+      document.getElementById('dpdp-error-msg').textContent = e.message || 'Could not reach the scanner. Please try again.';
+      dpdpShowStep('error');
+    });
+  };
+
+  // ── Download PDF ─────────────────────────────────────────────────────
+  window.dpdpDownload = function() {
+    if (!_scanResult) return;
+    var btn = document.getElementById('dpdp-dl-btn');
+    btn.disabled = true;
+    btn.textContent = 'Generating PDF…';
+
+    fetch(API + '/api/report/pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ scanResult: _scanResult, name: _userName, email: _userEmail }),
+    })
+    .then(function(res) {
+      if (!res.ok) return res.json().then(function(d) { throw new Error(d.error || 'Failed to generate report'); });
+      return res.blob();
+    })
+    .then(function(blob) {
+      var hostname = '';
+      try { hostname = new URL(_scanResult.url).hostname.replace(/\./g,'-'); } catch(e) { hostname = 'report'; }
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = 'dpdp-report-' + hostname + '.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      btn.disabled = false;
+      btn.textContent = '⬇ Download Full PDF Report';
+    })
+    .catch(function(e) {
+      btn.disabled = false;
+      btn.textContent = '⬇ Download Full PDF Report';
+      alert('PDF generation failed: ' + e.message);
+    });
+  };
+
+  // ── Reset ────────────────────────────────────────────────────────────
+  window.dpdpReset = function() {
+    _scanResult = null;
+    document.getElementById('dpdp-url-input').value = '';
+    document.getElementById('dpdp-name-input').value = '';
+    document.getElementById('dpdp-email-input').value = '';
+    dpdpShowStep('url');
+    setTimeout(function() { document.getElementById('dpdp-url-input').focus(); }, 80);
+  };
 })();
 </script>
+
 </body>
 </html>
