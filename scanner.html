@@ -66,6 +66,9 @@
       --error-bg: #FEF2F2;
       --error-border: #FECACA;
       --error-text: #991B1B;
+      --text-primary: #1F2937;
+      --text-secondary: #6B7280;
+      --accent-green: #E31E24;
     }
 
     html, body {
@@ -81,10 +84,6 @@
     ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
 
     /* ── Navbar (matches main site) ── */
-    --text-primary: #1F2937;
-    --text-secondary: #6B7280;
-    --accent-green: #E31E24;
-
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding: 0 24px; height: 64px;
@@ -96,7 +95,7 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-    .nav-logo-img { height: 88px; width: auto; margin-top: 12px; }
+    .nav-logo-img { height: 40px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
     .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s ease; }
     .nav-links a:hover { color: var(--text-primary); }
