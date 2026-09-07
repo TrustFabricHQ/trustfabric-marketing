@@ -66,6 +66,9 @@
       --error-bg: #FEF2F2;
       --error-border: #FECACA;
       --error-text: #991B1B;
+      --text-primary: #1F2937;
+      --text-secondary: #6B7280;
+      --accent-green: #E31E24;
     }
 
     html, body {
@@ -80,26 +83,77 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
 
-    /* ── Nav ── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+    /* ── Navbar (matches main site) ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 24px; height: 64px;
+      display: flex; align-items: center;
+      background: #ffffff; border-bottom: 1px solid var(--border);
     }
-    .nav-inner {
-      max-width: 1100px; margin: 0 auto; padding: 0 24px;
-      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    .navbar-inner {
+      max-width: 1200px; width: 100%; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .brand { display: flex; align-items: center; gap: 10px; }
-    .brand a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .brand-logo { height: 75px; width: auto; object-fit: contain; border-radius: 6px; }
-    .nav-badge {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--navy);
-      background: #EFF6FF; border: 1px solid #BFDBFE;
-      padding: 4px 12px; border-radius: 999px;
+    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-img { height: 88px; width: auto; margin-top: 12px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-has-mega { position: relative; }
+    .nav-has-mega > a { display: flex; align-items: center; gap: 5px; }
+    .nav-has-mega > a::after {
+      content: ''; display: block; width: 10px; height: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-size: contain; margin-top: 1px; transition: transform 0.2s;
+    }
+    .nav-has-mega:hover > a::after { transform: rotate(180deg); }
+    .mega-menu {
+      position: absolute; top: calc(100% + 16px); left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      width: 780px; background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.09); border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+      padding: 32px 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 40px;
+      opacity: 0; visibility: hidden; transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; z-index: 1000;
+    }
+    .mega-menu::before {
+      content: ''; position: absolute; top: -6px; left: 50%;
+      width: 12px; height: 12px; background: #ffffff;
+      border-left: 1px solid rgba(0,0,0,0.09); border-top: 1px solid rgba(0,0,0,0.09);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    .nav-has-mega:hover .mega-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .mega-col-title { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin-bottom: 12px; }
+    .mega-col-divider { height: 2px; background: linear-gradient(90deg, var(--accent-green) 0%, transparent 100%); border-radius: 1px; margin-bottom: 20px; }
+    .mega-col ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .mega-col ul li a { display: block; font-size: 13.5px; font-weight: 400; color: #334155; text-decoration: none; padding: 7px 0; border-radius: 6px; transition: color 0.15s; line-height: 1.4; }
+    .mega-col ul li a:hover { color: var(--accent-green); }
+    .mega-col-title-2 { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin: 24px 0 12px; }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-demo-btn { padding: 8px 18px; font-size: 13px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-green); color: #ffffff;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+      padding: 12px 24px; border-radius: 8px; border: none;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; white-space: nowrap;
+    }
+    .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 28px rgba(227,30,36,0.45); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(24px); padding: 24px; border-bottom: 1px solid var(--border); z-index: 999; flex-direction: column; gap: 0; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--text-secondary); text-decoration: none; font-size: 16px; font-weight: 500; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:last-of-type { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
     }
 
     /* ── Page shell ── */
@@ -312,16 +366,83 @@
 <div class="page">
 
   <!-- Nav -->
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="brand">
-        <a href="./index.html">
-          <img src="./assets/logo.png" alt="TrustFabric" class="brand-logo" />
-        </a>
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="https://www.trustfabric.in" class="nav-logo">
+        <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
+      </a>
+      <ul class="nav-links">
+        <li class="nav-has-mega">
+          <a href="https://www.trustfabric.in/#platform">Product</a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <div class="mega-col-title">Consent</div>
+              <div class="mega-col-divider"></div>
+              <ul>
+                <li><a href="https://www.trustfabric.in/consent-management.html">Consent Management</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Cookie Consent SDK</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Preference Centre</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Consent Records &amp; Audit Trail</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Withdrawal Management</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Purpose Limitation Engine</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col-title">Compliance</div>
+              <div class="mega-col-divider"></div>
+              <ul>
+                <li><a href="https://www.trustfabric.in/#platform">ROPA Registry</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">DSR Management</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Breach Notification</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Policy &amp; Notice Management</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">DPDP Act Readiness</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Compliance Automation</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col-title">Data Governance</div>
+              <div class="mega-col-divider"></div>
+              <ul>
+                <li><a href="https://www.trustfabric.in/#platform">PII Dictionary</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Data Discovery &amp; Classification</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Analytics Dashboard</a></li>
+              </ul>
+              <div class="mega-col-title-2">Integrations</div>
+              <div class="mega-col-divider"></div>
+              <ul>
+                <li><a href="https://www.trustfabric.in/#platform">CRM Connectors</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Cloud &amp; Database APIs</a></li>
+                <li><a href="https://www.trustfabric.in/#platform">Messaging Platforms</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="https://www.trustfabric.in/#dpdp">Solutions</a></li>
+        <li><a href="https://www.trustfabric.in/#dpdp">DPDP Act</a></li>
+        <li><a href="https://www.trustfabric.in/#pricing">Pricing</a></li>
+        <li><a href="https://www.trustfabric.in/dpo-as-a-service.html">DPO as a Service</a></li>
+        <li><a href="https://www.trustfabric.in/#resources">Resources</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://www.trustfabric.in/#request-demo" class="btn-primary nav-demo-btn">Request Demo</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <span class="nav-badge">DPDP Act 2023</span>
     </div>
-  </header>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="https://www.trustfabric.in/#platform">Product</a>
+    <a href="https://www.trustfabric.in/#dpdp">Solutions</a>
+    <a href="https://www.trustfabric.in/#dpdp">DPDP Act</a>
+    <a href="https://www.trustfabric.in/#pricing">Pricing</a>
+    <a href="https://www.trustfabric.in/dpo-as-a-service.html">DPO as a Service</a>
+    <a href="https://www.trustfabric.in/#resources">Resources</a>
+    <div class="mobile-menu-actions">
+      <a href="https://www.trustfabric.in/#request-demo" class="btn-primary">Request Demo</a>
+    </div>
+  </div>
 
   <!-- Hero -->
   <main class="hero">
@@ -330,11 +451,10 @@
     <div class="blob blob-2" aria-hidden="true"></div>
 
     <div class="hero-content">
-      <div class="pill">🇮🇳 DPDP Cookie & Consent Scanner</div>
 
       <h1 class="hero-title">
-        Cookie & Consent Scanner,<br>
-        <span class="hero-title-accent">Built for India's DPDP Act.</span>
+        Scan your website for<br>
+        <span class="hero-title-accent">DPDP compliance for free.</span>
       </h1>
 
       <p class="hero-sub">
@@ -719,6 +839,23 @@
   // close popup on Escape
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closePopup();
+  });
+})();
+
+// Hamburger menu
+(function() {
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
   });
 })();
 </script>
