@@ -242,10 +242,6 @@
 
         /* Consent box */
         .consent-box {
-            background: #F9FAFB;
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 10px;
-            padding: 16px;
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
@@ -439,8 +435,8 @@
                     </div>
                     <div>
                         <label class="field-label">Phone Number *</label>
-                        <input type="tel" id="idf-phone" class="field-input" autocomplete="tel">
-                        <span class="field-error" id="err-phone">Please enter your phone number.</span>
+                        <input type="tel" id="idf-phone" class="field-input" autocomplete="tel" maxlength="10" inputmode="numeric" pattern="[0-9]{10}">
+                        <span class="field-error" id="err-phone">Please enter a valid 10-digit phone number.</span>
                     </div>
                 </div>
                 <div class="field-group">
@@ -546,7 +542,7 @@ async function submitDemo() {
     if (!name)              { setError('name', true);    valid = false; }
     if (!company)           { setError('company', true); valid = false; }
     if (!email || !validateEmail(email)) { setError('email', true);   valid = false; }
-    if (!phone)             { setError('phone', true);   valid = false; }
+    if (!phone || !/^\d{10}$/.test(phone.replace(/\s/g,''))) { setError('phone', true); valid = false; }
     if (!gdpr)              { setError('gdpr', true);    valid = false; }
     if (!valid) return;
 
