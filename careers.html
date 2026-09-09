@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers — TrustFabric</title>
-    <meta name="description" content="Join TrustFabric and help build India's leading data privacy platform. Explore open roles in engineering, product, sales and more.">
+    <title>Careers — TrustFabric | Build the Future of Data Privacy in India</title>
+    <meta name="description" content="Join TrustFabric and help build India's leading data privacy and DPDP Act compliance platform. Open roles in engineering, legal & compliance, and sales.">
+    <meta name="keywords" content="TrustFabric careers, data privacy jobs India, DPDP compliance jobs, DPO jobs India, privacy analyst jobs, tech startup jobs India">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Careers — TrustFabric">
+    <meta property="og:description" content="Join TrustFabric and help build India's leading data privacy platform. Open roles in engineering, compliance, and sales.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trustfabric.in/careers">
+    <link rel="canonical" href="https://trustfabric.in/careers">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +56,7 @@
             font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
             padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
         }
+        .hero-badge::before { content: '●'; font-size: 8px; }
         .page-hero h1 {
             font-size: clamp(32px, 4vw, 56px);
             font-weight: 800; letter-spacing: -0.03em;
@@ -57,8 +65,12 @@
         .page-hero h1 span { color: var(--accent-red); }
         .page-hero p {
             font-size: 18px; color: var(--text-secondary);
-            line-height: 1.7; max-width: 560px; margin: 0 auto;
+            line-height: 1.7; max-width: 560px; margin: 0 auto 40px;
         }
+        .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 40px; }
+        .hero-stat { text-align: center; }
+        .hero-stat .stat-num { font-size: 28px; font-weight: 800; color: var(--accent-blue); letter-spacing: -0.03em; }
+        .hero-stat .stat-label { font-size: 13px; color: var(--text-secondary); font-weight: 500; margin-top: 4px; }
 
         /* VALUES */
         .values-section { padding: 80px 0; background: #ffffff; }
@@ -85,7 +97,39 @@
 
         /* OPEN ROLES */
         .roles-section { padding: 80px 0; background: #F8FAFC; }
-        .roles-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 48px; }
+        .roles-controls {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 32px; flex-wrap: wrap;
+        }
+        .search-wrap {
+            flex: 1; min-width: 240px; position: relative;
+        }
+        .search-wrap svg {
+            position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+            width: 16px; height: 16px; color: var(--text-secondary); pointer-events: none;
+        }
+        #job-search {
+            width: 100%; padding: 11px 16px 11px 40px;
+            border: 1.5px solid #E2E8F0; border-radius: 10px;
+            font-size: 14px; font-family: inherit; color: var(--text-primary);
+            background: #ffffff; outline: none; transition: border-color 0.2s;
+        }
+        #job-search:focus { border-color: var(--accent-blue); }
+        #job-search::placeholder { color: #94A3B8; }
+        .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-pill {
+            font-size: 13px; font-weight: 600; padding: 8px 16px;
+            border-radius: 100px; border: 1.5px solid #E2E8F0;
+            color: var(--text-secondary); background: #ffffff;
+            cursor: pointer; transition: all 0.2s; white-space: nowrap;
+        }
+        .filter-pill:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .filter-pill.active { background: var(--accent-blue); color: #ffffff; border-color: var(--accent-blue); }
+
+        .roles-count { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; font-weight: 500; }
+        .roles-count span { color: var(--text-primary); font-weight: 700; }
+
+        .roles-grid { display: flex; flex-direction: column; gap: 16px; }
         .role-card {
             background: #ffffff; border: 1px solid var(--border);
             border-radius: 14px; padding: 28px 32px;
@@ -93,25 +137,29 @@
             gap: 24px; transition: box-shadow 0.2s, border-color 0.2s;
         }
         .role-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.14); }
-        .role-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-        .role-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .role-card.hidden { display: none; }
+        .role-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .role-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 10px; max-width: 620px; }
+        .role-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .role-tag {
             font-size: 12px; font-weight: 600; padding: 4px 12px;
             border-radius: 100px; background: #EEF2FF; color: var(--accent-blue);
         }
         .role-tag.tag-red { background: #FFF1F2; color: var(--accent-red); }
+        .role-tag.tag-green { background: #ECFDF5; color: #059669; }
         .role-tag.tag-gray { background: #F1F5F9; color: #475569; }
         .role-apply { flex-shrink: 0; }
 
-        /* NO ROLES */
-        .no-roles {
+        /* NO RESULTS */
+        .no-results {
             text-align: center; padding: 64px 24px;
             background: #ffffff; border: 1px solid var(--border);
-            border-radius: 16px; margin-top: 48px;
+            border-radius: 16px; display: none;
         }
-        .no-roles .emoji { font-size: 40px; margin-bottom: 16px; }
-        .no-roles h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-        .no-roles p { font-size: 15px; color: var(--text-secondary); max-width: 400px; margin: 0 auto 24px; line-height: 1.6; }
+        .no-results.visible { display: block; }
+        .no-results .emoji { font-size: 40px; margin-bottom: 16px; }
+        .no-results h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .no-results p { font-size: 15px; color: var(--text-secondary); max-width: 400px; margin: 0 auto; line-height: 1.6; }
 
         /* CTA */
         .cta-section {
@@ -131,6 +179,7 @@
         @media (max-width: 768px) {
             .values-grid { grid-template-columns: 1fr; }
             .role-card { flex-direction: column; align-items: flex-start; }
+            .hero-stats { gap: 28px; }
         }
     </style>
 </head>
@@ -159,6 +208,20 @@
         <div class="hero-badge">We're Hiring</div>
         <h1>Build the future of<br><span>data privacy</span> in India</h1>
         <p>Join a fast-moving team helping Indian enterprises navigate the DPDP Act — and shaping what responsible data practices look like at scale.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="stat-num">5+</div>
+                <div class="stat-label">Open Positions</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Remote Friendly</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-num">2025</div>
+                <div class="stat-label">DPDP Enforcement</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -171,12 +234,12 @@
             <div class="value-card">
                 <div class="value-icon">🚀</div>
                 <h3>High Impact, Early Stage</h3>
-                <p>DPDP Act enforcement is imminent. Every feature you ship directly helps Indian enterprises stay compliant and avoid penalties.</p>
+                <p>DPDP Act enforcement is imminent. Every feature you ship directly helps Indian enterprises stay compliant and avoid significant penalties.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">🧠</div>
                 <h3>Learn Fast, Move Fast</h3>
-                <p>Small team, big ownership. You'll work across the full stack of a real product — no bureaucracy, no hand-holding.</p>
+                <p>Small team, big ownership. You'll work across the full stack of a real product — no bureaucracy, no hand-holding, just real impact.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">🤝</div>
@@ -193,11 +256,59 @@
         <div class="section-label">Open Positions</div>
         <div class="section-title">Current openings</div>
 
-        <div class="roles-grid">
+        <div class="roles-controls">
+            <div class="search-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" id="job-search" placeholder="Search roles, skills, or teams…" aria-label="Search open positions">
+            </div>
+            <div class="filter-pills">
+                <button class="filter-pill active" data-domain="all">All Roles</button>
+                <button class="filter-pill" data-domain="Legal & Compliance">Legal &amp; Compliance</button>
+                <button class="filter-pill" data-domain="Sales">Sales</button>
+                <button class="filter-pill" data-domain="Engineering">Engineering</button>
+            </div>
+        </div>
 
-            <div class="role-card">
+        <p class="roles-count"><span id="role-count">5</span> open positions</p>
+
+        <div class="roles-grid" id="roles-list">
+
+            <div class="role-card" data-domain="Legal & Compliance" data-title="Data Protection Officer DPO privacy compliance DPDP">
+                <div class="role-info">
+                    <h3>Data Protection Officer (DPO)</h3>
+                    <p class="role-desc">Lead privacy compliance programs for our clients, act as their external DPO, and help shape TrustFabric's internal compliance framework under India's DPDP Act.</p>
+                    <div class="role-meta">
+                        <span class="role-tag">Legal &amp; Compliance</span>
+                        <span class="role-tag tag-gray">Full-time</span>
+                        <span class="role-tag tag-gray">Remote / New Delhi</span>
+                        <span class="role-tag tag-green">Urgent Hiring</span>
+                    </div>
+                </div>
+                <div class="role-apply">
+                    <a href="mailto:careers@trustfabric.in?subject=Application — Data Protection Officer (DPO)" class="btn-primary">Apply →</a>
+                </div>
+            </div>
+
+            <div class="role-card" data-domain="Sales" data-title="Business Development Associate BDA sales growth B2B">
+                <div class="role-info">
+                    <h3>Business Development Associate</h3>
+                    <p class="role-desc">Identify and engage enterprise prospects, run outbound campaigns, qualify leads, and help close deals for TrustFabric's DPDP compliance platform.</p>
+                    <div class="role-meta">
+                        <span class="role-tag tag-red">Sales</span>
+                        <span class="role-tag tag-gray">Full-time</span>
+                        <span class="role-tag tag-gray">New Delhi</span>
+                        <span class="role-tag tag-green">Urgent Hiring</span>
+                    </div>
+                </div>
+                <div class="role-apply">
+                    <a href="mailto:careers@trustfabric.in?subject=Application — Business Development Associate" class="btn-primary">Apply →</a>
+                </div>
+            </div>
+
+            <div class="role-card" data-domain="Engineering" data-title="Full Stack Engineer software developer React Node.js">
                 <div class="role-info">
                     <h3>Full Stack Engineer</h3>
+                    <p class="role-desc">Build and scale TrustFabric's core compliance platform — from consent management dashboards to data discovery engines — using React, Node.js, and MongoDB.</p>
                     <div class="role-meta">
                         <span class="role-tag">Engineering</span>
                         <span class="role-tag tag-gray">Full-time</span>
@@ -209,11 +320,12 @@
                 </div>
             </div>
 
-            <div class="role-card">
+            <div class="role-card" data-domain="Legal & Compliance" data-title="Privacy Compliance Analyst DPDP law legal audit">
                 <div class="role-info">
-                    <h3>Privacy & Compliance Analyst</h3>
+                    <h3>Privacy &amp; Compliance Analyst</h3>
+                    <p class="role-desc">Conduct DPDP Act gap assessments, support client audits, maintain ROPA registries, and draft privacy-ready documentation for enterprise clients across sectors.</p>
                     <div class="role-meta">
-                        <span class="role-tag">Legal & Compliance</span>
+                        <span class="role-tag">Legal &amp; Compliance</span>
                         <span class="role-tag tag-gray">Full-time</span>
                         <span class="role-tag tag-gray">New Delhi</span>
                     </div>
@@ -223,9 +335,10 @@
                 </div>
             </div>
 
-            <div class="role-card">
+            <div class="role-card" data-domain="Sales" data-title="B2B Sales Executive enterprise accounts revenue SaaS">
                 <div class="role-info">
                     <h3>B2B Sales Executive</h3>
+                    <p class="role-desc">Own a territory of mid-market and enterprise accounts, drive the full sales cycle, and consistently hit quota selling India's most trusted DPDP compliance platform.</p>
                     <div class="role-meta">
                         <span class="role-tag tag-red">Sales</span>
                         <span class="role-tag tag-gray">Full-time</span>
@@ -238,6 +351,13 @@
             </div>
 
         </div>
+
+        <div class="no-results" id="no-results">
+            <div class="emoji">🔍</div>
+            <h3>No roles found</h3>
+            <p>Try a different search term or filter. Or send us your CV — we're always on the lookout for great people.</p>
+        </div>
+
     </div>
 </section>
 
@@ -256,6 +376,54 @@
     <a href="/cookie-policy.html">Cookie Policy</a>
     <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
 </footer>
+
+<script>
+(function() {
+    var searchInput = document.getElementById('job-search');
+    var filterPills = document.querySelectorAll('.filter-pill');
+    var roleCards   = document.querySelectorAll('.role-card');
+    var countEl     = document.getElementById('role-count');
+    var noResults   = document.getElementById('no-results');
+
+    var activeFilter = 'all';
+    var searchQuery  = '';
+
+    function applyFilters() {
+        var visible = 0;
+        roleCards.forEach(function(card) {
+            var domain = card.getAttribute('data-domain') || '';
+            var title  = (card.getAttribute('data-title') || '') + ' ' + (card.querySelector('h3') ? card.querySelector('h3').textContent : '') + ' ' + (card.querySelector('.role-desc') ? card.querySelector('.role-desc').textContent : '');
+
+            var matchesDomain = activeFilter === 'all' || domain === activeFilter;
+            var matchesSearch = searchQuery === '' || title.toLowerCase().indexOf(searchQuery) !== -1;
+
+            if (matchesDomain && matchesSearch) {
+                card.classList.remove('hidden');
+                visible++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        countEl.textContent = visible;
+        noResults.classList.toggle('visible', visible === 0);
+    }
+
+    searchInput.addEventListener('input', function() {
+        searchQuery = this.value.trim().toLowerCase();
+        applyFilters();
+    });
+
+    filterPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+            filterPills.forEach(function(p) { p.classList.remove('active'); });
+            this.classList.add('active');
+            activeFilter = this.getAttribute('data-domain');
+            applyFilters();
+        });
+    });
+})();
+</script>
 
 </body>
 </html>
