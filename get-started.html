@@ -3,43 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Started — TrustFabric</title>
-    <meta name="description" content="Start your DPDP Act compliance journey. Request a free demo of TrustFabric's consent management and data privacy platform.">
+    <title>Request Demo — TrustFabric</title>
+    <meta name="description" content="Get DPDP compliant in weeks. Request a free demo of TrustFabric's consent management and data privacy platform.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- TrustFabric Cookie Consent SDK -->
+    <script defer src="https://trustfabric-server.onrender.com/sdk/consent.js?domain=trustfabric.in&org=69ce50640bc0f3a68915b256"></script>
+
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
             --accent-red: #E31E24;
-            --accent-blue: #1E3A8A;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
-            --border: rgba(0,0,0,0.08);
+            --accent-green: #E31E24;
+            --accent-blue: #2E7BD6;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --border: rgba(0, 0, 0, 0.08);
         }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #F8FAFC;
             color: var(--text-primary);
             min-height: 100vh;
         }
 
-        /* NAV */
+        /* ---- NAVBAR ---- */
         .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
-            z-index: 100;
+            z-index: 1000;
+            padding: 0 24px;
             height: 64px;
             display: flex;
             align-items: center;
-            padding: 0 24px;
             background: #ffffff;
             border-bottom: 1px solid var(--border);
         }
-        .nav-inner {
+        .navbar-inner {
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
@@ -47,167 +52,163 @@
             align-items: center;
             justify-content: space-between;
         }
-        .nav-logo img { height: 56px; width: auto; }
-        .nav-back {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .nav-back:hover { color: var(--text-primary); }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+        .nav-logo-img { height: 88px; width: auto; margin-top: 12px; }
+        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-primary); }
 
-        /* PAGE LAYOUT */
-        .page-wrapper {
-            min-height: 100vh;
-            padding-top: 64px;
+        .nav-has-mega { position: relative; }
+        .nav-has-mega > a { display: flex; align-items: center; gap: 5px; }
+        .nav-has-mega > a::after {
+            content: '';
+            display: block;
+            width: 10px; height: 10px;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-top: 1px;
+            transition: transform 0.2s;
+        }
+        .nav-has-mega:hover > a::after { transform: rotate(180deg); }
+
+        .mega-menu {
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 50%;
+            width: 780px;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.09);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+            padding: 32px 36px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0 40px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            z-index: 1000;
+        }
+        .mega-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px; left: 50%;
+            width: 12px; height: 12px;
+            background: #ffffff;
+            border-left: 1px solid rgba(0,0,0,0.09);
+            border-top: 1px solid rgba(0,0,0,0.09);
+            transform: translateX(-50%) rotate(45deg);
+        }
+        .nav-has-mega:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .mega-col-title { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin-bottom: 12px; }
+        .mega-col-divider { height: 2px; background: linear-gradient(90deg, var(--accent-red) 0%, transparent 100%); border-radius: 1px; margin-bottom: 20px; }
+        .mega-col ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+        .mega-col ul li a { display: block; font-size: 13.5px; font-weight: 400; color: #334155; text-decoration: none; padding: 7px 0; border-radius: 6px; transition: color 0.15s; line-height: 1.4; }
+        .mega-col ul li a:hover { color: var(--accent-red); }
+        .mega-col-title-2 { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin: 24px 0 12px; }
+
+        .nav-actions { display: flex; align-items: center; gap: 16px; }
+        .nav-demo-btn { padding: 8px 18px; font-size: 13px; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--accent-red); color: #ffffff;
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+            padding: 12px 24px; border-radius: 8px; border: none;
+            cursor: pointer; text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 28px rgba(227,30,36,0.45); }
+
+        /* hamburger */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; padding: 4px; background: none; border: none;
+        }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none; position: fixed;
+            top: 64px; left: 0; right: 0;
+            background: rgba(255,255,255,0.98); backdrop-filter: blur(24px);
+            padding: 24px; border-bottom: 1px solid var(--border);
+            z-index: 999; flex-direction: column; gap: 0;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { color: var(--text-secondary); text-decoration: none; font-size: 16px; font-weight: 500; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .mobile-menu a:last-of-type { border-bottom: none; }
+        .mobile-menu a:hover { color: var(--text-primary); }
+        .mobile-menu-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .mobile-menu-actions .btn-primary { justify-content: center; text-align: center; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
         }
 
-        /* LEFT PANEL */
-        .left-panel {
-            background: var(--accent-blue);
-            padding: 64px 56px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        /* ---- PAGE BODY ---- */
+        .page-body {
+            padding-top: 64px;
+            background: #F8FAFC;
+            min-height: 100vh;
+            padding-bottom: 80px;
         }
-        .left-panel::before {
-            content: '';
-            position: absolute;
-            top: -120px; right: -120px;
-            width: 400px; height: 400px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 50%;
+
+        .form-section {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 80px 24px 0;
         }
-        .left-panel::after {
-            content: '';
-            position: absolute;
-            bottom: -80px; left: -80px;
-            width: 280px; height: 280px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 50%;
-        }
-        .lp-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(227,30,36,0.15);
-            border: 1px solid rgba(227,30,36,0.3);
-            color: #FCA5A5;
+
+        /* Early access badge */
+        .early-badge {
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 100px;
-            margin-bottom: 28px;
-            width: fit-content;
-        }
-        .lp-badge::before {
-            content: '';
-            width: 6px; height: 6px;
-            background: #E31E24;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.3); }
-        }
-        .left-panel h1 {
-            font-size: 38px;
-            font-weight: 800;
-            color: #ffffff;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-        }
-        .left-panel h1 span { color: #FCA5A5; }
-        .left-panel p {
-            font-size: 15px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.7;
-            margin-bottom: 40px;
-            max-width: 400px;
-        }
-        .feature-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-bottom: 48px;
-        }
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .feature-icon {
-            width: 22px; height: 22px;
-            background: rgba(227,30,36,0.2);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        .feature-icon svg { width: 12px; height: 12px; }
-        .feature-item span {
-            font-size: 14px;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.5;
-        }
-        .stat-row {
-            display: flex;
-            gap: 32px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .stat-item { display: flex; flex-direction: column; gap: 4px; }
-        .stat-number {
-            font-size: 26px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-        }
-        .stat-label {
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
-            font-weight: 500;
+            color: var(--accent-red);
+            margin-bottom: 12px;
         }
 
-        /* RIGHT PANEL — FORM */
-        .right-panel {
-            background: #ffffff;
-            padding: 56px 56px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* Headline */
+        .form-headline {
+            font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            color: #0D3D4A;
+            line-height: 1.2;
+            margin-bottom: 32px;
         }
-        .form-header { margin-bottom: 32px; }
-        .form-header h2 {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
+        .form-headline .months-word {
+            position: relative;
+            display: inline-block;
+            color: #0D3D4A;
+            font-weight: 900;
         }
-        .form-header p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
+        .form-headline .months-word svg {
+            position: absolute;
+            left: -4px;
+            top: 50%;
+            width: calc(100% + 8px);
+            height: 14px;
+            transform: translateY(-40%);
         }
+        .form-headline .weeks-word { color: #29B6C8; font-weight: 900; }
 
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .form-group { margin-bottom: 16px; }
-        .form-group label {
+        /* Form fields */
+        .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .field-group { margin-bottom: 16px; }
+        .field-label {
             display: block;
             font-size: 12px;
             font-weight: 600;
@@ -216,381 +217,317 @@
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .field-input {
             width: 100%;
-            padding: 11px 14px;
+            padding: 12px 14px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            color: var(--text-primary);
-            background: #F8FAFC;
             border: 1px solid rgba(0,0,0,0.12);
             border-radius: 8px;
             outline: none;
-            transition: border-color 0.2s, background 0.2s;
+            transition: border-color 0.2s;
+            color: var(--text-primary);
+            background: #fff;
         }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--accent-blue);
-            background: #ffffff;
-        }
-        .form-group textarea { resize: vertical; min-height: 90px; }
-        .form-group select { appearance: none; cursor: pointer; }
+        .field-input:focus { border-color: #29B6C8; }
 
-        .req { color: var(--accent-red); }
-
-        .consent-area {
-            margin: 20px 0;
+        /* Consent box */
+        .consent-box {
+            background: #F9FAFB;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-        .consent-row {
+        .consent-label {
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            cursor: pointer;
             font-size: 13px;
-            color: var(--text-primary);
+            color: #1F2937;
             font-weight: 500;
             line-height: 1.4;
         }
-        .consent-row input[type="checkbox"] {
+        .consent-label input[type="checkbox"] {
             flex-shrink: 0;
             width: 16px; height: 16px;
             margin-top: 2px;
             accent-color: var(--accent-red);
             cursor: pointer;
         }
-
-        /* reCAPTCHA */
-        .recaptcha-wrapper {
-            margin: 20px 0;
+        .consent-note {
+            font-size: 12px;
+            color: #6B7280;
+            line-height: 1.6;
+            padding-left: 26px;
         }
+        .consent-note a { color: var(--accent-red); text-decoration: underline; }
 
+        /* Submit */
         .submit-btn {
-            width: 100%;
-            padding: 14px;
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            padding: 11px 32px;
             background: var(--accent-red);
-            color: #ffffff;
+            color: #fff;
             font-family: 'Inter', sans-serif;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 700;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: opacity 0.2s, transform 0.2s;
-            letter-spacing: 0.01em;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .submit-btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+        .submit-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(227,30,36,0.35); }
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        .privacy-note {
-            margin-top: 14px;
-            font-size: 12px;
-            color: #94A3B8;
-            text-align: center;
-            line-height: 1.5;
-        }
-        .privacy-note a { color: #94A3B8; text-decoration: underline; }
-
-        /* SUCCESS STATE */
+        /* Success */
         .success-state {
             display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
             padding: 40px 0;
         }
-        .success-icon {
-            width: 64px; height: 64px;
-            background: #DCFCE7;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-        .success-icon svg { width: 32px; height: 32px; color: #16A34A; }
-        .success-state h3 {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-        .success-state p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            max-width: 340px;
-        }
-        .success-email { font-weight: 700; color: var(--accent-blue); }
+        .success-state .success-emoji { font-size: 48px; margin-bottom: 16px; }
+        .success-state h3 { font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+        .success-state p { font-size: 15px; color: var(--text-secondary); }
+        .success-email { font-weight: 700; color: #29B6C8; }
 
-        /* ERROR MESSAGE */
-        .error-msg {
-            display: none;
-            background: #FEF2F2;
-            border: 1px solid #FECACA;
-            color: #DC2626;
-            font-size: 13px;
-            padding: 10px 14px;
-            border-radius: 8px;
-            margin-bottom: 14px;
-        }
-
-        /* FOOTER */
+        /* Footer */
         .page-footer {
-            grid-column: 1 / -1;
-            background: #ffffff;
-            border-top: 1px solid var(--border);
-            padding: 20px 0;
             text-align: center;
+            padding: 32px 24px 0;
             font-size: 13px;
             color: #94A3B8;
         }
         .page-footer a { color: #94A3B8; text-decoration: none; }
         .page-footer a:hover { color: var(--text-primary); }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .page-wrapper { grid-template-columns: 1fr; }
-            .left-panel { padding: 48px 28px; }
-            .left-panel h1 { font-size: 28px; }
-            .right-panel { padding: 40px 28px; }
-            .form-row { grid-template-columns: 1fr; }
-            .stat-row { gap: 20px; }
+        @media (max-width: 640px) {
+            .field-grid-2 { grid-template-columns: 1fr; }
+            .form-section { padding-top: 48px; }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="nav-inner">
-        <a href="/" class="nav-logo">
-            <img src="/assets/logo.png" alt="TrustFabric">
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="https://www.trustfabric.in" class="nav-logo">
+            <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
         </a>
-        <a href="/" class="nav-back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Back to home
-        </a>
+
+        <ul class="nav-links">
+            <li class="nav-has-mega">
+                <a href="https://www.trustfabric.in#platform">Product</a>
+                <div class="mega-menu">
+                    <div class="mega-col">
+                        <div class="mega-col-title">Consent</div>
+                        <div class="mega-col-divider"></div>
+                        <ul>
+                            <li><a href="/consent-management.html">Consent Management</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Cookie Consent SDK</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Preference Centre</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Consent Records &amp; Audit Trail</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Withdrawal Management</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Purpose Limitation Engine</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col">
+                        <div class="mega-col-title">Compliance</div>
+                        <div class="mega-col-divider"></div>
+                        <ul>
+                            <li><a href="https://www.trustfabric.in#platform">ROPA Registry</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">DSR Management</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Breach Notification</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Policy &amp; Notice Management</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">DPDP Act Readiness</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Compliance Automation</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col">
+                        <div class="mega-col-title">Data Governance</div>
+                        <div class="mega-col-divider"></div>
+                        <ul>
+                            <li><a href="https://www.trustfabric.in#platform">PII Dictionary</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Data Discovery &amp; Classification</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Analytics Dashboard</a></li>
+                        </ul>
+                        <div class="mega-col-title-2">Integrations</div>
+                        <div class="mega-col-divider"></div>
+                        <ul>
+                            <li><a href="https://www.trustfabric.in#platform">CRM Connectors</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Cloud &amp; Database APIs</a></li>
+                            <li><a href="https://www.trustfabric.in#platform">Messaging Platforms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li><a href="https://www.trustfabric.in#dpdp">Solutions</a></li>
+            <li><a href="https://www.trustfabric.in#dpdp">DPDP Act</a></li>
+            <li><a href="https://www.trustfabric.in#pricing">Pricing</a></li>
+            <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+            <li><a href="https://www.trustfabric.in#resources">Resources</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="/get-started" class="btn-primary nav-demo-btn">Request Demo</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
 </nav>
 
-<div class="page-wrapper">
-
-    <!-- LEFT: Value prop -->
-    <div class="left-panel">
-        <div class="lp-badge">DPDP Act Compliant</div>
-        <h1>Your path to <span>data privacy</span> compliance starts here</h1>
-        <p>Join hundreds of Indian businesses using TrustFabric to stay compliant with the Digital Personal Data Protection Act, 2023.</p>
-
-        <div class="feature-list">
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <span>Consent Management — multilingual, audit-ready</span>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <span>ROPA Registry & Data Subject Rights portal</span>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <span>Breach notification workflows in 72 hours</span>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <span>DPO as a Service — expert guidance on-demand</span>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <span>Free self-assessment & compliance gap report</span>
-            </div>
-        </div>
-
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="https://www.trustfabric.in#platform">Product</a>
+    <a href="https://www.trustfabric.in#dpdp">Solutions</a>
+    <a href="https://www.trustfabric.in#dpdp">DPDP Act</a>
+    <a href="https://www.trustfabric.in#pricing">Pricing</a>
+    <a href="/dpo-as-a-service.html">DPO as a Service</a>
+    <a href="https://www.trustfabric.in#resources">Resources</a>
+    <div class="mobile-menu-actions">
+        <a href="/get-started" class="btn-primary">Request Demo</a>
     </div>
+</div>
 
-    <!-- RIGHT: Form -->
-    <div class="right-panel">
-        <div id="leadFormWrap">
-            <div class="form-header">
-                <h2>Request a Free Demo</h2>
-                <p>Fill in your details and our team will reach out within 24 hours to schedule a personalised walkthrough.</p>
-            </div>
+<!-- MAIN CONTENT -->
+<div class="page-body">
+    <div class="form-section">
 
-            <div class="error-msg" id="errorMsg"></div>
+        <div id="demoFormWrap">
+            <p class="early-badge">✦ Early Access</p>
+            <h1 class="form-headline">
+                Get DPDP compliant<br>
+                in <span class="months-word">months<svg viewBox="0 0 100 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 Q25 3 50 8 Q75 13 98 5" stroke="#29B6C8" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span> <span class="weeks-word">weeks.</span>
+            </h1>
 
-            <form id="leadForm" onsubmit="submitLead(event)" novalidate>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Full Name <span class="req">*</span></label>
-                        <input type="text" id="l-name" placeholder="" required>
+            <!-- FORM -->
+            <div id="demoForm">
+                <div class="field-grid-2">
+                    <div>
+                        <label class="field-label">Full Name *</label>
+                        <input type="text" id="idf-name" class="field-input" autocomplete="name">
                     </div>
-                    <div class="form-group">
-                        <label>Company <span class="req">*</span></label>
-                        <input type="text" id="l-company" placeholder="" required>
+                    <div>
+                        <label class="field-label">Company *</label>
+                        <input type="text" id="idf-company" class="field-input" autocomplete="organization">
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Work Email <span class="req">*</span></label>
-                        <input type="email" id="l-email" placeholder="" required>
+                <div class="field-grid-2">
+                    <div>
+                        <label class="field-label">Work Email *</label>
+                        <input type="email" id="idf-email" class="field-input" autocomplete="email">
                     </div>
-                    <div class="form-group">
-                        <label>Phone <span class="req">*</span></label>
-                        <input type="tel" id="l-phone" placeholder="" required>
+                    <div>
+                        <label class="field-label">Phone Number *</label>
+                        <input type="tel" id="idf-phone" class="field-input" autocomplete="tel">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Company Size</label>
-                    <select id="l-size">
+                <div class="field-group">
+                    <label class="field-label">Company Size</label>
+                    <select id="idf-size" class="field-input" style="appearance:none;cursor:pointer;">
                         <option value="">Select company size</option>
-                        <option value="1-10">1–10 employees</option>
-                        <option value="11-50">11–50 employees</option>
-                        <option value="51-200">51–200 employees</option>
-                        <option value="201-1000">201–1000 employees</option>
-                        <option value="1000+">1000+ employees</option>
+                        <option>1–10 employees</option>
+                        <option>11–50 employees</option>
+                        <option>51–200 employees</option>
+                        <option>201–1000 employees</option>
+                        <option>1000+ employees</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>What are you looking for? (optional)</label>
-                    <textarea id="l-message" placeholder=""></textarea>
+                <div class="field-group">
+                    <label class="field-label">How can we help? (optional)</label>
+                    <textarea id="idf-message" class="field-input" rows="3" style="resize:vertical;"></textarea>
                 </div>
 
-                <div class="consent-area">
-                    <label id="l-mkt-label" class="consent-row" style="opacity:0.4;cursor:not-allowed;">
-                        <input type="checkbox" id="l-marketing" disabled style="cursor:not-allowed;">
+                <div class="consent-box">
+                    <label class="consent-label">
+                        <input type="checkbox" id="idf-marketing">
                         <span>I agree to receive other communications from TrustFabric</span>
                     </label>
-                    <label class="consent-row">
-                        <input type="checkbox" id="l-gdpr" required>
-                        <span>I agree to allow TrustFabric to store and process my personal data <span class="req">*</span></span>
+                    <p class="consent-note">In order to provide you the content requested, we need to store and process your personal data. If you consent, please tick the checkbox below.</p>
+                    <label class="consent-label">
+                        <input type="checkbox" id="idf-gdpr">
+                        <span>I agree to allow TrustFabric to store and process my personal data. <span style="color:var(--accent-red)">*</span></span>
                     </label>
+                    <p class="consent-note">You can unsubscribe at any time. See our <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>.</p>
                 </div>
 
-                <div class="recaptcha-wrapper">
-                    <div class="g-recaptcha" data-sitekey="6Lc1NaMtAAAAALLhSaE03PkRLkeEg31mayqd2L0U"></div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="leadSubmitBtn">Get Started — Request Demo →</button>
-
-                <p class="privacy-note">
-                    By submitting, you agree to our <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/cookie-policy.html">Cookie Policy</a>.<br>
-                    We never share your data with third parties.
-                </p>
-            </form>
-        </div>
-
-        <!-- Success -->
-        <div class="success-state" id="leadSuccess">
-            <div class="success-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <button id="demoSubmitBtn" class="submit-btn" onclick="submitDemo()">Request Demo →</button>
             </div>
-            <h3>You're all set!</h3>
-            <p>Thanks for reaching out. Our team will contact <span class="success-email" id="leadSuccessEmail"></span> within 24 hours to schedule your demo.</p>
         </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-state" id="demoSuccess">
+            <div class="success-emoji">✅</div>
+            <h3>You're on the list!</h3>
+            <p>Our team will reach out to <strong class="success-email" id="demoSuccessEmail"></strong> within 24 hours.</p>
+        </div>
+
     </div>
 
-    <footer class="page-footer">
+    <div class="page-footer">
         © 2025 TrustFabric &nbsp;·&nbsp;
         <a href="/privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
         <a href="/cookie-policy.html">Cookie Policy</a> &nbsp;·&nbsp;
         <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
-    </footer>
-
+    </div>
 </div>
 
 <script>
-// Gate marketing checkbox on GDPR checkbox
-(function() {
-    var gdpr = document.getElementById('l-gdpr');
-    var mkt  = document.getElementById('l-marketing');
-    var lbl  = document.getElementById('l-mkt-label');
-    gdpr.addEventListener('change', function() {
-        if (this.checked) {
-            mkt.disabled = false;
-            lbl.style.opacity = '1';
-            lbl.style.cursor  = 'pointer';
-            mkt.style.cursor  = 'pointer';
-        } else {
-            mkt.disabled = true;
-            mkt.checked  = false;
-            lbl.style.opacity = '0.4';
-            lbl.style.cursor  = 'not-allowed';
-            mkt.style.cursor  = 'not-allowed';
-        }
-    });
-})();
+// Hamburger toggle
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
+});
 
-async function submitLead(e) {
-    e.preventDefault();
-
-    var name    = document.getElementById('l-name').value.trim();
-    var company = document.getElementById('l-company').value.trim();
-    var email   = document.getElementById('l-email').value.trim();
-    var phone   = document.getElementById('l-phone').value.trim();
-    var size    = document.getElementById('l-size').value;
-    var message = document.getElementById('l-message').value.trim();
-    var gdpr    = document.getElementById('l-gdpr').checked;
-    var errorEl = document.getElementById('errorMsg');
-
-    errorEl.style.display = 'none';
+async function submitDemo() {
+    var name    = document.getElementById('idf-name').value.trim();
+    var company = document.getElementById('idf-company').value.trim();
+    var email   = document.getElementById('idf-email').value.trim();
+    var phone   = document.getElementById('idf-phone').value.trim();
+    var size    = document.getElementById('idf-size').value;
+    var message = document.getElementById('idf-message').value.trim();
+    var gdpr    = document.getElementById('idf-gdpr').checked;
 
     if (!name || !company || !email || !phone) {
-        errorEl.textContent = 'Please fill in all required fields (Name, Company, Email, Phone).';
-        errorEl.style.display = 'block';
+        alert('Please fill in all required fields (Name, Company, Email, Phone).');
         return;
     }
     if (!gdpr) {
-        errorEl.textContent = 'Please consent to allow TrustFabric to store and process your personal data.';
-        errorEl.style.display = 'block';
+        alert('Please consent to allow TrustFabric to store and process your personal data.');
         return;
     }
 
-    var recaptchaToken = grecaptcha.getResponse();
-    if (!recaptchaToken) {
-        errorEl.textContent = 'Please complete the CAPTCHA verification.';
-        errorEl.style.display = 'block';
-        return;
-    }
-
-    var btn = document.getElementById('leadSubmitBtn');
+    var btn = document.getElementById('demoSubmitBtn');
     btn.disabled = true;
-    btn.textContent = 'Submitting…';
+    btn.textContent = 'Sending…';
 
     try {
-        var res = await fetch('/api/lead', {
+        var res = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, company, email, phone, size, message, recaptchaToken,
-                consentMarketing: document.getElementById('l-marketing').checked, consentData: gdpr })
+            body: JSON.stringify({
+                name, company, email, phone, size, message,
+                consentMarketing: document.getElementById('idf-marketing').checked,
+                consentData: gdpr
+            })
         });
         if (res.ok) {
-            document.getElementById('leadFormWrap').style.display = 'none';
-            document.getElementById('leadSuccessEmail').textContent = email;
-            var s = document.getElementById('leadSuccess');
-            s.style.display = 'flex';
-        } else {
-            var data = await res.json();
-            throw new Error(data.error || 'Server error');
-        }
-    } catch(err) {
-        errorEl.textContent = err.message || 'Something went wrong. Please email us at info@trustfabric.in';
-        errorEl.style.display = 'block';
+            document.getElementById('demoFormWrap').style.display = 'none';
+            document.getElementById('demoSuccessEmail').textContent = email;
+            document.getElementById('demoSuccess').style.display = 'block';
+        } else { throw new Error(); }
+    } catch(e) {
+        alert('Something went wrong. Please email us directly at info@trustfabric.in');
         btn.disabled = false;
-        btn.textContent = 'Get Started — Request Demo →';
-        grecaptcha.reset();
+        btn.textContent = 'Request Demo →';
     }
 }
 </script>
