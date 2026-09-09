@@ -230,6 +230,15 @@
             background: #fff;
         }
         .field-input:focus { border-color: #29B6C8; }
+        .field-input.error { border-color: #E31E24; background: #FFF5F5; }
+        .field-error {
+            display: none;
+            font-size: 11px;
+            color: #E31E24;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        .field-error.visible { display: block; }
 
         /* Consent box */
         .consent-box {
@@ -414,20 +423,24 @@
                     <div>
                         <label class="field-label">Full Name *</label>
                         <input type="text" id="idf-name" class="field-input" autocomplete="name">
+                        <span class="field-error" id="err-name">Please enter your full name.</span>
                     </div>
                     <div>
                         <label class="field-label">Company *</label>
                         <input type="text" id="idf-company" class="field-input" autocomplete="organization">
+                        <span class="field-error" id="err-company">Please enter your company name.</span>
                     </div>
                 </div>
                 <div class="field-grid-2">
                     <div>
                         <label class="field-label">Work Email *</label>
                         <input type="email" id="idf-email" class="field-input" autocomplete="email">
+                        <span class="field-error" id="err-email">Please enter a valid work email.</span>
                     </div>
                     <div>
                         <label class="field-label">Phone Number *</label>
                         <input type="tel" id="idf-phone" class="field-input" autocomplete="tel">
+                        <span class="field-error" id="err-phone">Please enter your phone number.</span>
                     </div>
                 </div>
                 <div class="field-group">
@@ -448,15 +461,18 @@
 
                 <div class="consent-box">
                     <label class="consent-label">
-                        <input type="checkbox" id="idf-marketing">
-                        <span>I agree to receive other communications from TrustFabric</span>
-                    </label>
-                    <p class="consent-note">In order to provide you the content requested, we need to store and process your personal data. If you consent, please tick the checkbox below.</p>
-                    <label class="consent-label">
                         <input type="checkbox" id="idf-gdpr">
                         <span>I agree to allow TrustFabric to store and process my personal data. <span style="color:var(--accent-red)">*</span></span>
                     </label>
                     <p class="consent-note">You can unsubscribe at any time. See our <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>.</p>
+                    <div id="marketing-row" style="display:none;flex-direction:column;gap:10px;">
+                        <label class="consent-label">
+                            <input type="checkbox" id="idf-marketing">
+                            <span>I agree to receive other communications from TrustFabric</span>
+                        </label>
+                        <p class="consent-note">In order to provide you the content requested, we need to store and process your personal data.</p>
+                    </div>
+                    <span class="field-error" id="err-gdpr">You must agree to allow TrustFabric to store and process your data.</span>
                 </div>
 
                 <button id="demoSubmitBtn" class="submit-btn" onclick="submitDemo()">Request Demo →</button>
@@ -487,6 +503,35 @@ document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('mobileMenu').classList.toggle('open');
 });
 
+// Show marketing checkbox only after GDPR is ticked
+document.getElementById('idf-gdpr').addEventListener('change', function() {
+    var row = document.getElementById('marketing-row');
+    row.style.display = this.checked ? 'flex' : 'none';
+    if (!this.checked) document.getElementById('idf-marketing').checked = false;
+    // Clear GDPR error when checked
+    if (this.checked) setError('gdpr', false);
+});
+
+// Clear field error on input
+['idf-name','idf-company','idf-email','idf-phone'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', function() {
+        var key = id.replace('idf-', '');
+        setError(key, false);
+    });
+});
+
+function setError(key, show) {
+    var input = document.getElementById('idf-' + key);
+    var err   = document.getElementById('err-' + key);
+    if (!input || !err) return;
+    input.classList.toggle('error', show);
+    err.classList.toggle('visible', show);
+}
+
+function validateEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
 async function submitDemo() {
     var name    = document.getElementById('idf-name').value.trim();
     var company = document.getElementById('idf-company').value.trim();
@@ -496,14 +541,14 @@ async function submitDemo() {
     var message = document.getElementById('idf-message').value.trim();
     var gdpr    = document.getElementById('idf-gdpr').checked;
 
-    if (!name || !company || !email || !phone) {
-        alert('Please fill in all required fields (Name, Company, Email, Phone).');
-        return;
-    }
-    if (!gdpr) {
-        alert('Please consent to allow TrustFabric to store and process your personal data.');
-        return;
-    }
+    // Inline validation
+    var valid = true;
+    if (!name)              { setError('name', true);    valid = false; }
+    if (!company)           { setError('company', true); valid = false; }
+    if (!email || !validateEmail(email)) { setError('email', true);   valid = false; }
+    if (!phone)             { setError('phone', true);   valid = false; }
+    if (!gdpr)              { setError('gdpr', true);    valid = false; }
+    if (!valid) return;
 
     var btn = document.getElementById('demoSubmitBtn');
     btn.disabled = true;
