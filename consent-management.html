@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Management Platform — TrustFabric | DPDP Act Compliance</title>
+    <meta name="description" content="TrustFabric's Universal Consent Management platform helps enterprises collect, manage, and audit consumer consent via Email, SMS, and WhatsApp — fully compliant with India's DPDP Act 2023.">
+    <meta name="keywords" content="consent management platform, DPDP Act consent, data consent India, consent records, consent templates, WhatsApp consent, DPDP compliance, TrustFabric">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://trustfabric.in/consent-management">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trustfabric.in/consent-management">
+    <meta property="og:title" content="Consent Management Platform — TrustFabric">
+    <meta property="og:description" content="Collect, manage, and audit consumer consent across Email, SMS, and WhatsApp. Built for India's DPDP Act 2023.">
+    <meta property="og:image" content="https://trustfabric.in/assets/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- TrustFabric Cookie Consent SDK -->
+    <script defer src="https://trustfabric-server.onrender.com/sdk/consent.js?domain=trustfabric.in&org=69ce50640bc0f3a68915b256"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/plain" data-cookie-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-N9MKEJ3825"></script>
+    <script type="text/plain" data-cookie-category="analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N9MKEJ3825');
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --red: #E31E24;
+            --blue: #1E3A8A;
+            --blue-mid: #3B5FBF;
+            --dark: #0F172A;
+            --text: #1E293B;
+            --muted: #64748B;
+            --border: rgba(0,0,0,0.08);
+            --bg-light: #F8FAFC;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* ── NAVBAR ── */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 64px; padding: 0 24px; display: flex; align-items: center; background: rgba(255,255,255,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 68px; width: auto; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { background: var(--red); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 14px; transition: opacity 0.2s; }
+        .nav-cta:hover { opacity: 0.9; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+
+        /* ── HERO ── */
+        .hero { padding: 120px 24px 80px; background: linear-gradient(160deg, #F0F4FF 0%, #FAFBFF 60%, #fff 100%); overflow: hidden; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #EEF2FF; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 20px; }
+        .hero-badge span { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; display: inline-block; }
+        .hero h1 { font-size: clamp(32px, 4vw, 50px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; color: var(--dark); margin-bottom: 20px; }
+        .hero h1 em { font-style: normal; color: var(--blue); }
+        .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 480px; margin-bottom: 36px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: #fff; padding: 13px 24px; border-radius: 10px; font-size: 15px; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(227,30,36,0.3); }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--text); padding: 12px 22px; border-radius: 10px; font-size: 15px; font-weight: 600; border: 1.5px solid var(--border); transition: border-color 0.2s; }
+        .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+        .play-icon { width: 20px; height: 20px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .play-icon::after { content: ''; border-style: solid; border-width: 4px 0 4px 7px; border-color: transparent transparent transparent #fff; margin-left: 1px; }
+        .hero-trust { display: flex; gap: 24px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--muted); }
+        .trust-icon { font-size: 16px; }
+        .hero-visual { position: relative; }
+        .hero-screen { border-radius: 16px; overflow: hidden; box-shadow: 0 24px 80px rgba(30,58,138,0.18), 0 4px 16px rgba(0,0,0,0.08); border: 1px solid rgba(30,58,138,0.12); }
+        .hero-screen img { width: 100%; }
+        .hero-accent { position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(227,30,36,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-visual { order: -1; }
+        }
+
+        /* ── TRUSTED BY ── */
+        .trusted { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+        .trusted-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 24px; }
+        .trusted-logos { display: flex; justify-content: center; align-items: center; gap: 0; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
+        .trusted-logos span { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: #94A3B8; padding: 10px 28px; border-right: 1px solid var(--border); }
+        .trusted-logos span:last-child { border-right: none; }
+        .trusted-logos span svg { opacity: 0.5; }
+
+        /* ── SECTION COMMONS ── */
+        .section { padding: 96px 24px; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-badge { display: inline-flex; align-items: center; gap: 6px; background: #F0F4FF; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 18px; }
+        .section-title { font-size: clamp(26px, 3vw, 38px); font-weight: 900; letter-spacing: -0.02em; color: var(--dark); line-height: 1.15; margin-bottom: 14px; }
+        .section-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 580px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header .section-sub { margin: 0 auto; }
+
+        /* ── CAPABILITIES ── */
+        .capabilities { background: var(--bg-light); }
+        .caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .cap-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: box-shadow 0.2s, transform 0.2s; }
+        .cap-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .cap-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
+        .cap-icon.green { background: #ECFDF5; }
+        .cap-icon.blue  { background: #EEF2FF; }
+        .cap-icon.orange { background: #FFF7ED; }
+        .cap-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+        .cap-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+        .cap-link { font-size: 13px; font-weight: 700; color: var(--blue); display: flex; align-items: center; gap: 4px; }
+        .cap-screenshot { margin-top: 20px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .cap-screenshot img { width: 100%; }
+        @media (max-width: 900px) { .caps-grid { grid-template-columns: 1fr; } }
+
+        /* ── DARK FEATURE ── */
+        .feature-dark { background: var(--dark); color: #fff; }
+        .feature-dark .section-badge { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+        .feature-dark .section-title { color: #fff; }
+        .feature-dark .section-sub { color: rgba(255,255,255,0.6); }
+        .fd-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+        .fd-checklist { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 32px 0 36px; }
+        .fd-checklist li { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.85); }
+        .fd-check { width: 22px; height: 22px; background: #1D4ED8; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; }
+        .btn-outline-white { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #fff; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1.5px solid rgba(255,255,255,0.3); transition: border-color 0.2s, background 0.2s; }
+        .btn-outline-white:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+        .fd-screen { border-radius: 14px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); }
+        .fd-screen img { width: 100%; }
+        @media (max-width: 900px) { .fd-inner { grid-template-columns: 1fr; } }
+
+        /* ── ANALYTICS HIGHLIGHT ── */
+        .analytics-section { background: #fff; }
+        .analytics-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+        .analytics-screen { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 16px 48px rgba(30,58,138,0.12); }
+        .analytics-screen img { width: 100%; }
+        .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+        .stat-box { background: var(--bg-light); border-radius: 12px; padding: 18px 20px; }
+        .stat-num { font-size: 28px; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+        .stat-label { font-size: 13px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+        @media (max-width: 900px) { .analytics-inner { grid-template-columns: 1fr; } }
+
+        /* ── COOKIE CONSENT ── */
+        .cookie-section { background: var(--bg-light); }
+        .cookie-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+        .cookie-screen { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+        .cookie-screen img { width: 100%; }
+        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+        .feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text); }
+        .feature-list .dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+        @media (max-width: 900px) { .cookie-inner { grid-template-columns: 1fr; } }
+
+        /* ── INTEGRATIONS ── */
+        .integrations { background: #fff; text-align: center; }
+        .integrations-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; margin-top: 48px; }
+        .int-logo { display: flex; align-items: center; justify-content: center; height: 48px; opacity: 0.6; transition: opacity 0.2s; filter: grayscale(1); }
+        .int-logo:hover { opacity: 1; filter: none; }
+        .int-logo span { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; color: var(--muted); }
+
+        /* ── INDUSTRY ── */
+        .industry { background: var(--bg-light); }
+        .industry-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 48px; }
+        .ind-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 22px 18px; text-align: center; transition: box-shadow 0.2s, transform 0.2s; }
+        .ind-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .ind-icon { font-size: 28px; margin-bottom: 10px; }
+        .ind-card h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+        .ind-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+        @media (max-width: 900px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .industry-grid { grid-template-columns: 1fr; } }
+
+        /* ── CTA ── */
+        .cta-section { background: linear-gradient(135deg, var(--dark) 0%, #1E3A8A 100%); color: #fff; padding: 96px 24px; text-align: center; }
+        .cta-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+        .cta-section h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px; }
+        .cta-section p { font-size: 16px; color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 36px; line-height: 1.7; }
+        .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+        .btn-white { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--dark); padding: 13px 26px; border-radius: 10px; font-size: 15px; font-weight: 700; transition: transform 0.2s; }
+        .btn-white:hover { transform: translateY(-1px); }
+        .btn-outline-white2 { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: #fff; padding: 12px 24px; border-radius: 10px; font-size: 15px; font-weight: 600; border: 1.5px solid rgba(255,255,255,0.35); transition: border-color 0.2s; }
+        .btn-outline-white2:hover { border-color: #fff; }
+
+        /* ── FOOTER ── */
+        .page-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.07); }
+        .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-brand img { height: 48px; margin-bottom: 16px; }
+        .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; max-width: 220px; }
+        .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+        .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 9px; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 24px; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .footer-bottom span { font-size: 12px; color: rgba(255,255,255,0.3); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+        .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+        @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="/" class="nav-logo"><img src="/assets/logo.png" alt="TrustFabric"></a>
+        <ul class="nav-links">
+            <li><a href="/#platform">Product</a></li>
+            <li><a href="/#dpdp">Solutions</a></li>
+            <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+        </ul>
+        <a href="/get-started" class="nav-cta">Request Demo</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-left">
+            <div class="hero-badge"><span></span>Built for a Privacy-First India</div>
+            <h1>Consent management,<br><em>built into</em> the way you work.</h1>
+            <p class="hero-sub">TrustFabric's Universal Consent Management platform helps organisations collect, track, and audit consumer consent across Email, SMS, and WhatsApp — fully compliant with India's DPDP Act 2023.</p>
+            <div class="hero-actions">
+                <a href="/get-started" class="btn-primary">Book a Demo →</a>
+                <a href="#feature-dark" class="btn-ghost">
+                    <span class="play-icon"></span>
+                    See the Platform
+                </a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item"><span class="trust-icon">✅</span> Compliant by design</div>
+                <div class="trust-item"><span class="trust-icon">🏢</span> Enterprise ready</div>
+                <div class="trust-item"><span class="trust-icon">🇮🇳</span> Made for India</div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-accent"></div>
+            <div class="hero-screen">
+                <img src="/assets/cm-control-room.png" alt="TrustFabric Control Room — Privacy Compliance Platform">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUSTED BY -->
+<div class="trusted">
+    <div class="trusted-label">Trusted by forward-thinking enterprises</div>
+    <div class="trusted-logos">
+        <span>🏦 BFSI</span>
+        <span>🏥 Healthcare</span>
+        <span>🛡️ Insurance</span>
+        <span>🛒 E-commerce</span>
+        <span>☁️ SaaS</span>
+    </div>
+</div>
+
+<!-- PLATFORM CAPABILITIES -->
+<section class="section capabilities">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="section-badge">Platform Capabilities</div>
+            <h2 class="section-title">One consent platform. Every workflow.</h2>
+            <p class="section-sub">From creating templates to sending requests and maintaining a legally provable audit trail — TrustFabric handles every step.</p>
+        </div>
+        <div class="caps-grid">
+            <div class="cap-card">
+                <div class="cap-icon green">📋</div>
+                <h3>Consent Templates</h3>
+                <p>Create reusable, purpose-specific consent request templates for Email, SMS, and WhatsApp. Set expiry windows and manage in multiple languages.</p>
+                <div class="cap-link">Learn more →</div>
+                <div class="cap-screenshot">
+                    <img src="/assets/cm-consent-templates.png" alt="Consent Templates dashboard">
+                </div>
+            </div>
+            <div class="cap-card">
+                <div class="cap-icon blue">📨</div>
+                <h3>Consent Requests</h3>
+                <p>Send consent requests to consumers at scale via any channel. Track responses — granted, pending, or declined — in real time with bulk send support.</p>
+                <div class="cap-link">Learn more →</div>
+                <div class="cap-screenshot">
+                    <img src="/assets/cm-consent-requests.png" alt="Consent Requests dashboard">
+                </div>
+            </div>
+            <div class="cap-card">
+                <div class="cap-icon orange">🗂️</div>
+                <h3>Consent Records</h3>
+                <p>Maintain a complete, tamper-proof audit trail of every consent interaction. Exportable as CSV and legally provable under the DPDP Act 2023.</p>
+                <div class="cap-link">Learn more →</div>
+                <div class="cap-screenshot">
+                    <img src="/assets/cm-consent-records.png" alt="Consent Records dashboard">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DARK FEATURE SECTION -->
+<section class="section feature-dark" id="feature-dark">
+    <div class="section-inner">
+        <div class="fd-inner">
+            <div>
+                <div class="section-badge">A Closer Look at the Platform</div>
+                <h2 class="section-title">Consent management,<br>without the complexity.</h2>
+                <p class="section-sub">A powerful, flexible, and developer-friendly platform designed for modern Indian enterprises.</p>
+                <ul class="fd-checklist">
+                    <li><span class="fd-check">✓</span> Multi-channel consent collection via Email, SMS & WhatsApp</li>
+                    <li><span class="fd-check">✓</span> Purpose-based consent management with expiry controls</li>
+                    <li><span class="fd-check">✓</span> Real-time consent preferences and revocation</li>
+                    <li><span class="fd-check">✓</span> Bulk send with personalised templates</li>
+                    <li><span class="fd-check">✓</span> Audit-ready records exportable as CSV</li>
+                </ul>
+                <a href="/get-started" class="btn-outline-white">See It In Action →</a>
+            </div>
+            <div class="fd-screen">
+                <img src="/assets/cm-consent-requests.png" alt="TrustFabric Consent Requests in action">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ANALYTICS SECTION -->
+<section class="section analytics-section">
+    <div class="section-inner">
+        <div class="analytics-inner">
+            <div class="analytics-screen">
+                <img src="/assets/cm-analytics.png" alt="Consent Analytics — real-time insights">
+            </div>
+            <div>
+                <div class="section-badge">Consent Analytics</div>
+                <h2 class="section-title">Real-time insights into every consent interaction.</h2>
+                <p class="section-sub">Track grant rates, response trends, and channel performance from a single dashboard. Know exactly where your consent funnel needs attention.</p>
+                <div class="stat-row">
+                    <div class="stat-box">
+                        <div class="stat-num">30%</div>
+                        <div class="stat-label">Average grant rate across channels</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">3x</div>
+                        <div class="stat-label">Faster compliance reporting</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">100%</div>
+                        <div class="stat-label">DPDP Act audit trail coverage</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">3</div>
+                        <div class="stat-label">Channels: Email, WhatsApp, SMS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COOKIE CONSENT SECTION -->
+<section class="section cookie-section">
+    <div class="section-inner">
+        <div class="cookie-inner">
+            <div>
+                <div class="section-badge">Cookie Consent Management</div>
+                <h2 class="section-title">Cookie compliance, fully managed.</h2>
+                <p class="section-sub">Deploy your cookie consent banner, manage cookie policies, and maintain a complete record of visitor preferences — all from one place.</p>
+                <ul class="feature-list">
+                    <li><span class="dot"></span>One-line SDK integration for any website or CMS</li>
+                    <li><span class="dot"></span>Auto-categorises cookies: Necessary, Analytics, Marketing</li>
+                    <li><span class="dot"></span>Recorded consent per visitor — legally provable</li>
+                    <li><span class="dot"></span>Cookie policy builder with version control</li>
+                    <li><span class="dot"></span>Multi-domain support from a single account</li>
+                </ul>
+            </div>
+            <div class="cookie-screen">
+                <img src="/assets/cm-cookie-consent.png" alt="Cookie Consent Management dashboard">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="section integrations">
+    <div class="section-inner">
+        <div class="section-badge" style="margin: 0 auto 18px;">Seamless Integrations</div>
+        <h2 class="section-title">Works with your existing tech stack.</h2>
+        <p class="section-sub" style="margin: 0 auto;">Integrate with the tools you already use. Get up and running, faster.</p>
+        <div class="integrations-grid">
+            <div class="int-logo"><span style="color:#00A1E0;">Salesforce</span></div>
+            <div class="int-logo"><span style="color:#FF9900;">aws</span></div>
+            <div class="int-logo"><span style="color:#0078D4;">Microsoft Azure</span></div>
+            <div class="int-logo"><span style="color:#008FD3;">SAP</span></div>
+            <div class="int-logo"><span style="color:#96BF48;">shopify</span></div>
+            <div class="int-logo"><span style="color:#E42527;">ZOHO</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- INDUSTRY -->
+<section class="section industry">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="section-badge">Built for Your Industry</div>
+            <h2 class="section-title">Privacy compliance for what you do best.</h2>
+            <p class="section-sub">Whether you're handling customer, patient, or financial data — TrustFabric adapts to your industry's unique consent requirements.</p>
+        </div>
+        <div class="industry-grid">
+            <div class="ind-card">
+                <div class="ind-icon">🏦</div>
+                <h4>BFSI</h4>
+                <p>Build trust with compliant consent across banking, lending, and insurance workflows.</p>
+            </div>
+            <div class="ind-card">
+                <div class="ind-icon">🏥</div>
+                <h4>Healthcare</h4>
+                <p>Protect patient data with purpose-specific consent for clinical and diagnostic data.</p>
+            </div>
+            <div class="ind-card">
+                <div class="ind-icon">🛡️</div>
+                <h4>Insurance</h4>
+                <p>Simplify consent across policy issuance, claims, and partner data sharing.</p>
+            </div>
+            <div class="ind-card">
+                <div class="ind-icon">🛒</div>
+                <h4>E-commerce</h4>
+                <p>Deliver personalised experiences compliantly with granular marketing consent.</p>
+            </div>
+            <div class="ind-card">
+                <div class="ind-icon">☁️</div>
+                <h4>SaaS</h4>
+                <p>Embed privacy-first consent management directly into your product.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-label">Ready to get started?</div>
+    <h2>Make DPDP compliance operational.</h2>
+    <p>Join leading enterprises building a more transparent and trustworthy digital future.</p>
+    <div class="cta-actions">
+        <a href="/get-started" class="btn-white">Book a Demo →</a>
+        <a href="mailto:info@trustfabric.in" class="btn-outline-white2">Talk to Our Team</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="/assets/logo.png" alt="TrustFabric">
+            <p>Building a privacy-first India — one consent at a time.</p>
+        </div>
+        <div class="footer-col">
+            <h5>Product</h5>
+            <a href="/consent-management.html">Consent Management</a>
+            <a href="/#dpdp">Data Subject Rights</a>
+            <a href="/#platform">Integrations</a>
+            <a href="/scanner.html">Cookie Scanner</a>
+        </div>
+        <div class="footer-col">
+            <h5>Company</h5>
+            <a href="/">Home</a>
+            <a href="/dpo-as-a-service.html">DPO as a Service</a>
+            <a href="/careers.html">Careers</a>
+            <a href="/get-started">Contact</a>
+        </div>
+        <div class="footer-col">
+            <h5>Legal</h5>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/cookie-policy.html">Cookie Policy</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2025 TrustFabric. All rights reserved.</span>
+        <div class="footer-bottom-links">
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/cookie-policy.html">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
