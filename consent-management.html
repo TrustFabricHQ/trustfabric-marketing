@@ -36,6 +36,11 @@
         --muted: #64748B;
         --border: rgba(0,0,0,0.08);
         --bg: #F8FAFC;
+        --bg-primary: #FFFFFF;
+        --bg-card: #FFFFFF;
+        --accent-green: #E31E24;
+        --text-primary: #1F2937;
+        --text-secondary: #6B7280;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -231,30 +236,24 @@
     @media (max-width: 768px) { .cta-inner { grid-template-columns: 1fr; } .cta-actions { flex-wrap: wrap; } }
 
     /* ─── FOOTER ─── */
-    .footer { background: var(--dark); }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap: 40px; }
-    .footer-brand img { height: 48px; margin-bottom: 16px; }
-    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; max-width: 200px; }
-    .footer-social { display: flex; gap: 14px; margin-top: 20px; }
-    .footer-social a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.5); transition: background 0.2s, color 0.2s; }
-    .footer-social a:hover { background: rgba(255,255,255,0.15); color: #fff; }
-    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 14px; }
-    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 9px; transition: color 0.2s; }
-    .footer-col a:hover { color: #fff; }
-    .footer-india { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
-    .footer-india strong { color: rgba(255,255,255,0.7); display: block; font-size: 14px; margin-bottom: 6px; }
-    .india-flag { display: flex; gap: 4px; margin-top: 8px; }
-    .india-flag span { height: 4px; border-radius: 2px; }
-    .if-orange { background: #FF9933; width: 28px; }
-    .if-white { background: rgba(255,255,255,0.6); width: 28px; }
-    .if-green { background: #138808; width: 28px; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 24px; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-    .footer-bottom span { font-size: 12px; color: rgba(255,255,255,0.3); }
-    .footer-bottom-links { display: flex; gap: 20px; }
-    .footer-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.35); transition: color 0.2s; }
-    .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
-    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer { background: var(--bg-primary); border-top: 1px solid var(--border); padding: 64px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 56px; align-items: start; }
+    .footer-brand p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 16px; max-width: 240px; }
+    .footer-col { padding-top: 38px; }
+    .footer-col h4 { font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col ul li a { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--text-primary); }
+    .footer-bottom { border-top: 1px solid var(--border); padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
+    .footer-copy { font-size: 13px; color: var(--text-secondary); }
+    .footer-copy a { color: var(--accent-green); text-decoration: none; }
+    .social-links { display: flex; gap: 12px; }
+    .social-link { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, border-color 0.2s; }
+    .social-link:hover { color: var(--text-primary); border-color: rgba(0,0,0,0.15); }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } .footer-bottom { flex-direction: column; gap: 16px; text-align: center; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } .footer-brand { grid-column: span 1; } }
     </style>
 </head>
 <body>
@@ -587,59 +586,78 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <img src="/assets/logo.png" alt="TrustFabric">
-            <p>Building a privacy-first India — one consent at a time.</p>
-            <div class="footer-social">
-                <a href="https://www.linkedin.com/company/trustfabricindia/" target="_blank" rel="noopener noreferrer">in</a>
-                <a href="#">tw</a>
-                <a href="#">yt</a>
+<footer class="footer" id="resources">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="https://www.trustfabric.in" class="nav-logo" style="text-decoration:none;">
+                    <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
+                </a>
+                <p>India's consent management platform for DPDP Act 2023 compliance. Built in India, for India's data privacy moment.</p>
+                <p style="margin-top:16px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;">
+                    <svg style="flex-shrink:0;margin-top:2px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    TrustFabric, 44, Regal Building, 2nd Floor, Connaught Place, New Delhi, 110001
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="https://www.trustfabric.in">Features</a></li>
+                    <li><a href="https://www.trustfabric.in">Pricing</a></li>
+                    <li><a href="https://www.trustfabric.in">Changelog</a></li>
+                    <li><a href="https://www.trustfabric.in">Roadmap</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="https://www.trustfabric.in">BFSI</a></li>
+                    <li><a href="https://www.trustfabric.in">Healthcare</a></li>
+                    <li><a href="https://www.trustfabric.in">E-commerce</a></li>
+                    <li><a href="https://www.trustfabric.in">SaaS</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/careers.html">Careers</a></li>
+                    <li><a href="https://www.trustfabric.in">DPDP Act Guide</a></li>
+                    <li><a href="https://www.trustfabric.in">Blog</a></li>
+                    <li><a href="https://www.trustfabric.in">Documentation</a></li>
+                    <li><a href="https://www.trustfabric.in">API Docs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="https://www.trustfabric.in">Terms of Service</a></li>
+                    <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+                </ul>
             </div>
         </div>
-        <div class="footer-col">
-            <h5>Product</h5>
-            <a href="/consent-management.html">Consent Management</a>
-            <a href="/dpo-as-a-service.html">DPO-as-a-Service</a>
-            <a href="/#platform">Integrations</a>
-            <a href="/#pricing">Pricing</a>
-        </div>
-        <div class="footer-col">
-            <h5>Solutions</h5>
-            <a href="/#dpdp">By Industry</a>
-            <a href="/#dpdp">By Use Case</a>
-            <a href="/#dpdp">Enterprise</a>
-            <a href="/#dpdp">Startups</a>
-        </div>
-        <div class="footer-col">
-            <h5>Resources</h5>
-            <a href="#">Blogs</a>
-            <a href="#">Guides</a>
-            <a href="#">Webinars</a>
-            <a href="https://checkdpdp.com" target="_blank">CheckDPDP.com</a>
-        </div>
-        <div class="footer-col">
-            <h5>Company</h5>
-            <a href="/">About Us</a>
-            <a href="/careers.html">Careers</a>
-            <a href="/get-started">Contact Us</a>
-            <div class="footer-india" style="margin-top:16px;">
-                <strong>Building a privacy-first India.</strong>
-                <div class="india-flag">
-                    <span class="if-orange"></span>
-                    <span class="if-white"></span>
-                    <span class="if-green"></span>
-                </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                © 2025 TrustFabric · <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
             </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <span>© 2024 TrustFabric. All rights reserved.</span>
-        <div class="footer-bottom-links">
-            <a href="/privacy-policy.html">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="/cookie-policy.html">Cookie Policy</a>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/trustfabricindia/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://www.trustfabric.in" class="social-link" aria-label="Twitter / X">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 </footer>
