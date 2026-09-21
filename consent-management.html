@@ -132,25 +132,35 @@
 
     /* ─── WHY TRUSTFABRIC ─── */
     .why { background: #fff; }
+    .cap-label { display: flex; align-items: center; justify-content: center; gap: 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #1B3A8C; text-transform: uppercase; margin-bottom: 20px; }
+    .cap-label::before, .cap-label::after { content: ''; width: 48px; height: 1.5px; background: #1B3A8C; border-radius: 1px; }
     .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .feat-card { padding: 28px; border: 1px solid #E2E8F0; border-radius: 16px; transition: box-shadow 0.2s, transform 0.2s; }
+    .feat-card { padding: 28px 28px 24px; border: 1px solid #E2E8F0; border-radius: 16px; background: #fff; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
     .feat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .feat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-    .feat-icon svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; }
-    .fi-red  { color: #E31E24; }
-    .fi-blue { color: #1B3A8C; }
-    .fi-green { color: #059669; }
-    .fi-purple { color: #7C3AED; }
-    .fi-orange { color: #D97706; }
-    .fi-pink { color: #DB2777; }
-    .fi-red { background: #FFF1F2; }
-    .fi-blue { background: #EEF2FF; }
-    .fi-green { background: #ECFDF5; }
-    .fi-purple { background: #F5F3FF; }
-    .fi-orange { background: #FFF7ED; }
-    .fi-pink { background: #FDF2F8; }
-    .feat-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .feat-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .feat-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; flex-shrink: 0; }
+    .feat-icon svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; }
+    .fi-red    { color: #E31E24;  background: #FFF1F2; }
+    .fi-blue   { color: #1B3A8C;  background: #EEF2FF; }
+    .fi-green  { color: #059669;  background: #ECFDF5; }
+    .fi-purple { color: #7C3AED;  background: #F5F3FF; }
+    .fi-orange { color: #D97706;  background: #FFF7ED; }
+    .fi-pink   { color: #DB2777;  background: #FDF2F8; }
+    .feat-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+    .feat-card.fc-red    h3 { color: #E31E24; }
+    .feat-card.fc-blue   h3 { color: #1B3A8C; }
+    .feat-card.fc-green  h3 { color: #059669; }
+    .feat-card.fc-purple h3 { color: #7C3AED; }
+    .feat-card.fc-orange h3 { color: #D97706; }
+    .feat-card.fc-pink   h3 { color: #DB2777; }
+    .feat-card p { font-size: 14px; color: var(--muted); line-height: 1.65; flex: 1; }
+    .feat-learn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 18px; text-decoration: none; transition: gap 0.2s; }
+    .feat-learn:hover { gap: 10px; }
+    .feat-card.fc-red    .feat-learn { color: #E31E24; }
+    .feat-card.fc-blue   .feat-learn { color: #1B3A8C; }
+    .feat-card.fc-green  .feat-learn { color: #059669; }
+    .feat-card.fc-purple .feat-learn { color: #7C3AED; }
+    .feat-card.fc-orange .feat-learn { color: #D97706; }
+    .feat-card.fc-pink   .feat-learn { color: #DB2777; }
     @media (max-width: 768px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 480px) { .feat-grid { grid-template-columns: 1fr; } }
 
@@ -365,40 +375,46 @@
 <section class="section why" id="why">
     <div class="s-inner">
         <div class="s-header">
-            <div class="s-badge">Why TrustFabric</div>
+            <div class="cap-label">Platform Capabilities</div>
             <h2 class="s-title">More than a cookie banner.<br>A complete consent infrastructure.</h2>
             <p class="s-sub">Most consent tools are built for GDPR. TrustFabric is purpose-built for India's DPDP Act 2023, helping you capture, manage, and operationalise consent across the entire data lifecycle.</p>
         </div>
         <div class="feat-grid">
-            <div class="feat-card">
-                <div class="feat-icon fi-red"><i data-lucide="file-check"></i></div>
+            <div class="feat-card fc-red">
+                <div class="feat-icon fi-red"><i data-lucide="layout-panel-left"></i></div>
                 <h3>Multi-Channel Consent</h3>
                 <p>Capture consent across web, WhatsApp, email, mobile apps and more — from a single unified platform.</p>
+                <a href="#" class="feat-learn">Learn more →</a>
             </div>
-            <div class="feat-card">
+            <div class="feat-card fc-blue">
                 <div class="feat-icon fi-blue"><i data-lucide="sliders-horizontal"></i></div>
                 <h3>Granular Preferences</h3>
                 <p>Let users choose what they consent to, with clear and simple purpose-specific options.</p>
+                <a href="#" class="feat-learn">Learn more →</a>
             </div>
-            <div class="feat-card">
+            <div class="feat-card fc-green">
                 <div class="feat-icon fi-green"><i data-lucide="user-check"></i></div>
                 <h3>Automated DSR Workflows</h3>
                 <p>Handle access, correction, and erasure requests efficiently within statutory timelines.</p>
+                <a href="#" class="feat-learn">Learn more →</a>
             </div>
-            <div class="feat-card">
+            <div class="feat-card fc-purple">
                 <div class="feat-icon fi-purple"><i data-lucide="clipboard-check"></i></div>
                 <h3>Audit-Ready Records</h3>
                 <p>Maintain tamper-proof logs for every consent interaction — ready for regulatory audits.</p>
+                <a href="#" class="feat-learn">Learn more →</a>
             </div>
-            <div class="feat-card">
+            <div class="feat-card fc-orange">
                 <div class="feat-icon fi-orange"><i data-lucide="chart-no-axes-combined"></i></div>
                 <h3>Real-Time Analytics</h3>
                 <p>Track consent rates, drop-offs, and user preferences with live dashboards and reports.</p>
+                <a href="#" class="feat-learn">Learn more →</a>
             </div>
-            <div class="feat-card">
+            <div class="feat-card fc-pink">
                 <div class="feat-icon fi-pink"><i data-lucide="plug-zap"></i></div>
                 <h3>Easy Integration</h3>
                 <p>Integrate with your existing tech stack in hours, not weeks, using our pre-built connectors and APIs.</p>
+                <a href="#" class="feat-learn">Learn more →</a>
             </div>
         </div>
     </div>
