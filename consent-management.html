@@ -97,7 +97,8 @@
     .play-dot::after { content: ''; border-style: solid; border-width: 4px 0 4px 7px; border-color: transparent transparent transparent #fff; margin-left: 1px; }
     .hero-trust { display: flex; gap: 28px; flex-wrap: wrap; }
     .ht-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
-    .ht-icon { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #CBD5E1; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+    .ht-icon { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #CBD5E1; display: flex; align-items: center; justify-content: center; }
+    .ht-icon i { width: 14px; height: 14px; stroke: var(--muted); }
     .hero-right { position: relative; align-self: flex-end; }
     .hero-screen { border-radius: 16px 16px 0 0; overflow: hidden; box-shadow: 0 -8px 48px rgba(30,58,140,0.16), 0 0 0 1px rgba(30,58,140,0.1); }
     .hero-screen img { width: 100%; display: block; }
@@ -111,7 +112,7 @@
     .cb-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.2); }
     .cb-channels { display: flex; gap: 36px; flex-wrap: wrap; }
     .cb-channel { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
-    .cb-channel-icon { font-size: 18px; }
+    .cb-channel i { width: 18px; height: 18px; stroke: rgba(255,255,255,0.8); flex-shrink: 0; }
 
     /* ─── SECTION COMMONS ─── */
     .section { padding: 88px 24px; }
@@ -127,7 +128,14 @@
     .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .feat-card { padding: 28px; border: 1px solid #E2E8F0; border-radius: 16px; transition: box-shadow 0.2s, transform 0.2s; }
     .feat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .feat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .feat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .feat-icon i { width: 22px; height: 22px; }
+    .fi-red i { stroke: #E31E24; }
+    .fi-blue i { stroke: #1B3A8C; }
+    .fi-green i { stroke: #059669; }
+    .fi-purple i { stroke: #7C3AED; }
+    .fi-orange i { stroke: #D97706; }
+    .fi-pink i { stroke: #DB2777; }
     .fi-red { background: #FFF1F2; }
     .fi-blue { background: #EEF2FF; }
     .fi-green { background: #ECFDF5; }
@@ -204,7 +212,8 @@
     .uc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .uc-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 28px 24px; transition: box-shadow 0.2s, transform 0.2s; }
     .uc-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .uc-icon { font-size: 28px; margin-bottom: 14px; }
+    .uc-icon { width: 44px; height: 44px; border-radius: 10px; background: #EEF2FF; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .uc-icon i { width: 22px; height: 22px; stroke: var(--blue); }
     .uc-card h4 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
     .uc-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
     @media (max-width: 768px) { .uc-grid { grid-template-columns: 1fr 1fr; } }
@@ -337,9 +346,9 @@
                 </a>
             </div>
             <div class="hero-trust">
-                <div class="ht-item"><span class="ht-icon">🛡</span> DPDP Act ready by design</div>
-                <div class="ht-item"><span class="ht-icon">&lt;/&gt;</span> Quick integration</div>
-                <div class="ht-item"><span class="ht-icon">📈</span> Scalable for enterprise</div>
+                <div class="ht-item"><span class="ht-icon"><i data-lucide="shield-check"></i></span> DPDP Act ready by design</div>
+                <div class="ht-item"><span class="ht-icon"><i data-lucide="code-2"></i></span> Quick integration</div>
+                <div class="ht-item"><span class="ht-icon"><i data-lucide="chart-no-axes-combined"></i></span> Scalable for enterprise</div>
             </div>
         </div>
         <div class="hero-right">
@@ -357,11 +366,11 @@
         <div class="cb-label">Works across your customer touchpoints</div>
         <div class="cb-divider"></div>
         <div class="cb-channels">
-            <div class="cb-channel"><span class="cb-channel-icon">🌐</span> Website</div>
-            <div class="cb-channel"><span class="cb-channel-icon">💬</span> WhatsApp</div>
-            <div class="cb-channel"><span class="cb-channel-icon">✉️</span> Email</div>
-            <div class="cb-channel"><span class="cb-channel-icon">📱</span> Mobile App</div>
-            <div class="cb-channel"><span class="cb-channel-icon">⚡</span> APIs</div>
+            <div class="cb-channel"><i data-lucide="globe"></i> Website</div>
+            <div class="cb-channel"><i data-lucide="message-circle"></i> WhatsApp</div>
+            <div class="cb-channel"><i data-lucide="mail"></i> Email</div>
+            <div class="cb-channel"><i data-lucide="smartphone"></i> Mobile App</div>
+            <div class="cb-channel"><i data-lucide="code-2"></i> APIs</div>
         </div>
     </div>
 </div>
@@ -376,32 +385,32 @@
         </div>
         <div class="feat-grid">
             <div class="feat-card">
-                <div class="feat-icon fi-red">📡</div>
+                <div class="feat-icon fi-red"><i data-lucide="file-check"></i></div>
                 <h3>Multi-Channel Consent</h3>
                 <p>Capture consent across web, WhatsApp, email, mobile apps and more — from a single unified platform.</p>
             </div>
             <div class="feat-card">
-                <div class="feat-icon fi-blue">🎛</div>
+                <div class="feat-icon fi-blue"><i data-lucide="sliders-horizontal"></i></div>
                 <h3>Granular Preferences</h3>
                 <p>Let users choose what they consent to, with clear and simple purpose-specific options.</p>
             </div>
             <div class="feat-card">
-                <div class="feat-icon fi-green">⚙️</div>
+                <div class="feat-icon fi-green"><i data-lucide="user-check"></i></div>
                 <h3>Automated DSR Workflows</h3>
                 <p>Handle access, correction, and erasure requests efficiently within statutory timelines.</p>
             </div>
             <div class="feat-card">
-                <div class="feat-icon fi-purple">🗂</div>
+                <div class="feat-icon fi-purple"><i data-lucide="clipboard-check"></i></div>
                 <h3>Audit-Ready Records</h3>
                 <p>Maintain tamper-proof logs for every consent interaction — ready for regulatory audits.</p>
             </div>
             <div class="feat-card">
-                <div class="feat-icon fi-orange">📊</div>
+                <div class="feat-icon fi-orange"><i data-lucide="chart-no-axes-combined"></i></div>
                 <h3>Real-Time Analytics</h3>
                 <p>Track consent rates, drop-offs, and user preferences with live dashboards and reports.</p>
             </div>
             <div class="feat-card">
-                <div class="feat-icon fi-pink">🔗</div>
+                <div class="feat-icon fi-pink"><i data-lucide="plug-zap"></i></div>
                 <h3>Easy Integration</h3>
                 <p>Integrate with your existing tech stack in hours, not weeks, using our pre-built connectors and APIs.</p>
             </div>
@@ -552,22 +561,22 @@
         </div>
         <div class="uc-grid">
             <div class="uc-card">
-                <div class="uc-icon">📣</div>
+                <div class="uc-icon"><i data-lucide="chart-no-axes-combined"></i></div>
                 <h4>Marketing &amp; Growth</h4>
                 <p>Collect consent for campaigns and personalise customer experiences — compliantly.</p>
             </div>
             <div class="uc-card">
-                <div class="uc-icon">💻</div>
+                <div class="uc-icon"><i data-lucide="code-2"></i></div>
                 <h4>Product &amp; SaaS</h4>
                 <p>Manage user consent across signups, feature usage and notification preferences.</p>
             </div>
             <div class="uc-card">
-                <div class="uc-icon">🏛</div>
+                <div class="uc-icon"><i data-lucide="badge-check"></i></div>
                 <h4>Regulated Industries</h4>
                 <p>Meet strict compliance requirements in BFSI, Healthcare and more with purpose-built workflows.</p>
             </div>
             <div class="uc-card">
-                <div class="uc-icon">🌏</div>
+                <div class="uc-icon"><i data-lucide="globe"></i></div>
                 <h4>Global Businesses</h4>
                 <p>Manage consent for Indian users with a platform built for local regulations and languages.</p>
             </div>
