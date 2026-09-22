@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://trustfabric.in/assets/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script defer src="https://trustfabric-server.onrender.com/sdk/consent.js?domain=trustfabric.in&org=69ce50640bc0f3a68915b256"></script>
     <script type="text/plain" data-cookie-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-N9MKEJ3825"></script>
@@ -30,32 +30,39 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
         --red: #E31E24;
-        --blue: #1B3A8C;
-        --dark: #0F172A;
-        --text: #1E293B;
-        --muted: #64748B;
-        --border: rgba(0,0,0,0.08);
-        --bg: #F8FAFC;
+        --ink: #0F0F0E;
+        --ink-2: #3D3D3B;
+        --muted: #7A7A76;
+        --ground: #FAFAF8;
+        --surface: #F4F3EF;
+        --border: #E4E2DC;
+        --white: #FFFFFF;
+        /* footer compat */
         --bg-primary: #FFFFFF;
         --bg-card: #FFFFFF;
         --accent-green: #E31E24;
         --text-primary: #1F2937;
         --text-secondary: #6B7280;
+        --border-footer: rgba(0,0,0,0.08);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    h1, h2, h3, h4 { line-height: 1.15; letter-spacing: -0.02em; }
+    body { font-family: 'Manrope', sans-serif; color: var(--ink); background: var(--ground); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Fraunces', serif; font-optical-sizing: auto; line-height: 1.1; }
+    h4, h5, label, .label { font-family: 'Manrope', sans-serif; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
     /* ─── NAVBAR ─── */
-    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: #fff; border-bottom: 1px solid var(--border); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: rgba(250,250,248,0.95); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
     .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
     .nav-logo-img { height: 88px; width: auto; margin-top: 12px; }
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; font-family: 'Manrope', sans-serif; }
+    .nav-links a:hover { color: var(--ink); }
     .nav-has-mega { position: relative; }
     .nav-has-mega > a { display: flex; align-items: center; gap: 5px; }
     .nav-has-mega > a::after { content: ''; display: block; width: 10px; height: 10px; background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: contain; margin-top: 1px; transition: transform 0.2s; }
@@ -63,203 +70,151 @@
     .mega-menu { position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%); width: 780px; background: #fff; border: 1px solid rgba(0,0,0,0.09); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08); padding: 32px 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 40px; opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(-8px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; z-index: 1000; }
     .mega-menu::before { content: ''; position: absolute; top: -6px; left: 50%; width: 12px; height: 12px; background: #fff; border-left: 1px solid rgba(0,0,0,0.09); border-top: 1px solid rgba(0,0,0,0.09); transform: translateX(-50%) rotate(45deg); }
     .nav-has-mega:hover .mega-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-    .mega-col-title { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin-bottom: 12px; }
+    .mega-col-title { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin-bottom: 12px; font-family: 'Manrope', sans-serif; }
     .mega-col-divider { height: 2px; background: linear-gradient(90deg, #00B894 0%, transparent 100%); border-radius: 1px; margin-bottom: 20px; }
     .mega-col ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
-    .mega-col ul li a { display: block; font-size: 13.5px; font-weight: 400; color: #334155; padding: 7px 0; transition: color 0.15s; line-height: 1.4; }
+    .mega-col ul li a { display: block; font-size: 13.5px; font-weight: 400; color: #334155; padding: 7px 0; transition: color 0.15s; line-height: 1.4; font-family: 'Manrope', sans-serif; }
     .mega-col ul li a:hover { color: #00B894; }
-    .mega-col-title-2 { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin: 24px 0 12px; }
+    .mega-col-title-2 { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2937; margin: 24px 0 12px; font-family: 'Manrope', sans-serif; }
     .nav-actions { display: flex; align-items: center; gap: 16px; }
-    .btn-nav { background: var(--red); color: #fff; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; transition: opacity 0.2s; }
+    .btn-nav { background: var(--red); color: #fff; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; transition: opacity 0.2s; font-family: 'Manrope', sans-serif; }
     .btn-nav:hover { opacity: 0.9; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(24px); padding: 24px; border-bottom: 1px solid var(--border); z-index: 999; flex-direction: column; }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(250,250,248,0.98); backdrop-filter: blur(24px); padding: 24px; border-bottom: 1px solid var(--border); z-index: 999; flex-direction: column; }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { display: block; padding: 12px 0; font-size: 15px; font-weight: 500; color: var(--text); border-bottom: 1px solid var(--border); }
+    .mobile-menu a { display: block; padding: 12px 0; font-size: 15px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--border); }
     .mobile-menu-actions { padding-top: 16px; }
     @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } }
 
-    /* ─── BUTTONS ─── */
-    .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(227,30,36,0.3); }
-    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--text); padding: 11px 22px; border-radius: 8px; font-size: 15px; font-weight: 600; border: 1.5px solid #CBD5E1; transition: border-color 0.2s; }
-    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); padding: 11px 22px; border-radius: 8px; font-size: 15px; font-weight: 600; border: 1.5px solid #CBD5E1; transition: border-color 0.2s; }
-    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
-
     /* ─── HERO ─── */
-    .hero { padding: 100px 24px 60px; background: linear-gradient(135deg, #EEF2FF 0%, #F8FAFF 50%, #fff 100%); overflow: visible; min-height: 640px; }
-    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .hero-badge { display: inline-flex; align-items: center; background: #DBEAFE; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 20px; }
-    .hero h1 { font-size: clamp(32px, 3.5vw, 52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--dark); margin-bottom: 20px; }
-    .hero h1 span { color: var(--red); }
-    .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 460px; margin-bottom: 32px; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
-    .play-dot { width: 22px; height: 22px; background: var(--blue); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .play-dot::after { content: ''; border-style: solid; border-width: 4px 0 4px 7px; border-color: transparent transparent transparent #fff; margin-left: 1px; }
-    .hero-trust { display: flex; gap: 28px; flex-wrap: wrap; }
-    .ht-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
-    .ht-icon { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #CBD5E1; display: flex; align-items: center; justify-content: center; color: var(--muted); }
-    .ht-icon svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; }
-    .hero-right { position: relative; align-self: flex-end; }
-    .hero-screen { border-radius: 16px; overflow: hidden; box-shadow: 0 16px 64px rgba(30,58,140,0.18), 0 0 0 1px rgba(30,58,140,0.1); }
-    .hero-screen img { width: 100%; display: block; }
-    .hero-script { position: absolute; bottom: 20px; right: -20px; font-family: 'Segoe Script', cursive; font-size: 14px; color: var(--blue); opacity: 0.7; transform: rotate(-5deg); white-space: nowrap; }
-    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } .hero-right { display: none; } }
+    .hero { padding: 120px 32px 80px; background: var(--ground); }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1.5px; background: var(--red); }
+    .hero h1 { font-size: clamp(40px, 4.5vw, 68px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; color: var(--ink); margin-bottom: 24px; }
+    .hero h1 em { font-style: italic; color: var(--red); }
+    .hero-sub { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 460px; margin-bottom: 40px; font-weight: 400; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: #fff; padding: 13px 26px; border-radius: 6px; font-size: 14px; font-weight: 700; transition: transform 0.2s, opacity 0.2s; letter-spacing: 0.01em; }
+    .btn-primary:hover { transform: translateY(-1px); opacity: 0.88; }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: 600; border: 1.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+    .hero-trust { display: flex; gap: 24px; margin-top: 40px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+    .trust-item svg { color: var(--red); flex-shrink: 0; }
+    .hero-right { position: relative; }
+    .hero-screen { border-radius: 12px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.14), 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+    .hero-screen img { width: 100%; }
+    @media (max-width: 900px) {
+        .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+        .hero-right { display: none; }
+    }
 
-    /* ─── CHANNEL BAR ─── */
-    .channel-bar { background: #1B3A8C; padding: 20px 24px; }
-    .channel-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
-    .cb-label { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); white-space: nowrap; }
-    .cb-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.2); }
-    .cb-channels { display: flex; gap: 36px; flex-wrap: wrap; }
-    .cb-channel { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
-    .cb-channel { color: rgba(255,255,255,0.85); }
-    .cb-channel svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
+    /* ─── SECTION SHARED ─── */
+    .section { padding: 96px 32px; }
+    .sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .sec-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--red); }
+    .sec-title { font-size: clamp(30px, 3.5vw, 48px); font-weight: 700; letter-spacing: -0.025em; color: var(--ink); line-height: 1.1; }
+    .sec-sub { font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 560px; margin-top: 16px; }
 
-    /* ─── SECTION COMMONS ─── */
-    .section { padding: 88px 24px; }
-    .s-inner { max-width: 1200px; margin: 0 auto; }
-    .s-badge { display: inline-flex; background: #EEF2FF; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 18px; }
-    .s-title { font-size: clamp(26px, 3vw, 40px); font-weight: 800; letter-spacing: -0.025em; color: var(--dark); line-height: 1.15; margin-bottom: 14px; }
-    .s-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 620px; }
-    .s-header { text-align: center; margin-bottom: 56px; }
-    .s-header .s-sub { margin: 0 auto; }
+    /* ─── CAPABILITIES (numbered rows, not cards) ─── */
+    .caps { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .caps-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 64px; }
+    .caps-header-right .sec-sub { max-width: 420px; }
+    .caps-list { list-style: none; }
+    .cap-row { display: grid; grid-template-columns: 56px 1fr; gap: 40px; align-items: start; padding: 32px 0; border-top: 1px solid var(--border); transition: opacity 0.2s; }
+    .cap-row:last-child { border-bottom: 1px solid var(--border); }
+    .cap-row:hover { opacity: 0.7; }
+    .cap-num { font-family: 'Fraunces', serif; font-size: 13px; font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 4px; }
+    .cap-body { display: flex; flex-direction: column; gap: 6px; }
+    .cap-name { font-size: 19px; font-weight: 700; color: var(--ink); font-family: 'Manrope', sans-serif; letter-spacing: -0.01em; }
+    .cap-desc { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 600px; }
+    @media (max-width: 900px) {
+        .caps-header { grid-template-columns: 1fr; gap: 24px; }
+        .cap-row { grid-template-columns: 40px 1fr; gap: 20px; }
+    }
+    @media (max-width: 640px) { .section { padding: 72px 20px; } }
 
-    /* ─── WHY TRUSTFABRIC ─── */
-    .why { background: #fff; }
-    .cap-label { display: flex; align-items: center; justify-content: center; gap: 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #1B3A8C; text-transform: uppercase; margin-bottom: 20px; }
-    .cap-label::before, .cap-label::after { content: ''; width: 48px; height: 1.5px; background: #1B3A8C; border-radius: 1px; }
-    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .feat-card { padding: 28px 28px 24px; border: 1px solid #E2E8F0; border-radius: 16px; background: #fff; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
-    .feat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .feat-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; flex-shrink: 0; }
-    .feat-icon svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; }
-    .fi-red    { color: #E31E24;  background: #FFF1F2; }
-    .fi-blue   { color: #1B3A8C;  background: #EEF2FF; }
-    .fi-green  { color: #059669;  background: #ECFDF5; }
-    .fi-purple { color: #7C3AED;  background: #F5F3FF; }
-    .fi-orange { color: #D97706;  background: #FFF7ED; }
-    .fi-pink   { color: #DB2777;  background: #FDF2F8; }
-    .feat-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 10px; }
-    .feat-card.fc-red    h3 { color: #E31E24; }
-    .feat-card.fc-blue   h3 { color: #1B3A8C; }
-    .feat-card.fc-green  h3 { color: #059669; }
-    .feat-card.fc-purple h3 { color: #7C3AED; }
-    .feat-card.fc-orange h3 { color: #D97706; }
-    .feat-card.fc-pink   h3 { color: #DB2777; }
-    .feat-card p { font-size: 14px; color: var(--muted); line-height: 1.65; flex: 1; }
-    .feat-learn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 18px; text-decoration: none; transition: gap 0.2s; }
-    .feat-learn:hover { gap: 10px; }
-    .feat-card.fc-red    .feat-learn { color: #E31E24; }
-    .feat-card.fc-blue   .feat-learn { color: #1B3A8C; }
-    .feat-card.fc-green  .feat-learn { color: #059669; }
-    .feat-card.fc-purple .feat-learn { color: #7C3AED; }
-    .feat-card.fc-orange .feat-learn { color: #D97706; }
-    .feat-card.fc-pink   .feat-learn { color: #DB2777; }
-    @media (max-width: 768px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .feat-grid { grid-template-columns: 1fr; } }
-
-    /* ─── CLOSER LOOK (dark) ─── */
-    .closer { background: #0F172A; color: #fff; }
+    /* ─── CLOSER LOOK ─── */
+    .closer { background: #0F0F0E; color: #fff; }
     .closer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .closer .s-badge { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-    .closer .s-title { color: #fff; }
-    .closer-sub { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 460px; margin-bottom: 32px; }
-    .closer-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-    .closer-list li { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.85); }
-    .cl-check { width: 24px; height: 24px; border-radius: 50%; background: #1D4ED8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; flex-shrink: 0; }
-    .btn-closer { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 700; border: 1.5px solid rgba(255,255,255,0.35); transition: border-color 0.2s, background 0.2s; }
-    .btn-closer:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
-    .closer-screen { border-radius: 14px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08); }
-    .closer-screen img { width: 100%; display: block; }
-    @media (max-width: 900px) { .closer-inner { grid-template-columns: 1fr; } }
+    .closer .sec-label { color: #E31E24; }
+    .closer .sec-label::after { background: #E31E24; }
+    .closer .sec-title { color: #fff; }
+    .closer-sub { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-top: 16px; margin-bottom: 36px; max-width: 440px; }
+    .closer-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+    .closer-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .closer-list li::before { content: ''; display: block; width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='9' r='9' fill='%23E31E24' fill-opacity='0.15'/%3E%3Cpath d='M5 9l3 3 5-5' stroke='%23E31E24' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: contain; }
+    .closer-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: border-color 0.2s; }
+    .closer-link:hover { border-color: var(--red); color: var(--red); }
+    .closer-screen { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 32px 64px rgba(0,0,0,0.4); }
+    @media (max-width: 900px) { .closer-inner { grid-template-columns: 1fr; gap: 48px; } }
 
-    /* ─── PRIVACY BY DESIGN ─── */
-    .pbd { background: var(--bg); }
-    .pbd-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .consent-builder { background: #fff; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #E2E8F0; }
-    .cb-header { background: #F8FAFC; border-bottom: 1px solid #E2E8F0; padding: 14px 20px; display: flex; align-items: center; gap: 8px; }
-    .cb-dots { display: flex; gap: 6px; }
-    .cb-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .cb-dot.r { background: #FC5F57; }
-    .cb-dot.y { background: #FDBC2C; }
-    .cb-dot.g { background: #33C748; }
-    .cb-title { font-size: 13px; font-weight: 600; color: var(--muted); margin-left: 8px; }
-    .cb-body { display: grid; grid-template-columns: 180px 1fr; }
-    .cb-steps { padding: 20px 0; border-right: 1px solid #E2E8F0; }
-    .cb-step { display: flex; align-items: center; gap: 12px; padding: 12px 20px; cursor: pointer; }
-    .cb-step-num { width: 24px; height: 24px; border-radius: 50%; background: #E2E8F0; color: var(--muted); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .cb-step.active .cb-step-num { background: var(--blue); color: #fff; }
-    .cb-step-label { font-size: 13px; font-weight: 500; color: var(--muted); }
-    .cb-step.active .cb-step-label { color: var(--blue); font-weight: 700; }
-    .cb-step-sub { font-size: 11px; color: #94A3B8; }
-    .cb-content { padding: 20px; }
-    .cb-content-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-    .cb-content-sub { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
-    .cb-purpose { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #F1F5F9; }
-    .cb-purpose:last-of-type { border-bottom: none; }
-    .cb-check { width: 16px; height: 16px; border-radius: 4px; background: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 10px; color: #fff; }
-    .cb-check.unchecked { background: #E2E8F0; }
-    .cb-purpose-title { font-size: 12px; font-weight: 600; color: var(--dark); }
-    .cb-purpose-desc { font-size: 11px; color: var(--muted); }
-    .cb-footer { display: flex; justify-content: space-between; padding: 14px 20px; border-top: 1px solid #E2E8F0; background: #F8FAFC; }
-    .cb-btn-back { font-size: 12px; font-weight: 600; color: var(--muted); padding: 7px 16px; border: 1px solid #CBD5E1; border-radius: 6px; background: #fff; cursor: pointer; }
-    .cb-btn-next { font-size: 12px; font-weight: 700; color: #fff; padding: 7px 16px; border-radius: 6px; background: var(--blue); cursor: pointer; }
-    .pbd-text .s-badge { display: inline-flex; }
-    .pbd-checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 24px 0 28px; }
-    .pbd-checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text); }
-    .pbd-check { width: 20px; height: 20px; border-radius: 50%; background: #DBEAFE; color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
-    .link-learn { font-size: 14px; font-weight: 700; color: var(--red); display: inline-flex; align-items: center; gap: 4px; }
-    @media (max-width: 900px) { .pbd-inner { grid-template-columns: 1fr; } }
+    /* ─── HOW IT WORKS (replaces Privacy by Design) ─── */
+    .hiw { background: var(--surface); }
+    .hiw-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .hiw-steps { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+    .hiw-step { display: grid; grid-template-columns: 32px 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--border); }
+    .hiw-step:last-child { border-bottom: 1px solid var(--border); }
+    .hiw-step-num { font-family: 'Fraunces', serif; font-size: 13px; color: var(--red); font-weight: 700; margin-top: 2px; }
+    .hiw-step-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .hiw-step-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .hiw-right { position: sticky; top: 100px; }
+    .hiw-screenshot { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+    .hiw-tag { display: inline-flex; align-items: center; gap: 8px; background: #FFF1F2; color: var(--red); font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
+    @media (max-width: 900px) { .hiw-inner { grid-template-columns: 1fr; } .hiw-right { position: static; } }
+
+    /* ─── STATS BAND ─── */
+    .stats { background: var(--ink); color: #fff; padding: 64px 32px; }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Fraunces', serif; font-size: clamp(36px, 4vw, 54px); font-weight: 700; color: #fff; line-height: 1; margin-bottom: 8px; }
+    .stat-num span { color: var(--red); }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 500; letter-spacing: 0.04em; }
+    @media (max-width: 768px) { .stats-inner { grid-template-columns: 1fr 1fr; gap: 32px; } }
 
     /* ─── INTEGRATIONS ─── */
-    .integrations { background: #fff; }
-    .int-logos { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; margin-top: 48px; }
-    .int-logo { font-size: 16px; font-weight: 800; color: #94A3B8; transition: color 0.2s; letter-spacing: -0.02em; }
-    .int-logo:hover { color: var(--text); }
-    .int-link { display: block; text-align: center; margin-top: 36px; font-size: 14px; font-weight: 700; color: var(--blue); }
-
-    /* ─── USE CASES ─── */
-    .usecases { background: var(--bg); }
-    .uc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .uc-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 28px 24px; transition: box-shadow 0.2s, transform 0.2s; }
-    .uc-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .uc-icon { width: 44px; height: 44px; border-radius: 10px; background: #EEF2FF; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; color: var(--blue); }
-    .uc-icon svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; }
-    .uc-card h4 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .uc-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-    @media (max-width: 768px) { .uc-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .uc-grid { grid-template-columns: 1fr; } }
+    .integrations { background: var(--white); }
+    .int-header { max-width: 560px; margin-bottom: 56px; }
+    .int-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .int-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: center; height: 72px; font-size: 15px; font-weight: 700; transition: border-color 0.2s, box-shadow 0.2s; }
+    .int-card:hover { border-color: var(--ink); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .int-footer { margin-top: 32px; display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--red); }
+    .int-footer:hover { text-decoration: underline; }
+    @media (max-width: 640px) { .int-grid { grid-template-columns: 1fr 1fr; } }
 
     /* ─── CTA ─── */
-    .cta { background: #FFF1F2; padding: 80px 24px; }
-    .cta-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
-    .cta-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
-    .cta h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 12px; }
-    .cta p { font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 440px; }
-    .cta-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
-    @media (max-width: 768px) { .cta-inner { grid-template-columns: 1fr; } .cta-actions { flex-wrap: wrap; } }
+    .cta-section { background: var(--ground); border-top: 1px solid var(--border); padding: 100px 32px; }
+    .cta-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; }
+    .cta-inner h2 { font-size: clamp(32px, 3.5vw, 52px); font-weight: 700; letter-spacing: -0.025em; color: var(--ink); line-height: 1.1; margin-bottom: 12px; }
+    .cta-inner h2 em { font-style: italic; color: var(--red); }
+    .cta-inner p { font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.65; }
+    .cta-buttons { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; white-space: nowrap; }
+    .btn-red { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: #fff; padding: 14px 28px; border-radius: 6px; font-size: 15px; font-weight: 700; transition: opacity 0.2s, transform 0.2s; }
+    .btn-red:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-plain { font-size: 14px; font-weight: 600; color: var(--muted); transition: color 0.2s; }
+    .btn-plain:hover { color: var(--ink); }
+    @media (max-width: 768px) { .cta-inner { grid-template-columns: 1fr; gap: 40px; } .cta-buttons { align-items: flex-start; } }
 
     /* ─── FOOTER ─── */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .footer { background: var(--bg-primary); border-top: 1px solid var(--border); padding: 64px 0 0; }
+    .footer { background: var(--bg-primary); border-top: 1px solid var(--border-footer); padding: 64px 0 0; }
     .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 56px; align-items: start; }
     .footer-brand p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 16px; max-width: 240px; }
     .footer-col { padding-top: 38px; }
-    .footer-col h4 { font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-col h4 { font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; font-family: 'Manrope', sans-serif; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .footer-col ul li a { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul li a { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; font-family: 'Manrope', sans-serif; }
     .footer-col ul li a:hover { color: var(--text-primary); }
-    .footer-bottom { border-top: 1px solid var(--border); padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
-    .footer-copy { font-size: 13px; color: var(--text-secondary); }
+    .footer-bottom { border-top: 1px solid var(--border-footer); padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
+    .footer-copy { font-size: 13px; color: var(--text-secondary); font-family: 'Manrope', sans-serif; }
     .footer-copy a { color: var(--accent-green); text-decoration: none; }
     .social-links { display: flex; gap: 12px; }
-    .social-link { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, border-color 0.2s; }
+    .social-link { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid var(--border-footer); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, border-color 0.2s; }
     .social-link:hover { color: var(--text-primary); border-color: rgba(0,0,0,0.15); }
     @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } }
     @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } .footer-bottom { flex-direction: column; gap: 16px; text-align: center; } }
@@ -269,24 +224,22 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar" id="navbar">
+<nav class="navbar">
     <div class="navbar-inner">
         <a href="https://www.trustfabric.in" class="nav-logo">
             <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
         </a>
         <ul class="nav-links">
             <li class="nav-has-mega">
-                <a href="#platform">Product</a>
+                <a href="#">Product</a>
                 <div class="mega-menu">
                     <div class="mega-col">
                         <div class="mega-col-title">Consent</div>
                         <div class="mega-col-divider"></div>
                         <ul>
-                            <li><a href="/consent-management.html">Consent Management</a></li>
+                            <li><a href="/consent-management">Consent Management Platform</a></li>
                             <li><a href="#platform">Cookie Consent SDK</a></li>
-                            <li><a href="#platform">Preference Centre</a></li>
                             <li><a href="#platform">Consent Records &amp; Audit Trail</a></li>
-                            <li><a href="#platform">Withdrawal Management</a></li>
                         </ul>
                     </div>
                     <div class="mega-col">
@@ -296,49 +249,78 @@
                             <li><a href="#platform">ROPA Registry</a></li>
                             <li><a href="#platform">DSR Management</a></li>
                             <li><a href="#platform">Breach Notification</a></li>
-                            <li><a href="#platform">Policy &amp; Notice Management</a></li>
-                            <li><a href="#platform">DPDP Act Readiness</a></li>
+                        </ul>
+                        <div class="mega-col-title-2">Governance</div>
+                        <ul>
+                            <li><a href="#platform">PII Dictionary</a></li>
+                            <li><a href="#platform">Data Discovery</a></li>
                         </ul>
                     </div>
                     <div class="mega-col">
-                        <div class="mega-col-title">Data Governance</div>
+                        <div class="mega-col-title">Services</div>
                         <div class="mega-col-divider"></div>
                         <ul>
-                            <li><a href="#platform">PII Dictionary</a></li>
-                            <li><a href="#platform">Data Discovery &amp; Classification</a></li>
-                            <li><a href="#platform">Analytics Dashboard</a></li>
-                        </ul>
-                        <div class="mega-col-title-2">Integrations</div>
-                        <div class="mega-col-divider"></div>
-                        <ul>
-                            <li><a href="#platform">CRM Connectors</a></li>
-                            <li><a href="#platform">Messaging Platforms</a></li>
+                            <li><a href="/dpo-as-a-service">DPO as a Service</a></li>
+                            <li><a href="#platform">Privacy Impact Assessment</a></li>
+                            <li><a href="#platform">DPDP Readiness Audit</a></li>
                         </ul>
                     </div>
                 </div>
             </li>
-            <li><a href="/#dpdp">Solutions</a></li>
-            <li><a href="/#resources">Resources</a></li>
+            <li class="nav-has-mega">
+                <a href="#">Solutions</a>
+                <div class="mega-menu">
+                    <div class="mega-col">
+                        <div class="mega-col-title">By Industry</div>
+                        <div class="mega-col-divider"></div>
+                        <ul>
+                            <li><a href="#dpdp">BFSI</a></li>
+                            <li><a href="#dpdp">Healthcare</a></li>
+                            <li><a href="#dpdp">E-commerce</a></li>
+                            <li><a href="#dpdp">SaaS</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col">
+                        <div class="mega-col-title">By Use Case</div>
+                        <div class="mega-col-divider"></div>
+                        <ul>
+                            <li><a href="#dpdp">Marketing &amp; Growth</a></li>
+                            <li><a href="#dpdp">Product Teams</a></li>
+                            <li><a href="#dpdp">Enterprise</a></li>
+                            <li><a href="#dpdp">Startups</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col">
+                        <div class="mega-col-title">Resources</div>
+                        <div class="mega-col-divider"></div>
+                        <ul>
+                            <li><a href="#">DPDP Act Guide</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                            <li><a href="/careers">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
             <li><a href="/#pricing">Pricing</a></li>
-            <li><a href="/dpo-as-a-service.html">Company</a></li>
+            <li><a href="/dpo-as-a-service">DPO as a Service</a></li>
+            <li><a href="/careers">Careers</a></li>
         </ul>
         <div class="nav-actions">
-            <a href="/get-started" class="btn-nav">Book a Demo →</a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
+            <a href="/get-started" class="btn-nav" style="display:none;" id="nav-cta-desktop">Request Demo</a>
         </div>
+        <a href="/get-started" class="btn-nav" id="nav-cta">Request Demo</a>
     </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-    <a href="/#platform">Product</a>
-    <a href="/#dpdp">Solutions</a>
-    <a href="/#resources">Resources</a>
+    <a href="/consent-management">Consent Management</a>
+    <a href="/dpo-as-a-service">DPO as a Service</a>
     <a href="/#pricing">Pricing</a>
-    <a href="/dpo-as-a-service.html">DPO as a Service</a>
-    <a href="/careers.html">Careers</a>
+    <a href="/careers">Careers</a>
     <div class="mobile-menu-actions">
-        <a href="/get-started" class="btn-primary">Book a Demo →</a>
+        <a href="/get-started" class="btn-primary" style="justify-content:center;">Request Demo</a>
     </div>
 </div>
 
@@ -346,20 +328,26 @@
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-left">
-            <div class="hero-badge">Consent Management Platform</div>
-            <h1>Get Consent Right.<br><span>Stay DPDP Compliant.</span></h1>
-            <p class="hero-sub">A powerful, enterprise-grade Consent Management Platform designed for Indian businesses. Capture, manage and orchestrate user consent across web, WhatsApp, email and apps — with built-in compliance for the DPDP Act 2023.</p>
-            <div class="hero-actions">
-                <a href="/get-started" class="btn-primary">Book a Demo →</a>
-                <a href="#why" class="btn-ghost">
-                    <span class="play-dot"></span>
-                    Watch Product Tour
-                </a>
+            <div class="hero-eyebrow">Consent Management Platform</div>
+            <h1>Get consent right.<br>Stay <em>DPDP compliant.</em></h1>
+            <p class="hero-sub">Most consent tools are built for GDPR. TrustFabric is purpose-built for India — capturing, managing and operationalising consent across the entire data lifecycle.</p>
+            <div class="hero-ctas">
+                <a href="/get-started" class="btn-primary">Book a Demo &nbsp;→</a>
+                <a href="mailto:info@trustfabric.in" class="btn-ghost">Talk to Our Team</a>
             </div>
             <div class="hero-trust">
-                <div class="ht-item"><span class="ht-icon"><i data-lucide="shield-check"></i></span> DPDP Act ready by design</div>
-                <div class="ht-item"><span class="ht-icon"><i data-lucide="code-2"></i></span> Quick integration</div>
-                <div class="ht-item"><span class="ht-icon"><i data-lucide="chart-no-axes-combined"></i></span> Scalable for enterprise</div>
+                <div class="trust-item">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    DPDP Act ready
+                </div>
+                <div class="trust-item">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Quick integration
+                </div>
+                <div class="trust-item">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Enterprise scale
+                </div>
             </div>
         </div>
         <div class="hero-right">
@@ -370,72 +358,103 @@
     </div>
 </section>
 
-
-<!-- WHY TRUSTFABRIC -->
-<section class="section why" id="why">
-    <div class="s-inner">
-        <div class="s-header">
-            <div class="cap-label">Platform Capabilities</div>
-            <h2 class="s-title">More than a cookie banner.<br>A complete consent infrastructure.</h2>
-            <p class="s-sub">Most consent tools are built for GDPR. TrustFabric is purpose-built for India's DPDP Act 2023, helping you capture, manage, and operationalise consent across the entire data lifecycle.</p>
-        </div>
-        <div class="feat-grid">
-            <div class="feat-card fc-red">
-                <div class="feat-icon fi-red"><i data-lucide="layout-panel-left"></i></div>
-                <h3>Multi-Channel Consent</h3>
-                <p>Capture consent across web, WhatsApp, email, mobile apps and more — from a single unified platform.</p>
-                <a href="#" class="feat-learn">Learn more →</a>
+<!-- CAPABILITIES — numbered rows, not a card grid -->
+<section class="section caps" id="platform">
+    <div class="wrap">
+        <div class="caps-header">
+            <div>
+                <div class="sec-label">Platform Capabilities</div>
+                <h2 class="sec-title">More than a<br>cookie banner.</h2>
             </div>
-            <div class="feat-card fc-blue">
-                <div class="feat-icon fi-blue"><i data-lucide="sliders-horizontal"></i></div>
-                <h3>Granular Preferences</h3>
-                <p>Let users choose what they consent to, with clear and simple purpose-specific options.</p>
-                <a href="#" class="feat-learn">Learn more →</a>
-            </div>
-            <div class="feat-card fc-green">
-                <div class="feat-icon fi-green"><i data-lucide="user-check"></i></div>
-                <h3>Automated DSR Workflows</h3>
-                <p>Handle access, correction, and erasure requests efficiently within statutory timelines.</p>
-                <a href="#" class="feat-learn">Learn more →</a>
-            </div>
-            <div class="feat-card fc-purple">
-                <div class="feat-icon fi-purple"><i data-lucide="clipboard-check"></i></div>
-                <h3>Audit-Ready Records</h3>
-                <p>Maintain tamper-proof logs for every consent interaction — ready for regulatory audits.</p>
-                <a href="#" class="feat-learn">Learn more →</a>
-            </div>
-            <div class="feat-card fc-orange">
-                <div class="feat-icon fi-orange"><i data-lucide="chart-no-axes-combined"></i></div>
-                <h3>Real-Time Analytics</h3>
-                <p>Track consent rates, drop-offs, and user preferences with live dashboards and reports.</p>
-                <a href="#" class="feat-learn">Learn more →</a>
-            </div>
-            <div class="feat-card fc-pink">
-                <div class="feat-icon fi-pink"><i data-lucide="plug-zap"></i></div>
-                <h3>Easy Integration</h3>
-                <p>Integrate with your existing tech stack in hours, not weeks, using our pre-built connectors and APIs.</p>
-                <a href="#" class="feat-learn">Learn more →</a>
+            <div class="caps-header-right">
+                <p class="sec-sub">A complete consent infrastructure — purpose-built for India's DPDP Act 2023. Capture, manage, and operationalise consent across every touchpoint.</p>
             </div>
         </div>
+        <ul class="caps-list">
+            <li class="cap-row">
+                <span class="cap-num">01</span>
+                <div class="cap-body">
+                    <div class="cap-name">Multi-Channel Consent</div>
+                    <div class="cap-desc">Capture consent across web, WhatsApp, email, mobile apps and more — from a single unified platform with consistent branding.</div>
+                </div>
+            </li>
+            <li class="cap-row">
+                <span class="cap-num">02</span>
+                <div class="cap-body">
+                    <div class="cap-name">Granular Preferences</div>
+                    <div class="cap-desc">Let users choose exactly what they consent to — with clear, purpose-specific options and an easy withdrawal mechanism.</div>
+                </div>
+            </li>
+            <li class="cap-row">
+                <span class="cap-num">03</span>
+                <div class="cap-body">
+                    <div class="cap-name">Automated DSR Workflows</div>
+                    <div class="cap-desc">Handle access, correction and erasure requests efficiently — with structured workflows that meet statutory timelines.</div>
+                </div>
+            </li>
+            <li class="cap-row">
+                <span class="cap-num">04</span>
+                <div class="cap-body">
+                    <div class="cap-name">Audit-Ready Records</div>
+                    <div class="cap-desc">Maintain tamper-proof logs for every consent event — exportable as CSV and ready for regulatory audit at any moment.</div>
+                </div>
+            </li>
+            <li class="cap-row">
+                <span class="cap-num">05</span>
+                <div class="cap-body">
+                    <div class="cap-name">Real-Time Analytics</div>
+                    <div class="cap-desc">Track consent rates, drop-offs and user preferences across channels with live dashboards and exportable reports.</div>
+                </div>
+            </li>
+            <li class="cap-row">
+                <span class="cap-num">06</span>
+                <div class="cap-body">
+                    <div class="cap-name">Easy Integration</div>
+                    <div class="cap-desc">Connect to your existing CRM, marketing and analytics stack in hours — not weeks — with our pre-built connectors and REST API.</div>
+                </div>
+            </li>
+        </ul>
     </div>
 </section>
 
+<!-- STATS BAND -->
+<div class="stats">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-num">10<span>k+</span></div>
+            <div class="stat-label">Consent records managed</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">6<span>+</span></div>
+            <div class="stat-label">Channels supported</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">99<span>%</span></div>
+            <div class="stat-label">Uptime SLA</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">&lt;<span>2h</span></div>
+            <div class="stat-label">Average integration time</div>
+        </div>
+    </div>
+</div>
+
 <!-- CLOSER LOOK -->
 <section class="section closer">
-    <div class="s-inner">
+    <div class="wrap">
         <div class="closer-inner">
             <div>
-                <div class="s-badge">A Closer Look at the Platform</div>
-                <h2 class="s-title" style="margin-bottom:20px;">Consent management,<br>without the complexity.</h2>
-                <p class="closer-sub">A powerful, flexible, and developer-friendly platform designed for modern Indian enterprises.</p>
+                <div class="sec-label">A Closer Look</div>
+                <h2 class="sec-title" style="color:#fff;">Consent management,<br>without the complexity.</h2>
+                <p class="closer-sub">A powerful, flexible and developer-friendly platform — designed for modern Indian enterprises that can't afford to get consent wrong.</p>
                 <ul class="closer-list">
-                    <li><span class="cl-check">✓</span> Multi-channel consent collection via Email, SMS &amp; WhatsApp</li>
-                    <li><span class="cl-check">✓</span> Purpose-based consent management with expiry controls</li>
-                    <li><span class="cl-check">✓</span> Real-time consent preferences and revocation</li>
-                    <li><span class="cl-check">✓</span> Bulk send with personalised templates</li>
-                    <li><span class="cl-check">✓</span> Audit-ready records exportable as CSV</li>
+                    <li>Multi-channel consent collection via Email, SMS &amp; WhatsApp</li>
+                    <li>Purpose-based consent with configurable expiry controls</li>
+                    <li>Real-time preference centre and revocation flows</li>
+                    <li>Bulk send with personalised, multilingual templates</li>
+                    <li>Audit-ready records exportable as CSV or JSON</li>
                 </ul>
-                <a href="/get-started" class="btn-closer">See It In Action →</a>
+                <a href="/get-started" class="closer-link">See it in action &nbsp;→</a>
             </div>
             <div class="closer-screen">
                 <img src="/assets/cm-consent-requests.png" alt="TrustFabric Consent Requests platform">
@@ -444,88 +463,52 @@
     </div>
 </section>
 
-<!-- PRIVACY BY DESIGN -->
-<section class="section pbd">
-    <div class="s-inner">
-        <div class="pbd-inner">
-            <!-- Left: Consent Notice Builder mockup -->
-            <div class="consent-builder">
-                <div class="cb-header">
-                    <div class="cb-dots">
-                        <div class="cb-dot r"></div>
-                        <div class="cb-dot y"></div>
-                        <div class="cb-dot g"></div>
-                    </div>
-                    <div class="cb-title">Create Consent Notice</div>
-                </div>
-                <div class="cb-body">
-                    <div class="cb-steps">
-                        <div class="cb-step active">
-                            <div class="cb-step-num">1</div>
-                            <div><div class="cb-step-label">Details</div><div class="cb-step-sub">Basic information</div></div>
-                        </div>
-                        <div class="cb-step active">
-                            <div class="cb-step-num">2</div>
-                            <div><div class="cb-step-label">Purposes</div><div class="cb-step-sub">Select purposes</div></div>
-                        </div>
-                        <div class="cb-step">
-                            <div class="cb-step-num">3</div>
-                            <div><div class="cb-step-label">Channels</div><div class="cb-step-sub">Choose channels</div></div>
-                        </div>
-                        <div class="cb-step">
-                            <div class="cb-step-num">4</div>
-                            <div><div class="cb-step-label">Design</div><div class="cb-step-sub">Customise appearance</div></div>
-                        </div>
-                        <div class="cb-step">
-                            <div class="cb-step-num">5</div>
-                            <div><div class="cb-step-label">Review</div><div class="cb-step-sub">Verify and publish</div></div>
+<!-- HOW IT WORKS / PRIVACY BY DESIGN -->
+<section class="section hiw">
+    <div class="wrap">
+        <div class="hiw-inner">
+            <div>
+                <div class="sec-label">Built for DPDP</div>
+                <h2 class="sec-title">Privacy by design.<br>Compliance by default.</h2>
+                <div class="hiw-steps">
+                    <div class="hiw-step">
+                        <div class="hiw-step-num">01</div>
+                        <div>
+                            <div class="hiw-step-title">Clear &amp; informed consent</div>
+                            <div class="hiw-step-desc">Notices are plain-language, purpose-specific and presented in the user's preferred language — meeting DPDP's informed consent standard.</div>
                         </div>
                     </div>
-                    <div class="cb-content">
-                        <div class="cb-content-title">Select Purposes</div>
-                        <div class="cb-content-sub">Choose the purposes for which you are requesting consent.</div>
-                        <div class="cb-purpose">
-                            <div class="cb-check">✓</div>
-                            <div><div class="cb-purpose-title">Marketing Communications</div><div class="cb-purpose-desc">Send product updates and promotional content</div></div>
-                        </div>
-                        <div class="cb-purpose">
-                            <div class="cb-check">✓</div>
-                            <div><div class="cb-purpose-title">Personalisation</div><div class="cb-purpose-desc">Personalise your experience</div></div>
-                        </div>
-                        <div class="cb-purpose">
-                            <div class="cb-check">✓</div>
-                            <div><div class="cb-purpose-title">Analytics</div><div class="cb-purpose-desc">Help us improve our services</div></div>
-                        </div>
-                        <div class="cb-purpose">
-                            <div class="cb-check unchecked"></div>
-                            <div><div class="cb-purpose-title">Service Communication</div><div class="cb-purpose-desc">Important account and service-related updates</div></div>
-                        </div>
-                        <div class="cb-purpose">
-                            <div class="cb-check unchecked"></div>
-                            <div><div class="cb-purpose-title">Third Party Sharing</div><div class="cb-purpose-desc">Share data with trusted partners</div></div>
+                    <div class="hiw-step">
+                        <div class="hiw-step-num">02</div>
+                        <div>
+                            <div class="hiw-step-title">Easy withdrawal, always</div>
+                            <div class="hiw-step-desc">Users can revoke consent in one click — across every channel — with the withdrawal processed and logged in real time.</div>
                         </div>
                     </div>
-                </div>
-                <div class="cb-footer">
-                    <button class="cb-btn-back">Back</button>
-                    <button class="cb-btn-next">Next →</button>
+                    <div class="hiw-step">
+                        <div class="hiw-step-num">03</div>
+                        <div>
+                            <div class="hiw-step-title">Data Subject Rights (DSR) support</div>
+                            <div class="hiw-step-desc">Structured workflows for access, correction and erasure requests — with timelines monitored to meet statutory deadlines.</div>
+                        </div>
+                    </div>
+                    <div class="hiw-step">
+                        <div class="hiw-step-num">04</div>
+                        <div>
+                            <div class="hiw-step-title">Audit logs &amp; reporting</div>
+                            <div class="hiw-step-desc">Every consent event is immutably logged — who, when, what and how — giving your compliance team a complete, exportable record.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Right: Text content -->
-            <div class="pbd-text">
-                <div class="s-badge">Built for DPDP</div>
-                <h2 class="s-title">Privacy by design.<br>Compliance by default.</h2>
-                <p class="s-sub">Our Consent Management Platform is designed from the ground up to meet the requirements of India's Digital Personal Data Protection (DPDP) Act 2023.</p>
-                <ul class="pbd-checklist">
-                    <li><span class="pbd-check">✓</span> Clear and informed consent</li>
-                    <li><span class="pbd-check">✓</span> Granular and purpose-specific consent</li>
-                    <li><span class="pbd-check">✓</span> Easy withdrawal mechanism</li>
-                    <li><span class="pbd-check">✓</span> Audit logs and reporting</li>
-                    <li><span class="pbd-check">✓</span> Data subject rights (DSR) support</li>
-                    <li><span class="pbd-check">✓</span> Built for evolving regulatory requirements</li>
-                </ul>
-                <a href="/get-started" class="link-learn">Learn how we ensure compliance →</a>
+            <div class="hiw-right">
+                <div class="hiw-tag">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    DPDP Act 2023 compliant
+                </div>
+                <div class="hiw-screenshot">
+                    <img src="/assets/cm-consent-templates.png" alt="TrustFabric consent notice builder">
+                </div>
             </div>
         </div>
     </div>
@@ -533,70 +516,39 @@
 
 <!-- INTEGRATIONS -->
 <section class="section integrations">
-    <div class="s-inner">
-        <div class="s-header">
-            <div class="s-badge">Integrations</div>
-            <h2 class="s-title">Works with your existing tools.</h2>
-            <p class="s-sub">Easily integrate with your CRM, marketing, analytics and support tools to operationalise consent across your entire ecosystem.</p>
+    <div class="wrap">
+        <div class="int-header">
+            <div class="sec-label">Integrations</div>
+            <h2 class="sec-title">Works with your existing stack.</h2>
+            <p class="sec-sub">Connect TrustFabric to your CRM, marketing, analytics and support tools without disrupting your existing workflows.</p>
         </div>
-        <div class="int-logos">
-            <span class="int-logo" style="color:#00A1E0;">Salesforce</span>
-            <span class="int-logo" style="color:#FF7A59;">HubSpot</span>
-            <span class="int-logo" style="color:#E42527;">Zoho</span>
-            <span class="int-logo" style="color:#0078D4;">Microsoft Dynamics</span>
-            <span class="int-logo" style="color:#1E66F5;">Amplitude</span>
-            <span class="int-logo" style="color:#52BD95;">Segment</span>
-            <span class="int-logo" style="color:#FBBC04;filter:brightness(0.7);">Google Analytics</span>
-            <span class="int-logo" style="color:#FF4A00;">Zapier</span>
+        <div class="int-grid">
+            <div class="int-card" style="color:#00A1E0;">Salesforce</div>
+            <div class="int-card" style="color:#FF7A59;">HubSpot</div>
+            <div class="int-card" style="color:#E42527;">Zoho</div>
+            <div class="int-card" style="color:#0078D4;">MS Dynamics</div>
+            <div class="int-card" style="color:#1E66F5;">Amplitude</div>
+            <div class="int-card" style="color:#52BD95;">Segment</div>
+            <div class="int-card" style="color:#888;">Google Analytics</div>
+            <div class="int-card" style="color:#FF4A00;">Zapier</div>
         </div>
-        <a href="/get-started" class="int-link">View all integrations →</a>
-    </div>
-</section>
-
-<!-- USE CASES -->
-<section class="section usecases">
-    <div class="s-inner">
-        <div class="s-header">
-            <div class="s-badge">Use Cases</div>
-            <h2 class="s-title">Designed for every business need.</h2>
-            <p class="s-sub">Whether you're a fast-growing D2C brand or a regulated enterprise, TrustFabric adapts to your use case.</p>
-        </div>
-        <div class="uc-grid">
-            <div class="uc-card">
-                <div class="uc-icon"><i data-lucide="chart-no-axes-combined"></i></div>
-                <h4>Marketing &amp; Growth</h4>
-                <p>Collect consent for campaigns and personalise customer experiences — compliantly.</p>
-            </div>
-            <div class="uc-card">
-                <div class="uc-icon"><i data-lucide="code-2"></i></div>
-                <h4>Product &amp; SaaS</h4>
-                <p>Manage user consent across signups, feature usage and notification preferences.</p>
-            </div>
-            <div class="uc-card">
-                <div class="uc-icon"><i data-lucide="badge-check"></i></div>
-                <h4>Regulated Industries</h4>
-                <p>Meet strict compliance requirements in BFSI, Healthcare and more with purpose-built workflows.</p>
-            </div>
-            <div class="uc-card">
-                <div class="uc-icon"><i data-lucide="globe"></i></div>
-                <h4>Global Businesses</h4>
-                <p>Manage consent for Indian users with a platform built for local regulations and languages.</p>
-            </div>
-        </div>
+        <a href="/get-started" class="int-footer">
+            View all integrations
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta">
+<section class="cta-section">
     <div class="cta-inner">
         <div>
-            <div class="cta-label">Ready to get started?</div>
-            <h2>Build trust with every interaction.</h2>
-            <p>See how TrustFabric can help you simplify consent management and achieve DPDP compliance.</p>
+            <h2>Build trust with<br><em>every interaction.</em></h2>
+            <p>See how TrustFabric can help you simplify consent management and achieve full DPDP Act compliance — in weeks, not months.</p>
         </div>
-        <div class="cta-actions">
-            <a href="/get-started" class="btn-primary">Book a Demo →</a>
-            <a href="mailto:info@trustfabric.in" class="btn-outline">Talk to Our Team</a>
+        <div class="cta-buttons">
+            <a href="/get-started" class="btn-red">Book a Demo &nbsp;→</a>
+            <a href="mailto:info@trustfabric.in" class="btn-plain">Talk to our team instead</a>
         </div>
     </div>
 </section>
@@ -610,12 +562,11 @@
                     <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
                 </a>
                 <p>India's consent management platform for DPDP Act 2023 compliance. Built in India, for India's data privacy moment.</p>
-                <p style="margin-top:16px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;">
+                <p style="margin-top:16px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;font-family:'Manrope',sans-serif;">
                     <svg style="flex-shrink:0;margin-top:2px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     TrustFabric, 44, Regal Building, 2nd Floor, Connaught Place, New Delhi, 110001
                 </p>
             </div>
-
             <div class="footer-col">
                 <h4>Product</h4>
                 <ul>
@@ -625,7 +576,6 @@
                     <li><a href="https://www.trustfabric.in">Roadmap</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Solutions</h4>
                 <ul>
@@ -635,43 +585,33 @@
                     <li><a href="https://www.trustfabric.in">SaaS</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="/careers.html">Careers</a></li>
+                    <li><a href="/careers">Careers</a></li>
                     <li><a href="https://www.trustfabric.in">DPDP Act Guide</a></li>
                     <li><a href="https://www.trustfabric.in">Blog</a></li>
                     <li><a href="https://www.trustfabric.in">Documentation</a></li>
                     <li><a href="https://www.trustfabric.in">API Docs</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
                     <li><a href="https://www.trustfabric.in">Terms of Service</a></li>
-                    <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+                    <li><a href="/cookie-policy">Cookie Policy</a></li>
                 </ul>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <div class="footer-copy">
-                © 2025 TrustFabric · <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
-            </div>
+            <div class="footer-copy">© 2025 TrustFabric · <a href="mailto:info@trustfabric.in">info@trustfabric.in</a></div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/company/trustfabricindia/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
                 </a>
                 <a href="https://www.trustfabric.in" class="social-link" aria-label="Twitter / X">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
             </div>
         </div>
@@ -681,11 +621,11 @@
 <script>
     lucide.createIcons();
     var ham = document.getElementById('hamburger');
-    var mob = document.getElementById('mobileMenu');
-    if (ham && mob) {
+    var menu = document.getElementById('mobileMenu');
+    if (ham && menu) {
         ham.addEventListener('click', function() {
             ham.classList.toggle('open');
-            mob.classList.toggle('open');
+            menu.classList.toggle('open');
         });
     }
 </script>
