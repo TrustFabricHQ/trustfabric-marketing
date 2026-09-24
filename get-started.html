@@ -170,41 +170,101 @@
         /* ---- PAGE BODY ---- */
         .page-body {
             padding-top: 64px;
-            background: #F8FAFC;
+            background: linear-gradient(145deg, #EFF6FF 0%, #DBEAFE 30%, #F0F9FF 60%, #F8FAFC 100%);
             min-height: 100vh;
             padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* dot grid overlay */
+        .page-body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(30,58,138,0.07) 1px, transparent 1px);
+            background-size: 26px 26px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* top-right blue glow */
+        .page-body::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, rgba(46,123,214,0.13) 0%, transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* bottom-left red accent glow */
+        .page-deco-blob {
+            position: absolute;
+            bottom: 40px;
+            left: -100px;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(227,30,36,0.07) 0%, transparent 65%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .form-section {
-            max-width: 620px;
+            max-width: 640px;
             margin: 0 auto;
             padding: 80px 24px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        #demoFormWrap {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03), 0 20px 56px rgba(0,0,0,0.09);
         }
 
         /* Early access badge */
         .early-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FFF1F2;
+            color: var(--accent-red);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--accent-red);
-            margin-bottom: 12px;
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
         }
 
         /* Headline */
         .form-headline {
-            font-size: clamp(26px, 3.5vw, 38px);
-            font-weight: 900;
-            letter-spacing: -0.025em;
-            color: #0D3D4A;
-            line-height: 1.2;
+            font-size: clamp(24px, 3.2vw, 36px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .form-subtext {
+            font-size: 14px;
+            color: var(--text-secondary);
             margin-bottom: 32px;
+            line-height: 1.5;
         }
         .form-headline .months-word {
             position: relative;
             display: inline-block;
-            color: #0D3D4A;
-            font-weight: 900;
+            color: var(--text-primary);
+            font-weight: 600;
         }
         .form-headline .months-word svg {
             position: absolute;
@@ -306,7 +366,10 @@
         .success-state {
             display: none;
             text-align: center;
-            padding: 40px 0;
+            padding: 56px 48px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03), 0 20px 56px rgba(0,0,0,0.09);
         }
         .success-state .success-emoji { font-size: 48px; margin-bottom: 16px; }
         .success-state h3 { font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
@@ -319,6 +382,8 @@
             padding: 32px 24px 0;
             font-size: 13px;
             color: #94A3B8;
+            position: relative;
+            z-index: 1;
         }
         .page-footer a { color: #94A3B8; text-decoration: none; }
         .page-footer a:hover { color: var(--text-primary); }
@@ -415,14 +480,16 @@
 
 <!-- MAIN CONTENT -->
 <div class="page-body">
+    <div class="page-deco-blob"></div>
     <div class="form-section">
 
         <div id="demoFormWrap">
-            <p class="early-badge">✦ Early Access</p>
+            <p class="early-badge">+ Request Demo</p>
             <h1 class="form-headline">
                 Get DPDP compliant<br>
                 in <span class="months-word">months<svg viewBox="0 0 100 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 Q25 3 50 8 Q75 13 98 5" stroke="#29B6C8" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span> <span class="weeks-word">weeks.</span>
             </h1>
+            <p class="form-subtext">Our team will reach out within 24 hours to schedule your personalised walkthrough.</p>
 
             <!-- FORM -->
             <div id="demoForm">
