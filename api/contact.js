@@ -8,19 +8,26 @@ module.exports = async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-    const { name, company, email, phone, size, message } = req.body || {};
+    const { name, company, email, phone, size, message, consentMarketing, consentData } = req.body || {};
 
     if (!name || !company || !email || !phone) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_APP_PASSWORD
-        }
-    });
+    // Save lead to admin portal — must be awaited so it completes before function exits
+    try {
+        const ingestRes = await fetch('https://trustfabric-admin.vercel.app/api/ingest', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-ingest-secret': process.env.INGEST_SECRET,
+            },
+            body: JSON.stringify({ name, company, email, phone, size, message, consentMarketing, consentData }),
+        });
+        console.log('[ingest] status:', ingestRes.status);
+    } catch (err) {
+        console.error('[ingest] failed:', err.message);
+    }
 
     const html = `
 <!DOCTYPE html>
@@ -55,18 +62,26 @@ module.exports = async function handler(req, res) {
 </html>`;
 
     try {
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_APP_PASSWORD,
+            },
+        });
+
         await transporter.sendMail({
             from: `TrustFabric Website <${process.env.GMAIL_USER}>`,
             to: 'info@trustfabric.in',
             replyTo: email,
             subject: `Demo Request from ${name} (${company})`,
-            html
+            html,
         });
-        return res.status(200).json({ success: true });
     } catch (err) {
         console.error('Mail error:', err);
-        return res.status(500).json({ error: 'Failed to send email' });
     }
+
+    return res.status(200).json({ success: true });
 };
 
 function escapeHtml(str) {
