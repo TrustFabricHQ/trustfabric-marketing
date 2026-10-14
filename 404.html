@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found — TrustFabric</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F9FAFB;
+            color: #1F2937;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+        }
+        .logo { margin-bottom: 48px; }
+        .logo img { height: 48px; width: auto; }
+        .error-code {
+            font-size: clamp(80px, 15vw, 140px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #E31E24;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1F2937;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 15px;
+            color: #6B7280;
+            max-width: 400px;
+            line-height: 1.6;
+            margin-bottom: 36px;
+        }
+        .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #E31E24; color: #fff;
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+            padding: 12px 24px; border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 24px rgba(227,30,36,0.4); }
+        .btn-secondary {
+            display: inline-flex; align-items: center;
+            background: #fff; color: #1F2937;
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+            padding: 12px 24px; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-secondary:hover { background: #F3F4F6; }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="/"><img src="/assets/logo.png" alt="TrustFabric" loading="lazy"></a>
+    </div>
+    <div class="error-code">404</div>
+    <h1>Page not found</h1>
+    <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+    <div class="actions">
+        <a href="/" class="btn-primary">Back to Home</a>
+        <a href="/get-started" class="btn-secondary">Request Demo</a>
+    </div>
+</body>
+</html>
