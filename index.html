@@ -2566,17 +2566,21 @@
 
         /* --- Compliance Checklist --- */
         /* sticky consult bar */
-        .consult-bar { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:8000; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:100px; box-shadow:0 8px 40px rgba(0,0,0,0.14); padding:14px 20px 14px 24px; display:flex; align-items:center; gap:16px; white-space:nowrap; transition:opacity 0.3s,transform 0.3s; }
-        .consult-bar.hidden { opacity:0; pointer-events:none; transform:translateX(-50%) translateY(12px); }
+        @keyframes cb-float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-5px)} }
+        @keyframes cb-shine { 0%{left:-100%} 60%,100%{left:200%} }
+        @keyframes cb-pulse-ring { 0%{box-shadow:0 0 0 0 rgba(227,30,36,0.45)} 70%{box-shadow:0 0 0 10px rgba(227,30,36,0)} 100%{box-shadow:0 0 0 0 rgba(227,30,36,0)} }
+        .consult-bar { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); z-index:8000; background:#111827; border:1px solid rgba(255,255,255,0.1); border-radius:100px; box-shadow:0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(227,30,36,0.18), 0 2px 80px rgba(227,30,36,0.12); padding:10px 12px 10px 22px; display:flex; align-items:center; gap:14px; white-space:nowrap; transition:opacity 0.35s,transform 0.35s; animation:cb-float 4s ease-in-out infinite; overflow:hidden; }
+        .consult-bar::before { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.07) 50%,transparent 60%); animation:cb-shine 3.5s ease-in-out infinite; pointer-events:none; }
+        .consult-bar.hidden { opacity:0; pointer-events:none; transform:translateX(-50%) translateY(12px); animation:none; }
         .consult-bar-icon { color:#E31E24; flex-shrink:0; }
-        .consult-bar-text { font-size:14px; font-weight:500; color:#1F2937; display:flex; align-items:center; gap:7px; }
+        .consult-bar-text { font-size:14px; font-weight:500; color:rgba(255,255,255,0.9); display:flex; align-items:center; gap:7px; }
         .consult-bar-badge { background:#E31E24; color:#fff; font-size:11px; font-weight:700; padding:2px 9px; border-radius:100px; letter-spacing:0.02em; }
-        .consult-bar-actions { display:flex; align-items:center; gap:8px; margin-left:4px; }
-        .consult-bar-btn { display:inline-flex; align-items:center; gap:6px; background:#E31E24; color:#fff; font-size:13px; font-weight:700; padding:9px 20px; border-radius:100px; text-decoration:none; transition:opacity 0.2s,transform 0.2s; border:none; cursor:pointer; }
-        .consult-bar-btn:hover { opacity:0.88; transform:scale(1.02); }
-        .consult-bar-close { width:28px; height:28px; border-radius:50%; border:1px solid #E5E7EB; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#9CA3AF; flex-shrink:0; transition:background 0.15s; }
-        .consult-bar-close:hover { background:#F3F4F6; }
-        @media(max-width:700px){ .consult-bar { bottom:16px; padding:12px 14px 12px 18px; gap:10px; } .consult-bar-text span:not(.consult-bar-badge) { display:none; } }
+        .consult-bar-actions { display:flex; align-items:center; gap:8px; margin-left:2px; }
+        .consult-bar-btn { display:inline-flex; align-items:center; gap:6px; background:#E31E24; color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:100px; text-decoration:none; transition:opacity 0.2s,transform 0.2s; border:none; cursor:pointer; animation:cb-pulse-ring 2.4s ease-out infinite; position:relative; }
+        .consult-bar-btn:hover { opacity:0.9; transform:scale(1.03); }
+        .consult-bar-close { width:30px; height:30px; border-radius:50%; border:1px solid rgba(255,255,255,0.15); background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.45); flex-shrink:0; transition:background 0.15s,color 0.15s; }
+        .consult-bar-close:hover { background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.8); }
+        @media(max-width:700px){ .consult-bar { bottom:16px; padding:10px 10px 10px 16px; gap:10px; } .consult-bar-text span:not(.consult-bar-badge) { display:none; } }
 
         @media(max-width:900px){
             .tl-wrapper { grid-template-columns:1fr; }
