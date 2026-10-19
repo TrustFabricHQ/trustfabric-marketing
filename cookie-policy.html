@@ -40,7 +40,7 @@
         .btn-primary:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(227,30,36,0.3); text-decoration: none; }
 
         /* NAVBAR */
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: rgba(255,255,255,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .navbar { position: fixed; top: 42px; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: rgba(255,255,255,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
         .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
         .nav-logo img { height: 72px; width: auto; }
         .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
@@ -48,7 +48,7 @@
         .nav-links a:hover { color: var(--text-primary); }
 
         /* PAGE LAYOUT */
-        .page-header { padding: 120px 0 48px; background: #f8fafc; border-bottom: 1px solid var(--border); }
+        .page-header { padding: 162px 0 48px; background: #f8fafc; border-bottom: 1px solid var(--border); }
         .page-header h1 { font-size: clamp(24px, 3vw, 38px); font-weight: 400; color: var(--text-primary); margin-bottom: 12px; }
         .page-header .meta { font-size: 14px; color: var(--text-secondary); }
 
@@ -151,21 +151,37 @@
 </div>
 <script>
 (function(){
-    var b=document.getElementById('dpdpBanner');
-    if(sessionStorage.getItem('dpdpbd')){b.style.display='none';return;}
-    var w=Math.ceil((new Date('2027-05-13T00:00:00')-new Date())/6048e5);
-    document.getElementById('dpdpWeeks').textContent=w>0?w:0;
-    var BH=42;
-    var nav=document.getElementById('navbar');
-    if(nav)nav.style.top=BH+'px';
-    var sel='.hero,.page-hero,.page-header,main.hero,.page-body,.form-section,.get-started-wrap';
-    var first=document.querySelector(sel);
-    if(first){var pt=parseInt(getComputedStyle(first).paddingTop)||0;first.style.paddingTop=(pt+BH)+'px';}
-    document.getElementById('dpdpBannerClose').addEventListener('click',function(){
-        sessionStorage.setItem('dpdpbd','1');
-        b.style.display='none';
-        if(nav)nav.style.top='0';
-        if(first)first.style.paddingTop=(Math.max(0,parseInt(first.style.paddingTop)-BH))+'px';
+    // If previously dismissed, hide banner and undo CSS offsets immediately
+    if(sessionStorage.getItem('dpdpbd')){
+        document.getElementById('dpdpBanner').style.display='none';
+        document.addEventListener('DOMContentLoaded',function(){
+            var nav=document.getElementById('navbar');
+            if(nav)nav.style.top='0';
+            var mm=document.querySelector('.mobile-menu');
+            if(mm)mm.style.top='64px';
+            var sel='.hero,.page-hero,.page-header,main.hero,.page-body';
+            var s=document.querySelector(sel);
+            if(s){var pt=parseInt(getComputedStyle(s).paddingTop)||0;s.style.paddingTop=Math.max(0,pt-42)+'px';}
+        });
+        return;
+    }
+    // Live weeks counter
+    document.addEventListener('DOMContentLoaded',function(){
+        var w=Math.ceil((new Date('2027-05-13T00:00:00')-new Date())/6048e5);
+        var el=document.getElementById('dpdpWeeks');
+        if(el)el.textContent=w>0?w:0;
+        // Dismiss handler
+        document.getElementById('dpdpBannerClose').addEventListener('click',function(){
+            sessionStorage.setItem('dpdpbd','1');
+            document.getElementById('dpdpBanner').style.display='none';
+            var nav=document.getElementById('navbar');
+            if(nav)nav.style.top='0';
+            var mm=document.querySelector('.mobile-menu');
+            if(mm)mm.style.top='64px';
+            var sel='.hero,.page-hero,.page-header,main.hero,.page-body';
+            var s=document.querySelector(sel);
+            if(s){var pt=parseInt(getComputedStyle(s).paddingTop)||0;s.style.paddingTop=Math.max(0,pt-42)+'px';}
+        });
     });
 })();
 </script>
