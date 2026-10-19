@@ -85,6 +85,21 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .nav-links { display: none; }
         }
+    
+        /* ── DPDP deadline banner ── */
+        .dpdp-banner { position:fixed; top:0; left:0; right:0; z-index:1001; background:#fff; border-bottom:1.5px solid #F1F5F9; height:42px; display:flex; align-items:center; justify-content:center; padding:0 20px; gap:14px; font-family:'Inter',-apple-system,sans-serif; }
+        .dpdp-banner-text { font-size:13px; font-weight:500; color:#1F2937; white-space:nowrap; }
+        .dpdp-banner-text strong { font-weight:700; }
+        .dpdp-banner-sep { width:1px; height:18px; background:#D1D5DB; flex-shrink:0; }
+        .dpdp-banner-deadline { font-size:13px; font-weight:500; color:#374151; white-space:nowrap; }
+        .dpdp-banner-deadline b { color:#E31E24; }
+        .dpdp-banner-weeks { display:inline-flex; align-items:center; gap:5px; border:1.5px solid #E31E24; border-radius:6px; padding:2px 8px; }
+        .dpdp-banner-weeks-num { color:#E31E24; font-size:15px; font-weight:800; line-height:1; font-variant-numeric:tabular-nums; }
+        .dpdp-banner-weeks-lbl { color:#374151; font-size:11px; font-weight:600; white-space:nowrap; }
+        .dpdp-banner-cta { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:#E31E24; color:#fff; border-radius:6px; text-decoration:none; flex-shrink:0; }
+        .dpdp-banner-close { margin-left:12px; width:26px; height:26px; border:none; background:transparent; cursor:pointer; color:#9CA3AF; font-size:15px; display:flex; align-items:center; justify-content:center; border-radius:4px; padding:0; flex-shrink:0; transition:background 0.15s; }
+        .dpdp-banner-close:hover { background:#F3F4F6; color:#374151; }
+        @media(max-width:640px){ .dpdp-banner-text{display:none} .dpdp-banner-sep{display:none} }
     </style>
 <script defer src="/_vercel/insights/script.js"></script>
     <link rel="canonical" href="https://trustfabric.in/privacy-policy">
@@ -106,6 +121,41 @@
     </script>
 </head>
 <body>
+
+<!-- DPDP DEADLINE BANNER -->
+<div class="dpdp-banner" id="dpdpBanner">
+    <span class="dpdp-banner-text"><strong>₹250 crore</strong> in potential penalties. Is your company DPDP-ready?</span>
+    <span class="dpdp-banner-sep"></span>
+    <span class="dpdp-banner-deadline">DPDP deadline:&nbsp;<b>13 May 2027</b></span>
+    <div class="dpdp-banner-weeks">
+        <span class="dpdp-banner-weeks-num" id="dpdpWeeks">–</span>
+        <span class="dpdp-banner-weeks-lbl">Weeks left</span>
+    </div>
+    <a href="/get-started" class="dpdp-banner-cta" aria-label="Get started">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <button class="dpdp-banner-close" id="dpdpBannerClose" aria-label="Dismiss">✕</button>
+</div>
+<script>
+(function(){
+    var b=document.getElementById('dpdpBanner');
+    if(sessionStorage.getItem('dpdpbd')){b.style.display='none';return;}
+    var w=Math.ceil((new Date('2027-05-13T00:00:00')-new Date())/6048e5);
+    document.getElementById('dpdpWeeks').textContent=w>0?w:0;
+    var BH=42;
+    var nav=document.getElementById('navbar');
+    if(nav)nav.style.top=BH+'px';
+    var sel='.hero,.page-hero,.page-header,main.hero,.page-body,.form-section,.get-started-wrap';
+    var first=document.querySelector(sel);
+    if(first){var pt=parseInt(getComputedStyle(first).paddingTop)||0;first.style.paddingTop=(pt+BH)+'px';}
+    document.getElementById('dpdpBannerClose').addEventListener('click',function(){
+        sessionStorage.setItem('dpdpbd','1');
+        b.style.display='none';
+        if(nav)nav.style.top='0';
+        if(first)first.style.paddingTop=(Math.max(0,parseInt(first.style.paddingTop)-BH))+'px';
+    });
+})();
+</script>
 
 <nav class="navbar">
     <div class="navbar-inner">
