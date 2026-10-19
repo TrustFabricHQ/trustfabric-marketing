@@ -42,7 +42,7 @@
     .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
     /* ─── NAVBAR ─── */
-    .navbar { position: fixed; top: 42px; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: #ffffff; border-bottom: 1px solid var(--border); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: #ffffff; border-bottom: 1px solid var(--border); }
     .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
     .nav-logo-img { height: 88px; width: auto; margin-top: 12px; }
@@ -78,7 +78,7 @@
     @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } }
 
     /* ─── HERO ─── */
-    .hero { padding: 182px 32px 80px; background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 60%); }
+    .hero { padding: 140px 32px 80px; background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 60%); }
     .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #FFF1F2; color: var(--accent-green); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; }
     .hero h1 { font-size: clamp(28px, 3.5vw, 48px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
@@ -202,20 +202,6 @@
     @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } .footer-bottom { flex-direction: column; gap: 16px; text-align: center; } }
     @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } .footer-brand { grid-column: span 1; } }
     
-        /* ── DPDP deadline banner ── */
-        .dpdp-banner { position:fixed; top:0; left:0; right:0; z-index:1001; background:#fff; border-bottom:1.5px solid #F1F5F9; height:42px; display:flex; align-items:center; justify-content:center; padding:0 20px; gap:14px; font-family:'Inter',-apple-system,sans-serif; }
-        .dpdp-banner-text { font-size:13px; font-weight:500; color:#1F2937; white-space:nowrap; }
-        .dpdp-banner-text strong { font-weight:700; }
-        .dpdp-banner-sep { width:1px; height:18px; background:#D1D5DB; flex-shrink:0; }
-        .dpdp-banner-deadline { font-size:13px; font-weight:500; color:#374151; white-space:nowrap; }
-        .dpdp-banner-deadline b { color:#E31E24; }
-        .dpdp-banner-weeks { display:inline-flex; align-items:center; gap:5px; border:1.5px solid #E31E24; border-radius:6px; padding:2px 8px; }
-        .dpdp-banner-weeks-num { color:#E31E24; font-size:15px; font-weight:800; line-height:1; font-variant-numeric:tabular-nums; }
-        .dpdp-banner-weeks-lbl { color:#374151; font-size:11px; font-weight:600; white-space:nowrap; }
-        .dpdp-banner-cta { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:#E31E24; color:#fff; border-radius:6px; text-decoration:none; flex-shrink:0; }
-        .dpdp-banner-close { margin-left:12px; width:26px; height:26px; border:none; background:transparent; cursor:pointer; color:#9CA3AF; font-size:15px; display:flex; align-items:center; justify-content:center; border-radius:4px; padding:0; flex-shrink:0; transition:background 0.15s; }
-        .dpdp-banner-close:hover { background:#F3F4F6; color:#374151; }
-        @media(max-width:640px){ .dpdp-banner-text{display:none} .dpdp-banner-sep{display:none} }
     </style>
 <script defer src="/_vercel/insights/script.js"></script>
     <link rel="canonical" href="https://trustfabric.in/consent-management">
@@ -237,57 +223,6 @@
     </script>
 </head>
 <body>
-
-<!-- DPDP DEADLINE BANNER -->
-<div class="dpdp-banner" id="dpdpBanner">
-    <span class="dpdp-banner-text"><strong>₹250 crore</strong> in potential penalties. Is your company DPDP-ready?</span>
-    <span class="dpdp-banner-sep"></span>
-    <span class="dpdp-banner-deadline">DPDP deadline:&nbsp;<b>13 May 2027</b></span>
-    <div class="dpdp-banner-weeks">
-        <span class="dpdp-banner-weeks-num" id="dpdpWeeks">–</span>
-        <span class="dpdp-banner-weeks-lbl">Weeks left</span>
-    </div>
-    <a href="/get-started" class="dpdp-banner-cta" aria-label="Get started">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-    <button class="dpdp-banner-close" id="dpdpBannerClose" aria-label="Dismiss">✕</button>
-</div>
-<script>
-(function(){
-    // If previously dismissed, hide banner and undo CSS offsets immediately
-    if(sessionStorage.getItem('dpdpbd')){
-        document.getElementById('dpdpBanner').style.display='none';
-        document.addEventListener('DOMContentLoaded',function(){
-            var nav=document.getElementById('navbar');
-            if(nav)nav.style.top='0';
-            var mm=document.querySelector('.mobile-menu');
-            if(mm)mm.style.top='64px';
-            var sel='.hero,.page-hero,.page-header,main.hero,.page-body';
-            var s=document.querySelector(sel);
-            if(s){var pt=parseInt(getComputedStyle(s).paddingTop)||0;s.style.paddingTop=Math.max(0,pt-42)+'px';}
-        });
-        return;
-    }
-    // Live weeks counter
-    document.addEventListener('DOMContentLoaded',function(){
-        var w=Math.ceil((new Date('2027-05-13T00:00:00')-new Date())/6048e5);
-        var el=document.getElementById('dpdpWeeks');
-        if(el)el.textContent=w>0?w:0;
-        // Dismiss handler
-        document.getElementById('dpdpBannerClose').addEventListener('click',function(){
-            sessionStorage.setItem('dpdpbd','1');
-            document.getElementById('dpdpBanner').style.display='none';
-            var nav=document.getElementById('navbar');
-            if(nav)nav.style.top='0';
-            var mm=document.querySelector('.mobile-menu');
-            if(mm)mm.style.top='64px';
-            var sel='.hero,.page-hero,.page-header,main.hero,.page-body';
-            var s=document.querySelector(sel);
-            if(s){var pt=parseInt(getComputedStyle(s).paddingTop)||0;s.style.paddingTop=Math.max(0,pt-42)+'px';}
-        });
-    });
-})();
-</script>
 
 <!-- NAVBAR -->
 <nav class="navbar">
