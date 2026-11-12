@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll — DPDP Certification Course (CDPP) | TrustFabric</title>
+    <meta name="description" content="Register your interest in the TrustFabric DPDP Certification Course (CDPP). Our team will get back to you with the next steps.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- TrustFabric Cookie Consent SDK -->
+    <script defer src="https://trustfabric-server.onrender.com/sdk/consent.js?domain=trustfabric.in&org=69ce50640bc0f3a68915b256"></script>
+    <script src="/assets/course-config.js"></script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --accent-red: #E31E24;
+            --accent-blue: #1E3A8A;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --border: rgba(0,0,0,0.08);
+            --rule: #E2E8F0;
+            --surface: #F8FAFC;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #ffffff; color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+        a { color: inherit; text-decoration: none; }
+        :focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 2px; }
+
+        /* NAV */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: #fff; border-bottom: 1px solid var(--border); }
+        .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 72px; width: auto; }
+        .nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-back:hover { color: var(--text-primary); }
+
+        /* LAYOUT: dark summary panel + form */
+        .page { display: grid; grid-template-columns: minmax(340px, 5fr) 7fr; min-height: 100vh; padding-top: 64px; }
+
+        .panel { background: var(--text-primary); color: #fff; padding: 72px 56px 72px max(24px, calc((100vw - 1200px) / 2 + 24px)); }
+        .panel-inner { position: sticky; top: 112px; max-width: 460px; margin-left: auto; }
+        .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #FCA5A5; margin-bottom: 20px; }
+        .panel h1 { font-size: clamp(30px, 3.2vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px; opacity: 0; transform: translateY(10px); animation: rise 0.55s ease-out 0.05s forwards; }
+        .panel .lead { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 36px; }
+        @keyframes rise { to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .panel h1 { animation: none; opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+
+        .summary { border-top: 1px solid rgba(255,255,255,0.25); margin-bottom: 40px; }
+        .summary div { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: 14px; }
+        .summary dt { color: rgba(255,255,255,0.55); flex-shrink: 0; }
+        .summary dd { font-weight: 600; text-align: right; }
+
+        .next-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+        .next { list-style: none; counter-reset: s; }
+        .next li { counter-increment: s; position: relative; padding: 0 0 20px 40px; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.55; }
+        .next li:last-child { padding-bottom: 0; }
+        .next li::before { content: counter(s); position: absolute; left: 0; top: -1px; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.35); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; color: #fff; }
+        .next li:not(:last-child)::after { content: ''; position: absolute; left: 12.5px; top: 30px; bottom: 4px; width: 1px; background: rgba(255,255,255,0.2); }
+        .next strong { color: #fff; font-weight: 600; display: block; }
+
+        .form-side { padding: 72px max(24px, calc((100vw - 1200px) / 2 + 24px)) 72px 56px; display: flex; }
+        .form-wrap { width: 100%; max-width: 580px; }
+        .form-head { margin-bottom: 36px; }
+        .form-head h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 8px; }
+        .form-head p { font-size: 15px; color: var(--text-secondary); }
+
+        fieldset { border: none; margin-bottom: 32px; }
+        legend { display: block; width: 100%; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-red); padding-bottom: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--rule); }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .field { margin-bottom: 20px; }
+        .field:last-child { margin-bottom: 0; }
+        .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .input { width: 100%; height: 48px; padding: 0 14px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 15px; color: var(--text-primary); background: #fff; transition: border-color 0.2s, box-shadow 0.2s; }
+        .input::placeholder { color: #94A3B8; }
+        .input:hover { border-color: #94A3B8; }
+        .input:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(30,58,138,0.15); }
+        .input[aria-invalid="true"] { border-color: var(--accent-red); box-shadow: 0 0 0 3px rgba(227,30,36,0.1); }
+        .error { display: none; font-size: 12.5px; color: var(--accent-red); margin-top: 6px; font-weight: 500; }
+        .error.show { display: block; }
+
+        .consent { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--text-secondary); line-height: 1.6; cursor: pointer; }
+        .consent input { margin-top: 3px; accent-color: var(--accent-blue); flex-shrink: 0; width: 17px; height: 17px; cursor: pointer; }
+        .consent a { color: var(--accent-blue); text-decoration: underline; }
+
+        .submit { width: 100%; height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent-red); color: #fff; font-family: inherit; font-size: 15px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; margin-top: 24px; transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s; }
+        .submit:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(227,30,36,0.28); }
+        .submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+        .assure { font-size: 13px; color: var(--text-secondary); text-align: center; margin-top: 14px; }
+        .form-error { display: none; margin-top: 16px; padding: 12px 14px; border-radius: 8px; background: #FEF2F2; border: 1px solid #FECACA; color: #B91C1C; font-size: 13.5px; font-weight: 500; }
+        .form-error.show { display: block; }
+        .form-error a { text-decoration: underline; }
+
+        /* SUCCESS */
+        .success { display: none; padding-top: 24px; }
+        .success.show { display: block; }
+        .tick { width: 56px; height: 56px; border-radius: 50%; background: #ECFDF5; border: 1px solid #A7F3D0; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; }
+        .success h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 14px; }
+        .success > p { font-size: 16px; color: var(--text-secondary); line-height: 1.75; max-width: 480px; margin-bottom: 12px; }
+        .success strong { color: var(--text-primary); font-weight: 600; }
+        .success-actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); }
+        .btn-outline { display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border: 1.5px solid var(--text-primary); border-radius: 8px; font-size: 14px; font-weight: 600; transition: background 0.2s, color 0.2s; }
+        .btn-outline:hover { background: var(--text-primary); color: #fff; }
+        .success-actions a.link { font-size: 14px; font-weight: 600; color: var(--accent-blue); }
+        .success-actions a.link:hover { text-decoration: underline; }
+
+        @media (max-width: 960px) {
+            .page { grid-template-columns: 1fr; min-height: 0; }
+            .form-side { order: -1; padding: 40px 24px 48px; }
+            .form-wrap { max-width: 640px; margin: 0 auto; }
+            .panel { padding: 48px 24px; }
+            .panel-inner { position: static; max-width: 640px; margin: 0 auto; }
+        }
+        @media (max-width: 560px) {
+            .row { grid-template-columns: 1fr; gap: 0; }
+            .row .field { margin-bottom: 20px; }
+            .row .field:last-child { margin-bottom: 20px; }
+            .form-head h2 { font-size: 23px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="/" class="nav-logo"><img loading="lazy" src="/assets/logo.png" alt="TrustFabric"></a>
+        <a href="/dpdp-course" class="nav-back">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to course
+        </a>
+    </div>
+</nav>
+
+<main class="page">
+
+    <aside class="panel">
+        <div class="panel-inner">
+            <p class="eyebrow">Enrollment</p>
+            <h1>Reserve your seat in <span data-course="batch-no">Batch 1</span>.</h1>
+            <p class="lead">Tell us a little about you. Our team will reach out with the next steps to confirm your place.</p>
+
+            <dl class="summary">
+                <div><dt>Course</dt><dd data-course="course-name">TrustFabric Certified DPDP Professional (CDPP)</dd></div>
+                <div><dt>Format</dt><dd>2 days, live online</dd></div>
+                <div><dt>Dates</dt><dd data-course="dates">Dates announced soon</dd></div>
+                <div><dt>Fee</dt><dd data-course="price-gst">₹14,999 + GST</dd></div>
+            </dl>
+
+            <p class="next-title">What happens next</p>
+            <ol class="next">
+                <li><strong>You submit this form</strong>It takes about a minute.</li>
+                <li><strong>We get in touch</strong>A member of our team contacts you with the next steps and payment details.</li>
+                <li><strong>Your seat is confirmed</strong>You receive the joining link and course details by email.</li>
+            </ol>
+        </div>
+    </aside>
+
+    <section class="form-side">
+        <div class="form-wrap">
+
+            <div id="formView">
+                <div class="form-head">
+                    <h2>Your details</h2>
+                    <p>All fields are required.</p>
+                </div>
+
+                <form id="enrollForm" novalidate>
+                    <fieldset>
+                        <legend>About you</legend>
+                        <div class="row">
+                            <div class="field">
+                                <label for="en-name">Full name</label>
+                                <input type="text" id="en-name" class="input" autocomplete="name" required aria-describedby="en-name-err">
+                                <p class="error" id="en-name-err">Please enter your name.</p>
+                            </div>
+                            <div class="field">
+                                <label for="en-email">Work email</label>
+                                <input type="email" id="en-email" class="input" autocomplete="email" placeholder="you@company.com" required aria-describedby="en-email-err">
+                                <p class="error" id="en-email-err">Please enter a valid email address.</p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="en-phone">Mobile number</label>
+                            <input type="tel" id="en-phone" class="input" autocomplete="tel-national" inputmode="numeric" maxlength="10" placeholder="10-digit number" required aria-describedby="en-phone-err">
+                            <p class="error" id="en-phone-err">Please enter a 10-digit mobile number.</p>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Your organization</legend>
+                        <div class="row">
+                            <div class="field">
+                                <label for="en-organization">Organization</label>
+                                <input type="text" id="en-organization" class="input" autocomplete="organization" required aria-describedby="en-organization-err">
+                                <p class="error" id="en-organization-err">Please enter your organization.</p>
+                            </div>
+                            <div class="field">
+                                <label for="en-role">Your role</label>
+                                <input type="text" id="en-role" class="input" autocomplete="organization-title" placeholder="e.g. Compliance Manager" required aria-describedby="en-role-err">
+                                <p class="error" id="en-role-err">Please enter your role.</p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <label class="consent">
+                        <input type="checkbox" id="en-consent" required aria-describedby="en-consent-err">
+                        <span>I agree to TrustFabric using these details to contact me about this course, as described in the <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+                    </label>
+                    <p class="error" id="en-consent-err" style="margin-left:29px;">Please accept to continue.</p>
+
+                    <button type="submit" class="submit" id="en-submit">Submit my details</button>
+                    <p class="assure">No payment is taken at this step.</p>
+                    <p class="form-error" id="en-form-error" role="alert"></p>
+                </form>
+            </div>
+
+            <div class="success" id="success" tabindex="-1">
+                <div class="tick">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <h2>Thank you, <span id="success-name"></span>.</h2>
+                <p>We've received your details for <strong data-course="batch-no">Batch 1</strong> of the DPDP Certification Course.</p>
+                <p>Our team will get back to you at <strong id="success-email"></strong> with the next steps. Your seat is confirmed once those steps are complete.</p>
+                <div class="success-actions">
+                    <a href="/dpdp-course" class="btn-outline">Back to course</a>
+                    <a href="mailto:info@trustfabric.in" class="link" data-course="contact-email">info@trustfabric.in</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<script>
+(function () {
+    var form = document.getElementById('enrollForm');
+    var btn = document.getElementById('en-submit');
+    var formError = document.getElementById('en-form-error');
+    var fields = ['name', 'email', 'phone', 'organization', 'role'];
+
+    function $(id) { return document.getElementById(id); }
+    function setError(k, on) {
+        var input = $('en-' + k);
+        if (input.type !== 'checkbox') input.setAttribute('aria-invalid', on ? 'true' : 'false');
+        $('en-' + k + '-err').classList.toggle('show', on);
+    }
+    fields.forEach(function (k) { $('en-' + k).addEventListener('input', function () { setError(k, false); }); });
+    $('en-consent').addEventListener('change', function () { setError('consent', false); });
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        formError.classList.remove('show');
+
+        var v = {};
+        fields.forEach(function (k) { v[k] = $('en-' + k).value.trim(); });
+        v.phone = v.phone.replace(/\s/g, '');
+        v.consentData = $('en-consent').checked;
+
+        var ok = {
+            name: !!v.name,
+            email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email),
+            phone: /^\d{10}$/.test(v.phone),
+            organization: !!v.organization,
+            role: !!v.role,
+            consent: v.consentData
+        };
+        var first = null;
+        Object.keys(ok).forEach(function (k) { setError(k, !ok[k]); if (!ok[k] && !first) first = k; });
+        if (first) { $('en-' + first).focus(); return; }
+
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+
+        try {
+            var res = await fetch('/api/course-enroll', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: v.name, email: v.email, phone: v.phone,
+                    organization: v.organization, role: v.role,
+                    consentData: v.consentData,
+                    courseName: window.COURSE.COURSE_NAME,
+                    batchNo: window.COURSE.BATCH_NO
+                })
+            });
+            if (!res.ok) throw new Error('bad status');
+            $('formView').style.display = 'none';
+            $('success-name').textContent = v.name.split(/\s+/)[0];
+            $('success-email').textContent = v.email;
+            var s = $('success');
+            s.classList.add('show');
+            s.focus();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+            formError.innerHTML = 'Something went wrong. Please try again, or email us at <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>.';
+            formError.classList.add('show');
+            btn.disabled = false;
+            btn.textContent = 'Submit my details';
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
