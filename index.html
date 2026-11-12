@@ -324,6 +324,61 @@
             margin: 24px 0 12px;
         }
 
+        /* Simple dropdown (Resources) — reuses the .nav-has-mega chevron */
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 50%;
+            min-width: 188px;
+            list-style: none;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.09);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+            padding: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            z-index: 1000;
+        }
+
+        /* invisible bridge so the panel stays open while the pointer crosses the gap */
+        .nav-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 0;
+            right: 0;
+            height: 16px;
+        }
+
+        .nav-has-mega:hover > .nav-dropdown,
+        .nav-has-mega:focus-within > .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-has-mega:focus-within > a::after { transform: rotate(180deg); }
+
+        .navbar .nav-dropdown a {
+            display: block;
+            font-size: 13.5px !important;
+            font-weight: 500;
+            color: var(--text-primary) !important;
+            padding: 10px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .navbar .nav-dropdown a:hover,
+        .navbar .nav-dropdown a:focus-visible {
+            background: #F1F5F9;
+            color: var(--accent-green) !important;
+        }
+
         .nav-actions {
             display: flex;
             align-items: center;
@@ -392,6 +447,7 @@
             transition: color 0.2s;
         }
 
+        .mobile-menu a.mobile-sub { padding-left: 20px; font-size: 15px; }
         .mobile-menu a:last-of-type { border-bottom: none; }
         .mobile-menu a:hover { color: var(--text-primary); }
 
@@ -2672,7 +2728,14 @@
             <li><a href="#dpdp">DPDP Act</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
-            <li><a href="#resources">Resources</a></li>
+            <li class="nav-has-mega">
+                <a href="#resources" aria-haspopup="true">Resources</a>
+                <ul class="nav-dropdown">
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/dpdp-course">Course</a></li>
+                </ul>
+            </li>
         </ul>
 
         <div class="nav-actions">
@@ -2693,6 +2756,9 @@
     <a href="#pricing">Pricing</a>
     <a href="/dpo-as-a-service.html">DPO as a Service</a>
     <a href="#resources">Resources</a>
+    <a href="/events" class="mobile-sub">Events</a>
+    <a href="/blog" class="mobile-sub">Blog</a>
+    <a href="/dpdp-course" class="mobile-sub">Course</a>
     <div class="mobile-menu-actions">
         <a href="/get-started" class="btn-primary">Request Demo</a>
     </div>
@@ -3633,6 +3699,7 @@
             <div class="footer-col">
                 <h4>Resources</h4>
                 <ul>
+                    <li><a href="/partner">Partners</a></li>
                     <li><a href="/careers.html">Careers</a></li>
                     <li><a href="https://www.trustfabric.in">DPDP Act Guide</a></li>
                     <li><a href="https://www.trustfabric.in">Blog</a></li>
