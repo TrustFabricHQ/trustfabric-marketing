@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — TrustFabric | Coming Soon</title>
+    <meta name="description" content="The TrustFabric blog is on the way. Check back soon.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- TrustFabric Cookie Consent SDK -->
+    <script defer src="https://trustfabric-server.onrender.com/sdk/consent.js?domain=trustfabric.in&org=69ce50640bc0f3a68915b256"></script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --accent-red: #E31E24;
+            --accent-blue: #1E3A8A;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --border: rgba(0,0,0,0.08);
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #ffffff; color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        :focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 2px; }
+
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: #ffffff; border-bottom: 1px solid var(--border); }
+        .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+        .nav-logo img { height: 88px; width: auto; margin-top: 12px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-cta { background: var(--accent-red); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 14px; }
+        .nav-cta:hover { opacity: 0.9; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+
+        main { flex: 1; display: flex; align-items: center; padding: 120px 0 80px; }
+        .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 72px; align-items: end; width: 100%; }
+        .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-red); margin-bottom: 20px; }
+        h1 { font-size: clamp(38px, 5.4vw, 72px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; margin-bottom: 24px; opacity: 0; transform: translateY(12px); animation: rise 0.6s ease-out 0.05s forwards; }
+        h1 em { font-style: normal; color: var(--accent-blue); }
+        .lead { font-size: 18px; color: var(--text-secondary); line-height: 1.7; max-width: 520px; margin-bottom: 36px; }
+        .actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-red); color: #fff; font-size: 15px; font-weight: 600; padding: 14px 32px; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(227,30,36,0.3); }
+        .btn-ghost { font-size: 14px; font-weight: 600; color: var(--accent-blue); padding: 12px 4px; border-bottom: 1.5px solid transparent; transition: border-color 0.2s; }
+        .btn-ghost:hover { border-bottom-color: var(--accent-blue); }
+        .aside { border-left: 2px solid var(--accent-blue); padding-left: 28px; }
+        .aside p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+        .aside p + p { margin-top: 14px; }
+        .aside a { color: var(--accent-blue); font-weight: 600; }
+        .aside a:hover { text-decoration: underline; }
+        @keyframes rise { to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { h1 { animation: none; opacity: 1; transform: none; } }
+
+        .page-footer { background: #0F172A; color: rgba(255,255,255,0.5); font-size: 13px; text-align: center; padding: 28px 24px; }
+        .page-footer a { color: rgba(255,255,255,0.5); margin: 0 12px; }
+        .page-footer a:hover { color: #fff; }
+
+        @media (max-width: 860px) {
+            main { padding: 104px 0 56px; align-items: flex-start; }
+            .grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="/" class="nav-logo">
+            <img loading="lazy" src="/assets/logo.png" alt="TrustFabric">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/#platform">Product</a></li>
+            <li><a href="/#dpdp">Solutions</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+            <li><a href="/dpdp-course">Course</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+        </ul>
+        <a href="/get-started" class="nav-cta">Request Demo</a>
+    </div>
+</nav>
+
+<main>
+    <div class="container grid">
+        <div>
+            <p class="eyebrow">Blog</p>
+            <h1>Our blog is <em>on the way.</em></h1>
+            <p class="lead">We are putting together our first articles. Please check back soon.</p>
+            <div class="actions">
+                <a href="/" class="btn-primary">Back to home</a>
+                <a href="/dpdp-course" class="btn-ghost">Explore the DPDP course</a>
+            </div>
+        </div>
+        <aside class="aside">
+            <p>Guides and updates on the DPDP Act, consent management and privacy practice will be published here.</p>
+            <p>In the meantime, write to <a href="mailto:info@trustfabric.in">info@trustfabric.in</a> and we'll be glad to help.</p>
+        </aside>
+    </div>
+</main>
+
+<footer class="page-footer">
+    © 2025 TrustFabric &nbsp;·&nbsp;
+    <a href="/">Home</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
+</footer>
+
+</body>
+</html>

@@ -4,6 +4,7 @@
   "redirects": [
     { "source": "/dpdp-cookie-scanner", "destination": "https://checkdpdp.com", "permanent": true },
     { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/partners", "destination": "/partner", "permanent": true },
     { "source": "/course", "destination": "/dpdp-course", "permanent": true }
   ],
   "headers": [
