@@ -3893,7 +3893,9 @@
     }
 
     window.drawHubLines = drawHubLines;
-    window.addEventListener('load', drawHubLines);
+    drawHubLines();                                   // layout is final enough now; don't wait for window load
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawHubLines);
+    window.addEventListener('load', drawHubLines);    // safety redraw
     window.addEventListener('resize', function() { setTimeout(drawHubLines, 100); });
 })();
 
@@ -4040,63 +4042,55 @@ function switchInd(key, btn) {
     var hubNodes  = Array.from(document.querySelectorAll('[data-hub-node]'));
     var hubSvg    = document.getElementById('hubSvg');
 
-    if (hubCenter && hubNodes.length) {
-        // Hide everything immediately — layout positions stay intact for drawHubLines
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (hubCenter && hubNodes.length && !reduceMotion) {
+        // Hide everything immediately; layout positions stay intact for drawHubLines
         gsap.set(hubCenter, { opacity: 0, scale: 0.8 });
         gsap.set(hubNodes,  { opacity: 0 });
         if (hubSvg) gsap.set(hubSvg, { opacity: 0 });
 
-        // Compute burst offsets after layout is ready (window load)
-        window.addEventListener('load', function() {
-            // drawHubLines already ran (IIFE listener fires first), lines exist
-            var hubRect = hubCenter.getBoundingClientRect();
-            var hx = hubRect.left + hubRect.width  / 2;
-            var hy = hubRect.top  + hubRect.height / 2;
+        // Created right away (not on window load). Burst offsets are measured at the moment the section enters.
+        ScrollTrigger.create({
+            trigger: '#platform',
+            start: 'top 72%',
+            once: true,
+            onEnter: function() {
+                var hubRect = hubCenter.getBoundingClientRect();
+                var hx = hubRect.left + hubRect.width  / 2;
+                var hy = hubRect.top  + hubRect.height / 2;
 
-            var offsets = hubNodes.map(function(node) {
-                var r = node.getBoundingClientRect();
-                return {
-                    x: hx - (r.left + r.width  / 2),
-                    y: hy - (r.top  + r.height / 2)
-                };
-            });
+                // Center card pops in
+                gsap.to(hubCenter, {
+                    opacity: 1, scale: 1,
+                    duration: 0.4, ease: 'back.out(1.6)'
+                });
 
-            ScrollTrigger.create({
-                trigger: '#platform',
-                start: 'top 72%',
-                once: true,
-                onEnter: function() {
-                    // Center card pops in
-                    gsap.to(hubCenter, {
-                        opacity: 1, scale: 1,
-                        duration: 0.5, ease: 'back.out(1.6)'
+                // Nodes burst outward from hub center
+                hubNodes.forEach(function(node, i) {
+                    var r = node.getBoundingClientRect();
+                    gsap.fromTo(node,
+                        { opacity: 0, scale: 0, x: hx - (r.left + r.width / 2), y: hy - (r.top + r.height / 2) },
+                        {
+                            opacity: 1, scale: 1, x: 0, y: 0,
+                            duration: 0.7,
+                            delay: 0.1 + i * 0.06,
+                            ease: 'elastic.out(1, 0.65)',
+                            clearProps: 'x,y'
+                        }
+                    );
+                });
+
+                // Lines fade in just after the center appears
+                if (hubSvg) {
+                    gsap.to(hubSvg, {
+                        opacity: 1,
+                        duration: 0.5,
+                        delay: 0.25,
+                        ease: 'power2.out'
                     });
-
-                    // Nodes burst outward from hub center
-                    hubNodes.forEach(function(node, i) {
-                        gsap.fromTo(node,
-                            { opacity: 0, scale: 0, x: offsets[i].x, y: offsets[i].y },
-                            {
-                                opacity: 1, scale: 1, x: 0, y: 0,
-                                duration: 0.85,
-                                delay: 0.25 + i * 0.08,
-                                ease: 'elastic.out(1, 0.65)',
-                                clearProps: 'x,y'
-                            }
-                        );
-                    });
-
-                    // Lines fade in after center appears
-                    if (hubSvg) {
-                        gsap.to(hubSvg, {
-                            opacity: 1,
-                            duration: 0.6,
-                            delay: 0.35,
-                            ease: 'power2.out'
-                        });
-                    }
                 }
-            });
+            }
         });
     }
 
