@@ -26,22 +26,24 @@
  *   featured       true for the event highlighted at the top. Use it on one event.
  *   published      false hides an event everywhere without deleting it.
  *
- * Nothing here is invented: dates, venues and booth details are left empty until they are confirmed.
+ * Nothing here is invented: dates, venues and websites come from each organiser's own site (noted beside the event).
+ * Booth details stay empty until TrustFabric confirms them. Re-check dates against the organiser's site before each event.
  */
 window.TF_EVENTS = [
     {
-        name: 'Bangalore Tech Summit',
-        slug: 'bangalore-tech-summit-2026',
+        // Dates, venue and website confirmed on the organiser's site: https://www.bengalurutechsummit.com/
+        name: 'Bengaluru Tech Summit',
+        slug: 'bengaluru-tech-summit-2026',
         year: 2026,
-        startDate: null,
-        endDate: null,
-        location: 'Bengaluru',
+        startDate: '2026-11-17',
+        endDate: '2026-11-19',
+        location: 'Bangalore International Exhibition Centre (BIEC), Bengaluru',
         country: 'India',
         category: 'Technology Summit',
-        description: 'TrustFabric is participating in Bangalore Tech Summit 2026. Meet our team in Bengaluru to talk about data privacy, DPDP Act readiness and the security of AI systems.',
+        description: 'TrustFabric is participating in Bengaluru Tech Summit 2026, the 29th edition, themed AI & Beyond. Meet our team to talk about data privacy, DPDP Act readiness and the security of AI systems.',
         participation: 'participating',
         booth: null,
-        url: null,
+        url: 'https://www.bengalurutechsummit.com/',
         banner: null,
         theme: 'grid',
         gallery: [],
@@ -49,18 +51,19 @@ window.TF_EVENTS = [
         published: true
     },
     {
-        name: 'Gujarat Tech Expo',
-        slug: 'gujarat-tech-expo-2026',
+        // Dates and venue confirmed on the organiser's site: https://www.techexpogujarat.com/
+        name: 'Tech Expo Gujarat',
+        slug: 'tech-expo-gujarat-2026',
         year: 2026,
-        startDate: null,
-        endDate: null,
-        location: null,
-        country: null,
+        startDate: '2026-11-27',
+        endDate: '2026-11-29',
+        location: 'GUCEC (GMDC Ground), Ahmedabad',
+        country: 'India',
         category: 'Technology Expo',
-        description: 'TrustFabric is participating in Gujarat Tech Expo 2026. Come and talk to our team about consent management, data discovery and DPDP compliance.',
+        description: 'TrustFabric is participating in Tech Expo Gujarat 2026 in Ahmedabad, themed Beacon of Rising Innovation & AI. Come and talk to our team about consent management, data discovery and DPDP compliance.',
         participation: 'participating',
         booth: null,
-        url: null,
+        url: 'https://www.techexpogujarat.com/',
         banner: null,
         theme: 'arcs',
         gallery: [],
@@ -68,18 +71,19 @@ window.TF_EVENTS = [
         published: true
     },
     {
-        name: 'DSCI Delhi Event',
-        slug: 'dsci-delhi-2026',
+        // Dates and venue confirmed on DSCI's own page: https://www.dsci.in/event/aiss-2026/
+        name: 'DSCI Annual Information Security Summit',
+        slug: 'dsci-aiss-2026',
         year: 2026,
-        startDate: null,
-        endDate: null,
-        location: null,
-        country: null,
-        category: 'Industry Event',
-        description: 'TrustFabric is participating in the DSCI Delhi Event 2026. We look forward to exchanging ideas with security and privacy professionals.',
+        startDate: '2026-12-09',
+        endDate: '2026-12-11',
+        location: 'Pullman Aerocity, New Delhi',
+        country: 'India',
+        category: 'Cybersecurity Summit',
+        description: 'TrustFabric is participating in the DSCI Annual Information Security Summit (AISS) 2026, the 21st edition, in New Delhi. We look forward to exchanging ideas with security and privacy professionals.',
         participation: 'participating',
         booth: null,
-        url: null,
+        url: 'https://www.dsci.in/event/aiss-2026/',
         banner: null,
         theme: 'lines',
         gallery: [],
@@ -87,18 +91,19 @@ window.TF_EVENTS = [
         published: true
     },
     {
+        // Dates and venue confirmed on RSA Conference's site: https://www.rsaconference.com/usa
         name: 'RSA Conference',
         slug: 'rsa-conference-2027',
         year: 2027,
-        startDate: null,
-        endDate: null,
-        location: null,
-        country: null,
-        category: 'Industry Conference',
-        description: 'TrustFabric is participating in RSA Conference 2027, connecting with the global cybersecurity community.',
+        startDate: '2027-04-05',
+        endDate: '2027-04-08',
+        location: 'Moscone Center, San Francisco',
+        country: 'United States',
+        category: 'Cybersecurity Conference',
+        description: 'TrustFabric is participating in RSA Conference 2027 at the Moscone Center in San Francisco, connecting with the global cybersecurity community.',
         participation: 'participating',
         booth: null,
-        url: null,
+        url: 'https://www.rsaconference.com/usa',
         banner: null,
         theme: 'dots',
         gallery: [],
