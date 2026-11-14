@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events — TrustFabric | Coming Soon</title>
+    <title>Events | TrustFabric | Coming Soon</title>
     <meta name="description" content="TrustFabric events are on the way. Check back soon.">
     <meta name="robots" content="noindex, follow">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
@@ -21,22 +21,62 @@
             --text-primary: #0F172A;
             --text-secondary: #64748B;
             --border: rgba(0,0,0,0.08);
+            --red: #E31E24;
+            --ink: #0F172A;
+            --muted: #5B6779;
+            --rule: #E2E8F0;
+            --off: #F7F8FA;
+            --radius: 4px;
+            --wrap: 1200px;
         }
         body { font-family: 'Inter', -apple-system, sans-serif; background: #ffffff; color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
         a { color: inherit; text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         :focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 2px; }
 
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: #ffffff; border-bottom: 1px solid var(--border); }
-        .navbar-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        /* ---------- buttons ---------- */
+        .btn, .burger, .nav-trigger, .expand { touch-action: manipulation; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 28px; border-radius: var(--radius); font-family: inherit; font-size: 15px; font-weight: 500; white-space: nowrap; border: 1px solid transparent; cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+        .btn:active { transform: translateY(1px); }
+        .btn-red { background: var(--red); color: #fff; }
+        .btn-red:hover { background: #C8181E; }
+        /* ---------- navbar (same as homepage: logo size and placement) ---------- */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; height: 64px; display: flex; align-items: center; background: #fff; border-bottom: 1px solid var(--rule); }
+        .navbar-inner { max-width: var(--wrap); width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
         .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
         .nav-logo img { height: 88px; width: auto; margin-top: 12px; }
         .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--text-primary); }
-        .nav-cta { background: var(--accent-red); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 14px; }
-        .nav-cta:hover { opacity: 0.9; }
-        @media (max-width: 768px) { .nav-links { display: none; } }
+        .nav-links > li { position: relative; }
+        .nav-links a, .nav-links button.nav-trigger { color: var(--muted); font-family: inherit; font-size: 14px; font-weight: 500; background: none; border: none; cursor: pointer; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links button.nav-trigger:hover { color: var(--ink); }
+        .nav-trigger { display: inline-flex; align-items: center; gap: 6px; padding: 0; }
+        .nav-trigger.current { color: var(--ink); font-weight: 600; }
+        .nav-trigger::after { content: ''; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 0.2s; }
+        .has-menu:hover .nav-trigger::after, .has-menu:focus-within .nav-trigger::after { transform: translateY(1px) rotate(-135deg); }
+        .menu { position: absolute; top: calc(100% + 16px); left: 50%; min-width: 180px; list-style: none; background: #fff; border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: 0 12px 32px rgba(15,23,42,0.10); padding: 6px; opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(-6px); transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s; }
+        .menu::before { content: ''; position: absolute; top: -16px; left: 0; right: 0; height: 16px; }
+        .has-menu:hover .menu, .has-menu:focus-within .menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .menu a { display: block; padding: 10px 12px; border-radius: var(--radius); color: var(--ink); font-size: 14px; white-space: nowrap; }
+        .menu a:hover, .menu a:focus-visible { background: var(--off); }
+        .menu a[aria-current="page"] { font-weight: 600; }
+        .nav-cta { background: var(--red); color: #fff !important; padding: 9px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 14px; }
+        .nav-cta:hover { background: #C8181E; }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+        .burger { display: none; width: 44px; height: 44px; margin-right: -10px; background: none; border: none; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; }
+        .burger span { display: block; width: 20px; height: 1.5px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; }
+        .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; z-index: 999; background: #fff; padding: 16px 24px 32px; overflow-y: auto; overscroll-behavior: contain; flex-direction: column; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { display: block; padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 18px; font-weight: 500; color: var(--ink); }
+        .mobile-menu a.sub { padding-left: 20px; font-size: 16px; color: var(--muted); }
+        .mobile-menu a[aria-current="page"] { color: var(--red); }
+        .mobile-menu a.btn { display: flex; margin-top: 24px; padding: 0 28px; border-bottom: none; color: #fff; font-size: 15px; }
+        @media (max-width: 900px) { .nav-links { display: none; } .nav-cta-desktop { display: none; } .burger { display: flex; } }
+
+        .skip { position: absolute; left: 16px; top: -64px; z-index: 2000; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: var(--radius); font-size: 14px; font-weight: 500; transition: top 0.2s; }
+        .skip:focus { top: 12px; }
 
         main { flex: 1; display: flex; align-items: center; padding: 120px 0 80px; }
         .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 72px; align-items: end; width: 100%; }
@@ -69,24 +109,50 @@
 </head>
 <body>
 
-<nav class="navbar">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="navbar" aria-label="Primary">
     <div class="navbar-inner">
-        <a href="/" class="nav-logo">
-            <img loading="lazy" src="/assets/logo.png" alt="TrustFabric">
+        <a href="/" class="nav-logo" aria-label="TrustFabric home">
+            <img src="/assets/logo.png" width="264" height="88" alt="TrustFabric">
         </a>
         <ul class="nav-links">
             <li><a href="/#platform">Product</a></li>
             <li><a href="/#dpdp">Solutions</a></li>
             <li><a href="/#pricing">Pricing</a></li>
             <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
-            <li><a href="/dpdp-course">Course</a></li>
-            <li><a href="/careers.html">Careers</a></li>
+            <li class="has-menu">
+                <button type="button" class="nav-trigger current" aria-haspopup="true">Resources</button>
+                <ul class="menu">
+                    <li><a href="/events" aria-current="page">Events</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/dpdp-course">DPDP Certification Course</a></li>
+                </ul>
+            </li>
+            <li><a href="/about">About</a></li>
         </ul>
-        <a href="/get-started" class="nav-cta">Request Demo</a>
+        <div class="nav-right">
+            <a href="/get-started" class="nav-cta nav-cta-desktop">Request Demo</a>
+            <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
 </nav>
 
-<main>
+<div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="/#platform">Product</a>
+    <a href="/#dpdp">Solutions</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/dpo-as-a-service.html">DPO as a Service</a>
+    <a href="/events" class="sub" aria-current="page">Events</a>
+    <a href="/blog" class="sub">Blog</a>
+    <a href="/dpdp-course" class="sub">DPDP Certification Course</a>
+    <a href="/about">About</a>
+    <a href="/get-started" class="btn btn-red">Request Demo</a>
+</div>
+
+<main id="main">
     <div class="container grid">
         <div>
             <p class="eyebrow">Events</p>
@@ -98,7 +164,7 @@
             </div>
         </div>
         <aside class="aside">
-            <p>Webinars, workshops and briefings on the DPDP Act and consent management will be listed here.</p>
+            <p>Webinars, workshops and briefings on the DPDP&nbsp;Act and consent management will be listed here.</p>
             <p>In the meantime, write to <a href="mailto:info@trustfabric.in">info@trustfabric.in</a> and we'll be glad to help.</p>
         </aside>
     </div>
@@ -111,6 +177,24 @@
     <a href="/cookie-policy.html">Cookie Policy</a>
     <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
 </footer>
+
+<script>
+(function () {
+    var burger = document.getElementById('burger');
+    var menu = document.getElementById('mobileMenu');
+    function setMenu(open) {
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.classList.toggle('open', open);
+        menu.hidden = !open;
+        document.body.style.overflow = open ? 'hidden' : '';
+    }
+    burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); burger.focus(); } });
+    window.addEventListener('resize', function () { if (window.innerWidth > 900 && menu.classList.contains('open')) setMenu(false); });
+})();
+</script>
 
 </body>
 </html>
