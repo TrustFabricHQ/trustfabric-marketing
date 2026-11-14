@@ -1880,7 +1880,9 @@
         .footer {
             background: var(--bg-primary);
             border-top: 1px solid var(--border);
-            padding: 64px 0 0;
+            /* extra bottom room so the fixed floating buttons (compliance check, consult bar, consent widget)
+               never sit on top of the copyright and email row at the end of the page */
+            padding: 64px 0 104px;
         }
 
         .footer-grid {
