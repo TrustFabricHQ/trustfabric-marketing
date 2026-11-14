@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1530">
+    <!-- One template for every event. Served at /events/<slug> by a rewrite in vercel.json.
+         Title, description and canonical are filled in from assets/events-data.js. -->
+    <title>Event | TrustFabric</title>
+    <meta name="description" content="Details of an event TrustFabric takes part in.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://trustfabric.in/events">
+    <meta property="og:title" content="TrustFabric Events">
+    <meta property="og:description" content="Details of an event TrustFabric takes part in.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trustfabric.in/events">
+    <meta property="og:image" content="https://trustfabric.in/assets/og-image.png">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
+    <!-- TrustFabric Cookie Consent SDK -->
+    <script defer src="https://trustfabric-server.onrender.com/sdk/consent.js?domain=trustfabric.in&org=69ce50640bc0f3a68915b256"></script>
+
+    <!-- Google Analytics - blocked until visitor grants analytics consent -->
+    <script type="text/plain" data-cookie-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-N9MKEJ3825"></script>
+    <script type="text/plain" data-cookie-category="analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N9MKEJ3825');
+      gtag('config', 'AW-18438311137');
+    </script>
+
+    <link rel="stylesheet" href="/assets/events.css">
+    <style>
+        .section { padding: 96px 0; }
+        h2 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1.12; }
+
+        .d-hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding: 128px 0 88px; min-height: 70dvh; display: flex; align-items: flex-end; }
+        .d-hero > .vis { position: absolute; inset: 0; min-height: 0; }
+        .d-hero > .vis .vis-year { left: auto; right: 24px; bottom: 0; font-size: clamp(110px, 20vw, 280px); }
+        .d-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,21,48,0.94) 8%, rgba(11,21,48,0.5) 70%, rgba(11,21,48,0.25)); pointer-events: none; }
+        .d-hero .wrap { position: relative; z-index: 1; width: 100%; }
+        .crumbs { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 36px; }
+        .crumbs a { border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+        .crumbs a:hover { color: #fff; border-bottom-color: #fff; }
+        .crumbs [aria-current] { color: #fff; }
+        .d-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; margin-bottom: 18px; }
+        .d-meta .tag { color: rgba(255,255,255,0.78); }
+        .d-hero h1 { font-size: clamp(38px, 5.6vw, 72px); font-weight: 300; line-height: 1.04; letter-spacing: -0.045em; max-width: 12em; margin-bottom: 18px; }
+        .d-sub { font-size: 18px; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+        .d-hero .part { color: #fff; margin-bottom: 36px; }
+        .d-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; }
+
+        .about-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 72px; align-items: start; }
+        .about-grid h2 { margin-bottom: 20px; }
+        .about-grid p.lead { max-width: 32em; }
+        .about-grid p.lead + p.lead { margin-top: 16px; }
+        .facts { border-top: 1px solid var(--ink); }
+        .facts div { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule-strong); font-size: 15px; }
+        .facts dt { color: var(--muted); }
+        .facts dd { font-weight: 500; }
+        .facts .pending dd { color: var(--muted); font-weight: 400; }
+
+        .topics { background: var(--off); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+        .topics h2 { max-width: 14em; margin-bottom: 48px; }
+        .topic-list { list-style: none; border-top: 1px solid var(--ink); }
+        .topic-list li { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; padding: 26px 0; border-bottom: 1px solid var(--rule-strong); }
+        .topic-list h3 { font-size: 22px; line-height: 1.2; }
+        .topic-list p { font-size: 16px; line-height: 1.7; color: var(--muted); }
+
+        .d-gal h2 { margin-bottom: 36px; }
+        .masonry { column-count: 3; column-gap: 20px; }
+        .g-item { display: block; width: 100%; margin: 0 0 20px; break-inside: avoid; border: none; padding: 0; border-radius: var(--radius); overflow: hidden; position: relative; background: var(--slate); cursor: zoom-in; }
+        .g-item img { width: 100%; height: auto; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; }
+        .g-item:hover img { transform: scale(1.04); opacity: 0.92; }
+        .g-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 16px 12px; font-size: 13px; text-align: left; color: #fff; background: linear-gradient(transparent, rgba(7,12,28,0.78)); }
+        .gal-empty { padding: 36px 0; border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule); font-size: 16px; color: var(--muted); }
+
+        .more h2 { margin-bottom: 36px; }
+        .more-list { border-top: 1px solid var(--ink); }
+        .more-row { display: grid; grid-template-columns: 80px 1fr auto 24px; gap: 24px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--rule); transition: background 0.2s, padding 0.25s; }
+        .more-row:hover { background: var(--off); padding-left: 12px; padding-right: 12px; }
+        .more-row .yr { font-size: 24px; font-weight: 300; letter-spacing: -0.04em; color: var(--muted); font-variant-numeric: tabular-nums; }
+        .more-row h3 { font-size: 19px; }
+        .more-row .arr { width: 10px; height: 10px; border-right: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); transform: rotate(-45deg); }
+        .more-all { margin-top: 20px; }
+
+        .d-cta { background: var(--night); color: #fff; padding: 112px 0; }
+        .d-cta h2 { font-size: clamp(30px, 4.4vw, 54px); font-weight: 300; letter-spacing: -0.045em; line-height: 1.06; max-width: 12em; margin-bottom: 22px; }
+        .d-cta p { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.76); max-width: 30em; margin-bottom: 36px; }
+
+        .nf { padding: 168px 0 128px; min-height: 70dvh; }
+        .nf h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 300; letter-spacing: -0.04em; margin-bottom: 16px; }
+        .nf p { font-size: 18px; color: var(--muted); max-width: 30em; margin-bottom: 28px; }
+        .loading { min-height: 70dvh; padding: 168px 0; color: var(--muted); }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .masonry { column-count: 2; }
+        }
+        @media (max-width: 760px) {
+            .section { padding: 72px 0; }
+            .d-hero { padding: 108px 0 64px; min-height: 0; }
+            .topic-list li { grid-template-columns: 1fr; gap: 8px; }
+            .facts div { grid-template-columns: 110px 1fr; }
+            .more-row { grid-template-columns: 56px 1fr 16px; gap: 14px; }
+            .more-row .part { display: none; }
+            .masonry { column-count: 1; }
+            .d-cta { padding: 80px 0; }
+        }
+        @media (prefers-reduced-motion: reduce) { .g-item:hover img { transition: none; transform: none; } }
+    </style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="navbar" aria-label="Primary">
+    <div class="navbar-inner">
+        <a href="/" class="nav-logo" aria-label="TrustFabric home">
+            <img src="/assets/logo.png" width="264" height="88" alt="TrustFabric">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/#platform">Product</a></li>
+            <li><a href="/#dpdp">Solutions</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/dpo-as-a-service.html">DPO as a Service</a></li>
+            <li class="has-menu">
+                <button type="button" class="nav-trigger current" aria-haspopup="true">Resources</button>
+                <ul class="menu">
+                    <li><a href="/events" aria-current="page">Events</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/dpdp-course">DPDP Certification Course</a></li>
+                </ul>
+            </li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="/get-started" class="nav-cta nav-cta-desktop">Request Demo</a>
+            <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="/#platform">Product</a>
+    <a href="/#dpdp">Solutions</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/dpo-as-a-service.html">DPO as a Service</a>
+    <a href="/events" class="sub" aria-current="page">Events</a>
+    <a href="/blog" class="sub">Blog</a>
+    <a href="/dpdp-course" class="sub">DPDP Certification Course</a>
+    <a href="/about">About</a>
+    <a href="/get-started" class="btn btn-red">Request Demo</a>
+</div>
+
+<main id="main">
+    <div id="detail">
+        <div class="wrap loading"><noscript>Please turn on JavaScript to see this event, or write to <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>.</noscript></div>
+    </div>
+</main>
+
+<footer class="page-footer">
+    &copy; 2025 TrustFabric &nbsp;|&nbsp;
+    <a href="/">Home</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="mailto:info@trustfabric.in">info@trustfabric.in</a>
+</footer>
+
+<script src="/assets/events-data.js"></script>
+<script src="/assets/events-core.js"></script>
+<script>
+(function () {
+    var T = window.TFEvents, E = T.events, esc = T.esc, now = new Date();
+    var root = document.getElementById('detail');
+    var slug = decodeURIComponent((location.pathname.replace(/\/+$/, '').split('/').pop() || ''));
+    var ev = E.filter(function (e) { return e.slug === slug; })[0];
+
+    function setMeta(sel, attr, val) {
+        var el = document.querySelector(sel);
+        if (!el) { el = document.createElement('meta'); var m = sel.match(/\[(name|property)="([^"]+)"\]/); el.setAttribute(m[1], m[2]); document.head.appendChild(el); }
+        el.setAttribute(attr, val);
+    }
+
+    if (!ev) {
+        document.title = 'Event not found | TrustFabric';
+        setMeta('meta[name="robots"]', 'content', 'noindex, follow');
+        root.innerHTML = '<section class="wrap nf"><h1>We could not find that event.</h1><p>It may have moved, or the link may be incomplete. You can see all of our events on the events page.</p><a class="btn btn-red" href="/events">View all events</a></section>';
+        return;
+    }
+
+    var st = T.statusOf(ev, now), full = T.fullName(ev), pageUrl = 'https://trustfabric.in/events/' + encodeURIComponent(ev.slug);
+    var desc = ev.description || ('TrustFabric ' + (ev.participation === 'participating' ? 'is participating in ' : 'at ') + full + '.');
+    document.title = full + ' | TrustFabric Events';
+    setMeta('meta[name="description"]', 'content', desc);
+    document.querySelector('link[rel="canonical"]').setAttribute('href', pageUrl);
+    setMeta('meta[property="og:title"]', 'content', full + ' | TrustFabric');
+    setMeta('meta[property="og:description"]', 'content', desc);
+    setMeta('meta[property="og:url"]', 'content', pageUrl);
+    if (ev.banner) setMeta('meta[property="og:image"]', 'content', location.origin + ev.banner);
+
+    var where = [];
+    if (ev.startDate) where.push(T.fmtRange(ev));
+    if (T.place(ev)) where.push(T.place(ev));
+
+    var facts = '<div><dt>Participation</dt><dd>' + esc(T.partLabel(ev)) + '</dd></div>' +
+        '<div><dt>Status</dt><dd>' + esc(T.statusLabel(st)) + '</dd></div>' +
+        (ev.startDate ? '<div><dt>Date</dt><dd>' + esc(T.fmtRange(ev)) + '</dd></div>' : '<div class="pending"><dt>Date</dt><dd>To be confirmed</dd></div>') +
+        (T.place(ev) ? '<div><dt>Location</dt><dd>' + esc(T.place(ev)) + '</dd></div>' : '<div class="pending"><dt>Venue</dt><dd>To be confirmed</dd></div>') +
+        (ev.category ? '<div><dt>Category</dt><dd>' + esc(ev.category) + '</dd></div>' : '') +
+        (ev.booth ? '<div><dt>Booth</dt><dd>' + esc(ev.booth) + '</dd></div>' : '');
+
+    var TOPICS = [
+        ['Data Privacy & DPDP Compliance', 'Explore how organisations can strengthen their readiness for India’s DPDP Act.'],
+        ['Data Discovery & Classification', 'Understand how organisations can discover and classify sensitive information across their environments.'],
+        ['AI Security', 'Explore the emerging security challenges associated with AI systems and AI-powered applications.'],
+        ['Partnerships & Collaboration', 'Connect with us to explore technology partnerships, business opportunities and industry collaboration.']
+    ];
+
+    var photos = (ev.gallery || []).filter(function (g) { return g && g.src; }).map(function (g) {
+        return { src: g.src, alt: g.alt || full, caption: g.caption || full };
+    });
+    var others = E.filter(function (e) { return e.slug !== ev.slug; });
+
+    root.innerHTML =
+        '<section class="d-hero on-dark" aria-labelledby="d-title">' + T.visual(ev) +
+        '<div class="wrap">' +
+        '<nav class="crumbs" aria-label="Breadcrumb"><a href="/events">Events</a><span aria-hidden="true">/</span><span aria-current="page">' + esc(full) + '</span></nav>' +
+        '<div class="d-meta">' + (ev.category ? '<span class="tag">' + esc(ev.category) + '</span>' : '') + '<span class="status s-' + st + '">' + esc(T.statusLabel(st)) + '</span></div>' +
+        '<h1 id="d-title">' + esc(full) + '</h1>' +
+        (where.length ? '<p class="d-sub">' + esc(where.join(' | ')) + '</p>' : '') +
+        '<p class="part">' + esc(T.partLabel(ev)) + '</p>' +
+        '<div class="d-actions"><button type="button" class="btn btn-red" data-connect data-event="' + esc(ev.slug) + '">Connect with TrustFabric</button>' +
+        (ev.url ? '<a class="btn btn-line" href="' + esc(ev.url) + '" target="_blank" rel="noopener noreferrer">Visit event website</a>' : '') + '</div>' +
+        '</div></section>' +
+
+        '<section class="section"><div class="wrap about-grid">' +
+        '<div class="reveal"><h2>TrustFabric at ' + esc(full) + '</h2>' +
+        '<p class="lead">' + esc(desc) + '</p>' +
+        (ev.startDate ? '' : '<p class="lead">Dates and venue details will be added here as soon as they are confirmed.</p>') + '</div>' +
+        '<dl class="facts reveal" style="--i:1">' + facts + '</dl></div></section>' +
+
+        '<section class="section topics" aria-labelledby="t-title"><div class="wrap">' +
+        '<h2 id="t-title" class="reveal">What you can talk to us about</h2>' +
+        '<ul class="topic-list">' + TOPICS.map(function (t, i) {
+            return '<li class="reveal" style="--i:' + (i % 2) + '"><h3>' + esc(t[0]) + '</h3><p>' + esc(t[1]) + '</p></li>';
+        }).join('') + '</ul></div></section>' +
+
+        '<section class="section d-gal" aria-labelledby="g-title"><div class="wrap">' +
+        '<h2 id="g-title" class="reveal">Photographs and highlights</h2>' +
+        (photos.length
+            ? '<div class="masonry" id="dg">' + photos.map(function (p, i) {
+                return '<button type="button" class="g-item reveal" data-i="' + i + '" aria-label="Open photo: ' + esc(p.alt) + '"><img src="' + esc(p.src) + '" alt="' + esc(p.alt) + '" loading="lazy" decoding="async"><span class="g-cap">' + esc(p.caption) + '</span></button>';
+            }).join('') + '</div>'
+            : '<p class="gal-empty reveal">Photographs and highlights from ' + esc(full) + ' will be added here.</p>') +
+        '</div></section>' +
+
+        (others.length ? '<section class="section more" aria-labelledby="m-title" style="padding-top:0"><div class="wrap">' +
+            '<h2 id="m-title" class="reveal">More events</h2>' +
+            '<div class="more-list">' + others.map(function (e) {
+                return '<a class="more-row reveal" href="' + T.url(e) + '"><span class="yr">' + esc(e.year) + '</span>' +
+                    '<div><h3>' + esc(e.name) + '</h3></div><span class="part">' + esc(T.partLabel(e)) + '</span><span class="arr" aria-hidden="true"></span></a>';
+            }).join('') + '</div>' +
+            '<p class="more-all"><a class="link-arrow" href="/events#events">See all events</a></p></div></section>' : '') +
+
+        '<section class="d-cta dark" aria-labelledby="c-title"><div class="wrap">' +
+        '<h2 id="c-title" class="reveal">Attending ' + esc(full) + '? Let’s connect.</h2>' +
+        '<p class="reveal" style="--i:1">We would love to meet enterprise leaders, technology innovators, cybersecurity professionals and potential partners.</p>' +
+        '<div class="reveal" style="--i:2"><button type="button" class="btn btn-red" data-connect data-event="' + esc(ev.slug) + '">Connect With Our Team</button></div>' +
+        '</div></section>';
+
+    var dg = document.getElementById('dg');
+    if (dg) dg.addEventListener('click', function (e) { var b = e.target.closest('.g-item'); if (b) T.openLightbox(photos, +b.getAttribute('data-i')); });
+    T.observe(root);
+})();
+</script>
+
+</body>
+</html>
