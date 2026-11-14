@@ -2514,15 +2514,6 @@
         .early-access-badge { color: rgba(255,255,255,0.6) !important; }
         .early-access-badge strong { color: rgba(255,255,255,0.9) !important; }
 
-        /* HERO secondary pointer to the certification course (deliberately quieter than the primary CTA) */
-        .hero-course { margin-top: 14px; }
-        .hero-course a { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 2px 8px; padding: 10px 6px; font-size: 14px; color: rgba(255,255,255,0.85); transition: color 0.2s; }
-        .hero-course a strong { font-weight: 500; color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.45); padding-bottom: 1px; transition: border-color 0.2s; }
-        .hero-course a .arr { display: inline-block; transition: transform 0.2s; }
-        .hero-course a:hover strong { border-bottom-color: #ffffff; }
-        .hero-course a:hover .arr { transform: translateX(3px); }
-        .hero-course a:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; border-radius: 4px; }
-
         /* COURSE PROMO: certification programme (deep navy, same navy family as the journey section) */
         .course-promo { position: relative; overflow: hidden; background: #0F1C3F; color: #ffffff; padding: 112px 0; border-top: 1px solid rgba(147,197,253,0.18); }
         .cp-mark { position: absolute; right: -1%; bottom: -0.2em; font-size: clamp(140px, 24vw, 340px); font-weight: 700; letter-spacing: -0.06em; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(147,197,253,0.14); pointer-events: none; user-select: none; }
@@ -2574,7 +2565,7 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .course-promo .fade-up { opacity: 1; transform: none; transition: none; }
-            .cp-cta, .hero-course a .arr { transition: none; }
+            .cp-cta { transition: none; }
         }
 
         /* HOW IT WORKS — blue background */
@@ -2861,13 +2852,6 @@
                     <span class="ea-dot"></span>
                     Early access open <strong>request your demo today</strong>
                 </div>
-            </div>
-
-            <div class="hero-course">
-                <a href="/dpdp-course">
-                    <span>Looking to build DPDP expertise?</span>
-                    <strong>Explore our Certification Course <span class="arr" aria-hidden="true">&rarr;</span></strong>
-                </a>
             </div>
         </div>
 
@@ -3784,10 +3768,13 @@
                 <a href="https://www.trustfabric.in" class="nav-logo" style="text-decoration:none;">
                     <img src="/assets/logo.png" alt="TrustFabric" class="nav-logo-img">
                 </a>
-                <p>India's consent management platform for DPDP Act 2023 compliance. Built in India, for India's data privacy moment.</p>
-                <p style="margin-top:16px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;">
+                <p style="margin-top:8px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;">
                     <svg style="flex-shrink:0;margin-top:2px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     TrustFabric, 44, Regal Building, 2nd Floor, Connaught Place, New Delhi, 110001
+                </p>
+                <p style="margin-top:12px;font-size:13px;color:#9CA3AF;display:flex;align-items:flex-start;gap:7px;line-height:1.5;">
+                    <svg style="flex-shrink:0;margin-top:2px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    TrustFabric, No B 34, South, Kalptaru Vivant, JVLR, Andheri East, Mumbai 400060
                 </p>
             </div>
 
