@@ -1,8 +1,7 @@
 # Event imagery: sources, rights and status
 
 This is the single reference for every external image considered for the Events pages.
-Nothing from the lists below has been downloaded into the project or shown on the site yet.
-Each row waits for approval, and for permission where the rights column says so.
+The tables below are the original research. See Status above for what is actually on the site.
 
 Rules for adding any image to the site:
 
@@ -13,6 +12,26 @@ Rules for adding any image to the site:
 - If there is no official or permitted image, the page stays typography-led.
 
 Checked on 14 November 2026.
+
+## Status (updated 14 November 2026)
+
+Images now on the site:
+
+| File | Event | What it is | Source and permission |
+|---|---|---|---|
+| `bts-2026-banner.webp` | Bengaluru Tech Summit 2026 | Banner: "BIEC, Nov 17-19, 2026", with TrustFabric and "Visit us at H4C316" | Exhibitor artwork for TrustFabric's stand (Facebook 1200 x 628 version), supplied by TrustFabric from the organiser's exhibitor materials |
+| `bts-2026-invite-portrait.webp`, `bts-2026-invite-square.webp`, `bts-2026-invite-wide.webp` | Bengaluru Tech Summit 2026 | The same artwork as an invite (1118 x 1518), a square post (1200 x 1200) and an email banner (750 x 221) | Same source. They show inside the event's details, not in the highlights |
+| `teg-logo.svg` | Tech Expo Gujarat 2026 | Official logo, colour version | Downloaded from the organiser's Brand Corner, which states: "Official logos, patterns, and brand colors: free to use in your own materials." |
+
+Booth `H4C316` comes from TrustFabric's own supplied banners, not from the internet.
+
+Not added, and why:
+
+- **DSCI AISS 2026:** the only AISS banner on DSCI's page is a transparent graphic layer meant to sit on a coloured panel, so it is unusable on its own. DSCI states no reuse terms. Ask DSCI (or the exhibitor or partner desk) for an "I will be at AISS" banner or logo pack, as Bengaluru Tech Summit provides.
+- **RSA Conference 2027:** the legal notices page requires prior written consent for RSAC's logo, and the site blocks automated access. Needs consent or the RSAC Media Hub (available with a pass).
+- **Photographs from any organiser:** every one found is under "All Rights Reserved" with no stated terms, and several are undated or from earlier editions.
+
+Original research follows, kept for reference.
 
 ## Bengaluru Tech Summit 2026 (17 to 19 November, BIEC, Bengaluru)
 

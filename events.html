@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
     <title>Events | TrustFabric</title>
-    <meta name="description" content="Meet the TrustFabric team in person. The technology summits, cybersecurity conferences and industry events we take part in, with dates, venues and ways to connect.">
+    <meta name="description" content="Meet the TrustFabric team in person. The technology summits, cybersecurity conferences and industry events we take part in, with dates, venues, stand numbers and ways to connect.">
     <meta name="keywords" content="TrustFabric events, Bengaluru Tech Summit 2026, Tech Expo Gujarat 2026, DSCI AISS 2026, RSA Conference 2027, data privacy events India">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://trustfabric.in/events">
     <meta property="og:title" content="Events | TrustFabric">
-    <meta property="og:description" content="Out in the industry. Building connections. The events TrustFabric takes part in.">
+    <meta property="og:description" content="Out in the industry. Building connections. Visit TrustFabric at Bengaluru Tech Summit 2026, stand H4C316.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://trustfabric.in/assets/og-image.png">
+    <meta property="og:image" content="https://trustfabric.in/assets/events/bts-2026-banner.webp">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,17 +43,20 @@
         .hero p.lead { max-width: 36em; margin-bottom: 32px; }
         .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; }
 
-        /* ---------- next event banner ---------- */
-        .banner { padding: 56px 0; }
-        .banner-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 56px; align-items: end; }
+        /* ---------- next event: the lead of the page ---------- */
+        .banner { padding: 64px 0; }
+        .banner-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 40px 64px; align-items: center; }
         .b-top { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 18px; }
         .banner h2 { font-size: clamp(30px, 4vw, 48px); letter-spacing: -0.03em; margin-bottom: 14px; }
-        .b-facts { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 17px; color: rgba(255,255,255,0.92); margin-bottom: 14px; }
+        .b-facts { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 17px; color: rgba(255,255,255,0.92); margin-bottom: 20px; }
         .b-facts span + span::before { content: ''; display: inline-block; width: 1px; height: 15px; margin: 0 18px; background: rgba(255,255,255,0.35); vertical-align: -2px; }
-        .b-desc { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.74); max-width: 40em; }
+        .booth { display: inline-flex; align-items: baseline; gap: 12px; padding: 12px 18px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.4); border-radius: 10px; background: rgba(255,255,255,0.06); }
+        .booth span { font-size: 14px; color: rgba(255,255,255,0.8); }
+        .booth b { font-size: 26px; font-weight: 700; letter-spacing: 0.01em; }
+        .b-desc { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 34em; margin-bottom: 26px; }
         .b-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-        .b-photo { grid-column: 1 / -1; margin-top: 8px; }
-        .b-photo .photo figcaption { color: rgba(255,255,255,0.7); }
+        .b-media .photo img { border-radius: 12px; box-shadow: 0 24px 60px -24px rgba(0,0,0,0.6); }
+        .b-media .photo figcaption { color: rgba(255,255,255,0.65); }
 
         /* ---------- sticky filter bar ---------- */
         .bar { position: sticky; top: 64px; z-index: 100; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--rule); }
@@ -65,35 +68,60 @@
         .seg .n { margin-left: 6px; font-weight: 400; opacity: 0.7; font-variant-numeric: tabular-nums; }
         .bar .count { font-size: 14px; color: var(--muted); }
 
-        /* ---------- events table ---------- */
+        /* ---------- events table, with details that open in place ---------- */
         .list-sec { padding: 40px 0 88px; background: #fff; }
         #eventList { transition: opacity 0.16s ease; }
         #eventList.swap { opacity: 0; }
         .table { border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: #fff; }
-        .cols { display: grid; grid-template-columns: 124px minmax(0, 1.5fr) minmax(0, 1.1fr) 200px 190px; gap: 24px; align-items: center; }
+        .cols { display: grid; grid-template-columns: 124px minmax(0, 1.5fr) minmax(0, 1.1fr) 200px 220px; gap: 24px; align-items: center; }
         .thead { padding: 12px 24px; background: var(--off); border-bottom: 1px solid var(--rule); font-size: 13px; font-weight: 500; color: var(--muted); }
         .yr-h { display: flex; align-items: baseline; justify-content: space-between; padding: 14px 24px; background: var(--off); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-        .thead + .yr-h, .table > .yr-h:first-child { border-top: none; }
+        .table > .yr-h:first-child { border-top: none; }
         .yr-h h3 { font-size: 15px; letter-spacing: 0; font-weight: 600; }
         .yr-h span { font-size: 13px; color: var(--muted); }
-        .row { padding: 22px 24px; border-bottom: 1px solid var(--rule); transition: background 0.2s; }
-        .row:last-child { border-bottom: none; }
-        .row:hover { background: #FBFCFE; }
+        .ev { border-bottom: 1px solid var(--rule); scroll-margin-top: 140px; }
+        .ev:last-child { border-bottom: none; }
+        .row { padding: 22px 24px; transition: background 0.2s; }
+        .ev:not(.is-next) .row:hover { background: #FBFCFE; }
+        .ev.is-next { background: #F5F8FF; box-shadow: inset 4px 0 0 var(--red); }
         .dchip { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 64px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 10px; background: #fff; }
+        .is-next .dchip { border-color: var(--navy); }
         .dchip b { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; font-variant-numeric: tabular-nums; }
         .dchip span { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
-        .row[data-status="tbc"] .dchip b { color: #92400E; font-size: 15px; }
+        .ev[data-status="tbc"] .dchip b { color: #92400E; font-size: 15px; }
         .r-event h3 { font-size: 18px; letter-spacing: -0.015em; line-height: 1.25; }
-        .r-event h3 a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 0.3s; }
-        .r-event h3 a:hover { background-size: 100% 1px; }
         .r-event h3 .yr { font-weight: 400; color: var(--muted); }
         .r-cat { margin-top: 4px; font-size: 14px; color: var(--muted); }
+        .r-booth { margin-top: 6px; font-size: 14px; font-weight: 600; color: var(--navy); }
         .r-where { font-size: 15px; color: var(--ink); }
         .r-where.tbd { color: var(--muted); }
         .r-status { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+        .chip-next { background: var(--navy); color: #fff; }
         .r-act { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
-        .r-act .link-arrow { font-size: 14px; padding: 8px 2px; }
-        .row[data-status="past"] .r-event h3 a, .row[data-status="past"] .dchip b { color: #475569; }
+        .toggle { display: inline-flex; align-items: center; gap: 8px; padding: 8px 2px; border: none; border-bottom: 1.5px solid transparent; background: none; font-size: 14px; font-weight: 500; color: var(--ink); cursor: pointer; touch-action: manipulation; transition: border-color 0.2s; }
+        .toggle:hover { border-bottom-color: var(--ink); }
+        .toggle::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.25s; }
+        .toggle[aria-expanded="true"]::after { transform: rotate(-135deg) translateY(-2px); }
+        .ev[data-status="past"] .r-event h3, .ev[data-status="past"] .dchip b { color: #475569; }
+
+        .panel { padding: 8px 24px 32px 172px; }
+        .panel[hidden] { display: none; }
+        .panel-in { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px 56px; padding-top: 22px; border-top: 1px dashed var(--rule-strong); }
+        .p-desc { font-size: 17px; line-height: 1.7; color: var(--ink); margin-bottom: 22px; max-width: 36em; }
+        .p-facts { border-top: 1px solid var(--rule); margin-bottom: 24px; }
+        .p-facts div { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+        .p-facts dt { color: var(--muted); }
+        .p-facts dd { font-weight: 500; }
+        .p-facts .tbd dd { color: var(--muted); font-weight: 400; }
+        .p-facts a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+        .p-act { display: flex; flex-wrap: wrap; gap: 12px; }
+        .p-media { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+        .p-media .ev-logo { height: 84px; max-width: 220px; }
+        .p-thumbs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+        .p-thumbs .tbtn { padding: 0; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; background: var(--off); cursor: zoom-in; transition: border-color 0.2s; }
+        .p-thumbs .tbtn:hover { border-color: var(--ink); }
+        .p-thumbs img { height: 180px; width: auto; max-width: 100%; display: block; }
+        .p-thumbs-label { grid-column: 1 / -1; font-size: 13px; color: var(--muted); margin-bottom: -8px; }
         .empty { border: 1px solid var(--rule); border-radius: 12px; padding: 48px 32px; background: var(--off); }
         .empty h3 { font-size: 22px; margin-bottom: 8px; }
         .empty p { font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 34em; margin-bottom: 16px; }
@@ -133,13 +161,15 @@
             .cols { grid-template-columns: 112px minmax(0, 1.4fr) minmax(0, 1fr) 170px; }
             .cols .r-act { grid-column: 2 / -1; justify-content: flex-start; }
             .thead { display: none; }
+            .panel { padding-left: 24px; }
         }
         @media (max-width: 900px) {
+            .banner-in { grid-template-columns: 1fr; }
+            .panel-in { grid-template-columns: 1fr; }
             .cols4 { grid-template-columns: 1fr 1fr; row-gap: 32px; }
             .cols4 > div:nth-child(n) { padding: 24px 24px 0 0; border-left: none; }
             .cols4 > div:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--rule-strong); }
             .ggrid { grid-template-columns: 1fr 1fr; }
-            .banner-in { grid-template-columns: 1fr; align-items: start; }
         }
         @media (max-width: 760px) {
             .section, .list-sec { padding: 56px 0; }
@@ -157,6 +187,9 @@
             .row .dchip { flex-direction: row; justify-content: flex-start; gap: 10px; min-height: 0; padding: 8px 12px; width: fit-content; }
             .row .dchip span { margin: 0; }
             .yr-h { padding: 12px 18px; }
+            .panel { padding: 4px 18px 26px; }
+            .p-facts div { grid-template-columns: 110px 1fr; }
+            .p-thumbs img { height: 150px; }
             .cols4 { grid-template-columns: 1fr; row-gap: 0; }
             .cols4 > div:nth-child(n) { padding: 22px 0; border-left: none; border-bottom: 1px solid var(--rule-strong); }
             .ggrid { grid-template-columns: 1fr; }
@@ -164,7 +197,7 @@
             .btn { width: auto; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .row, .seg button, .gbtn img, .gbtn:hover img, .r-event h3 a { transition: none; }
+            .row, .seg button, .gbtn img, .gbtn:hover img, .toggle, .toggle::after { transition: none; }
             #eventList { transition: none; }
         }
     </style>
@@ -229,7 +262,7 @@
     </div>
 </section>
 
-<!-- Next event banner (rendered from the data file) -->
+<!-- The next event, in full (rendered from the data file) -->
 <section class="banner dark" id="banner" aria-labelledby="banner-title" hidden></section>
 
 <!-- Filters (stay visible while scrolling the table) -->
@@ -241,7 +274,7 @@
 </div>
 <p class="sr-only" id="filterStatus" aria-live="polite"></p>
 
-<!-- Events table -->
+<!-- Events table: use Details on any row to open everything about that event right here -->
 <section class="list-sec" id="events" aria-label="Events">
     <div class="wrap">
         <div id="eventList">
@@ -322,15 +355,18 @@
         return a.i - b.i;
     }).map(function (x) { return x.e; });
     var st = {}; ordered.forEach(function (e) { st[e.slug] = T.statusOf(e, now); });
+    var bySlug = {}; ordered.forEach(function (e) { bySlug[e.slug] = e; });
     var count = function (s) { return ordered.filter(function (e) { return st[e.slug] === s; }).length; };
 
-    /* ----- next event banner: the featured event unless it has finished, otherwise the next upcoming ----- */
+    // the lead event: the one marked featured unless it has finished, otherwise the next upcoming event
+    var lead = ordered.filter(function (e) { return e.featured && st[e.slug] !== 'past'; })[0] ||
+               ordered.filter(function (e) { return st[e.slug] === 'upcoming'; })[0];
+    var leadSlug = lead && lead.slug;
+
+    /* ----- the lead event in full ----- */
     (function () {
-        var feat = ordered.filter(function (e) { return e.featured && st[e.slug] !== 'past'; })[0];
-        var e = feat || ordered.filter(function (x) { return st[x.slug] === 'upcoming'; })[0];
-        if (!e) return;
-        var el = document.getElementById('banner');
-        var facts = [];
+        if (!lead) return;
+        var e = lead, el = document.getElementById('banner'), facts = [];
         if (e.startDate) facts.push(T.fmtRange(e));
         if (T.place(e)) facts.push(T.place(e));
         el.hidden = false;
@@ -338,26 +374,50 @@
             '<div><p class="b-top"><span class="chip chip-' + st[e.slug] + '">Next event</span><span class="part">' + esc(T.partLabel(e)) + '</span></p>' +
             '<h2 id="banner-title">' + esc(T.fullName(e)) + '</h2>' +
             (facts.length ? '<p class="b-facts">' + facts.map(function (f) { return '<span>' + esc(f) + '</span>'; }).join('') + '</p>' : '') +
-            (e.description ? '<p class="b-desc">' + esc(e.description) + '</p>' : '') + '</div>' +
+            (e.booth ? '<p class="booth"><span>Visit us at</span><b>' + esc(e.booth) + '</b></p>' : '') +
+            (e.description ? '<p class="b-desc">' + esc(e.description) + '</p>' : '') +
             '<div class="b-actions"><button type="button" class="btn btn-red" data-connect data-event="' + esc(e.slug) + '">Meet us</button>' +
-            (e.url ? '<a class="btn btn-line" href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Event website</a>' : '') +
-            '<a class="btn btn-line" href="' + T.url(e) + '">View details</a></div>' +
-            (e.banner ? '<div class="b-photo">' + T.banner(e) + '</div>' : '') + '</div>';
+            (e.url ? '<a class="btn btn-line" href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Event website</a>' : '') + '</div></div>' +
+            (e.banner ? '<div class="b-media">' + T.banner(e) + '</div>' : '') + '</div>';
     })();
 
-    /* ----- table ----- */
+    /* ----- table rows, each with details that open in place ----- */
+    function panel(e) {
+        var s = st[e.slug], facts = [];
+        facts.push(e.startDate ? ['Date', T.fmtRange(e), ''] : ['Date', 'To be confirmed', 'tbd']);
+        facts.push(T.place(e) ? ['Venue', T.place(e), ''] : ['Venue', 'To be confirmed', 'tbd']);
+        facts.push(['Participation', T.partLabel(e), '']);
+        if (e.booth) facts.push(['Stand', e.booth, '']);
+        if (e.url) facts.push(['Event website', '<a href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Visit the official site</a>', 'raw']);
+        var media = (e.banner ? T.banner(e) : '') + (e.logo ? T.logo(e) : '');
+        var imgs = (e.gallery || []).filter(function (g) { return g && g.src; });
+        return '<div class="panel" id="p-' + esc(e.slug) + '" role="region" aria-label="Details: ' + esc(T.fullName(e)) + '" hidden><div class="panel-in">' +
+            '<div class="p-text">' +
+            (e.description ? '<p class="p-desc">' + esc(e.description) + '</p>' : '') +
+            (e.startDate ? '' : '<p class="p-desc" style="color:var(--muted)">Dates and venue details will be added here as soon as they are confirmed.</p>') +
+            '<dl class="p-facts">' + facts.map(function (x) { return '<div class="' + x[2] + '"><dt>' + esc(x[0]) + '</dt><dd>' + (x[2] === 'raw' ? x[1] : esc(x[1])) + '</dd></div>'; }).join('') + '</dl>' +
+            '<div class="p-act">' + (s === 'past' ? '' : '<button type="button" class="btn btn-red btn-sm" data-connect data-event="' + esc(e.slug) + '">Meet us at this event</button>') +
+            (e.url ? '<a class="btn btn-outline btn-sm" href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Event website</a>' : '') + '</div></div>' +
+            (media ? '<div class="p-media">' + media + '</div>' : '') +
+            (imgs.length ? '<p class="p-thumbs-label">' + (imgs.every(function (g) { return g.kind === 'invite'; }) ? 'Invitations to share' : 'Photographs') + '</p><div class="p-thumbs">' + imgs.map(function (g, i) {
+                return '<button type="button" class="tbtn" data-pi="' + i + '" data-event="' + esc(e.slug) + '" aria-label="Open image: ' + esc(g.alt || e.name) + '"><img src="' + esc(g.src) + '" alt="' + esc(g.alt || e.name) + '" loading="lazy" decoding="async"></button>';
+            }).join('') + '</div>' : '') +
+            '</div></div>';
+    }
     function row(e) {
-        var s = st[e.slug], chip = T.dateChip(e);
+        var s = st[e.slug], chip = T.dateChip(e), isNext = e.slug === leadSlug;
         var where = T.place(e) ? '<div class="r-where">' + esc(T.place(e)) + '</div>' : '<div class="r-where tbd">Venue to be confirmed</div>';
-        return '<article class="row cols" data-status="' + s + '">' +
+        return '<div class="ev' + (isNext ? ' is-next' : '') + '" id="' + esc(e.slug) + '" data-status="' + s + '">' +
+            '<article class="row cols">' +
             '<div class="dchip"><b>' + esc(chip.top) + '</b><span>' + esc(chip.bottom) + '</span></div>' +
-            '<div class="r-event"><h3><a href="' + T.url(e) + '">' + esc(e.name) + ' <span class="yr">' + esc(e.year) + '</span></a></h3>' +
-            (e.category ? '<p class="r-cat">' + esc(e.category) + '</p>' : '') + '</div>' +
+            '<div class="r-event"><h3>' + esc(e.name) + ' <span class="yr">' + esc(e.year) + '</span></h3>' +
+            (e.category ? '<p class="r-cat">' + esc(e.category) + '</p>' : '') +
+            (e.booth ? '<p class="r-booth">Stand ' + esc(e.booth) + '</p>' : '') + '</div>' +
             where +
-            '<div class="r-status"><span class="chip chip-' + s + '">' + esc(T.statusLabel(s)) + '</span><span class="part">' + esc(T.partLabel(e)) + '</span></div>' +
+            '<div class="r-status"><span class="chip ' + (isNext ? 'chip-next' : 'chip-' + s) + '">' + esc(isNext ? 'Next event' : T.statusLabel(s)) + '</span><span class="part">' + esc(T.partLabel(e)) + '</span></div>' +
             '<div class="r-act">' + (s === 'past' ? '' : '<button type="button" class="btn btn-red btn-sm" data-connect data-event="' + esc(e.slug) + '">Meet us</button>') +
-            '<a class="link-arrow" href="' + T.url(e) + '" aria-label="Details: ' + esc(T.fullName(e)) + '">Details</a></div>' +
-            '</article>';
+            '<button type="button" class="toggle" aria-expanded="false" aria-controls="p-' + esc(e.slug) + '">Details</button></div>' +
+            '</article>' + panel(e) + '</div>';
     }
     function tableHtml(list, descending) {
         var years = [];
@@ -403,25 +463,59 @@
             return '<button type="button" data-filter="' + f.id + '" aria-pressed="' + (f.id === current) + '">' + esc(f.label) + '<span class="n">' + f.n + '</span></button>';
         }).join('');
     }
-    function setFilter(id) {
-        if (!FILTERS.some(function (f) { return f.id === id; }) || id === current) return;
+    function setFilter(id, after) {
+        if (!FILTERS.some(function (f) { return f.id === id; }) || id === current) { if (after) after(); return; }
         current = id; renderFilters();
-        if (reduce) { paint(id); return; }
+        if (reduce) { paint(id); if (after) after(); return; }
         listEl.classList.add('swap');
-        setTimeout(function () { paint(id); listEl.classList.remove('swap'); }, 160);
+        setTimeout(function () { paint(id); listEl.classList.remove('swap'); if (after) after(); }, 160);
     }
-    document.addEventListener('click', function (e) {
-        var b = e.target.closest ? e.target.closest('[data-filter]') : null;
-        if (b) setFilter(b.getAttribute('data-filter'));
-    });
-    renderFilters(); paint('all');
 
-    /* ----- highlights: real photographs from the data file, or a clear empty state until there are some ----- */
+    /* Details open and close in place. */
+    function setOpen(evEl, open) {
+        var btn = evEl.querySelector('.toggle'), pan = evEl.querySelector('.panel');
+        if (!btn || !pan) return;
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? 'Hide details' : 'Details';
+        pan.hidden = !open;
+        if (open) T.observe(pan);
+    }
+    function openEvent(slug, scroll) {
+        var evEl = document.getElementById(slug);
+        if (!evEl) return false;
+        setOpen(evEl, true);
+        if (scroll && evEl.scrollIntoView) evEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        return true;
+    }
+
+    document.addEventListener('click', function (e) {
+        var f = e.target.closest ? e.target.closest('[data-filter]') : null;
+        if (f) { setFilter(f.getAttribute('data-filter')); return; }
+        var t = e.target.closest ? e.target.closest('.toggle') : null;
+        if (t) { var evEl = t.closest('.ev'); setOpen(evEl, t.getAttribute('aria-expanded') !== 'true'); return; }
+        var th = e.target.closest ? e.target.closest('.tbtn') : null;
+        if (th) {
+            var ev = bySlug[th.getAttribute('data-event')];
+            var imgs = (ev.gallery || []).filter(function (g) { return g && g.src; }).map(function (g) { return { src: g.src, alt: g.alt || ev.name, caption: (g.caption ? g.caption + ' | ' : '') + T.fullName(ev) + (g.credit ? ' | Photo: ' + g.credit : '') }; });
+            T.openLightbox(imgs, +th.getAttribute('data-pi'));
+        }
+    });
+    // a link such as /events#bengaluru-tech-summit-2026 opens that event's details
+    function fromHash() {
+        var slug = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+        if (!slug || !bySlug[slug]) return;
+        var needs = st[slug] === 'past' ? 'past' : 'all';
+        setFilter(current === 'all' || current === needs ? current : 'all', function () { openEvent(slug, true); });
+    }
+    window.addEventListener('hashchange', fromHash);
+    renderFilters(); paint('all'); fromHash();
+
+    /* ----- highlights: real photographs from the data file (promotional invitations stay inside event details) ----- */
     (function () {
         var photos = [];
-        ordered.slice().reverse().forEach(function (e) {          // newest events first
+        ordered.slice().reverse().forEach(function (e) {
             (e.gallery || []).forEach(function (g) {
-                if (g && g.src) photos.push({ src: g.src, alt: g.alt || e.name, caption: g.caption || '', credit: g.credit || '', where: T.fullName(e) });
+                if (g && g.src && g.kind !== 'invite') photos.push({ src: g.src, alt: g.alt || e.name, caption: g.caption || '', credit: g.credit || '', where: T.fullName(e) });
             });
         });
         var el = document.getElementById('galBody');

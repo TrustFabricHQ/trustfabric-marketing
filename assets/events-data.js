@@ -5,6 +5,7 @@
  * To ADD an event: copy one block below, change the fields, keep the commas.
  * To MARK an event as past or upcoming: just fill in startDate (and endDate). The page works it out from today's date.
  * To ADD PHOTOS: put the files in /assets/events/ and list them in `gallery` (see the example at the bottom).
+ * Everything about an event opens inside the Events page: there are no separate event pages.
  *
  * Fields
  *   name           Event name, without the year.                           (required)
@@ -24,7 +25,9 @@
  *   bannerAlt      What the banner photo shows.                            (optional)
  *   bannerCaption  Caption and credit, and the year the photo is from, e.g. 'BIEC exhibition hall, 2025 edition. Photo: organiser'. (optional)
  *   logo           The event's official logo, e.g. '/assets/events/teg-logo.svg'. Shown small. (optional)
- *   gallery        Photos: [{ src: '/assets/events/x.jpg', alt: 'What the photo shows', caption: 'Optional', credit: 'Optional' }].
+ *   gallery        Images: [{ src: '/assets/events/x.jpg', alt: 'What it shows', caption: 'Optional', credit: 'Optional', kind: 'invite' }].
+ *                  Leave kind out for event photographs: they also appear in the Event highlights section.
+ *                  kind: 'invite' marks promotional artwork: it shows inside the event's details only.
  *   featured       true for the event highlighted at the top. Use it on one event.
  *   published      false hides an event everywhere without deleting it.
  *
@@ -42,12 +45,18 @@ window.TF_EVENTS = [
         location: 'Bangalore International Exhibition Centre (BIEC), Bengaluru',
         country: 'India',
         category: 'Technology Summit',
-        description: 'TrustFabric is participating in Bengaluru Tech Summit 2026, the 29th edition, themed AI & Beyond. Meet our team to talk about data privacy, DPDP Act readiness and the security of AI systems.',
-        participation: 'participating',
-        booth: null,
+        description: 'TrustFabric is exhibiting at Bengaluru Tech Summit 2026, the 29th edition, themed AI & Beyond. Visit us at H4C316 to talk about data privacy, DPDP Act readiness and the security of AI systems.',
+        participation: 'exhibiting',
+        booth: 'H4C316',
         url: 'https://www.bengalurutechsummit.com/',
-        banner: null,
-        gallery: [],
+        banner: '/assets/events/bts-2026-banner.webp',
+        bannerAlt: 'Bengaluru Tech Summit 2026 banner, 17 to 19 November at BIEC: TrustFabric, visit us at H4C316',
+        bannerCaption: 'Visit TrustFabric at H4C316. Event artwork supplied to exhibitors by Bengaluru Tech Summit.',
+        gallery: [
+            { src: '/assets/events/bts-2026-invite-portrait.webp', alt: 'Portrait invitation to visit TrustFabric at H4C316, Bengaluru Tech Summit 2026', caption: 'Invitation: visit us at H4C316', kind: 'invite' },
+            { src: '/assets/events/bts-2026-invite-square.webp', alt: 'Square invitation to visit TrustFabric at H4C316, Bengaluru Tech Summit 2026', caption: 'Invitation: visit us at H4C316', kind: 'invite' },
+            { src: '/assets/events/bts-2026-invite-wide.webp', alt: 'Wide invitation to visit TrustFabric at H4C316, Bengaluru Tech Summit 2026', caption: 'Invitation: visit us at H4C316', kind: 'invite' }
+        ],
         featured: true,
         published: true
     },
@@ -65,6 +74,8 @@ window.TF_EVENTS = [
         participation: 'participating',
         booth: null,
         url: 'https://www.techexpogujarat.com/',
+        logo: '/assets/events/teg-logo.svg',
+        logoAlt: 'Tech Expo Gujarat 2026 logo',
         banner: null,
         gallery: [],
         featured: false,
