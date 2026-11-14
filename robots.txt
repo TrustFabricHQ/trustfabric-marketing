@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trustfabric.in/sitemap.xml
+Sitemap: https://www.trustfabric.in/sitemap.xml
