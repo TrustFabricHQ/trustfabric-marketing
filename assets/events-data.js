@@ -19,10 +19,12 @@
  *   participation  'participating' | 'attending' | 'exhibiting' | 'speaking'.
  *   booth          Booth or stand details, only when confirmed.            (optional)
  *   url            The event's own website.                                (optional)
- *   banner         '/assets/events/your-banner.jpg'. Without one, a designed
- *                  graphic is shown automatically.                         (optional)
- *   theme          Graphic used when there is no banner: 'grid' | 'arcs' | 'lines' | 'dots'.
- *   gallery        Photos: [{ src: '/assets/events/x.jpg', alt: 'What the photo shows', caption: 'Optional' }].
+ *   banner         A real photograph for this event, e.g. '/assets/events/your-photo.jpg'. Only use images
+ *                  you have the right to use. Without one, the page stays typography-led (nothing is invented). (optional)
+ *   bannerAlt      What the banner photo shows.                            (optional)
+ *   bannerCaption  Caption and credit, and the year the photo is from, e.g. 'BIEC exhibition hall, 2025 edition. Photo: organiser'. (optional)
+ *   logo           The event's official logo, e.g. '/assets/events/teg-logo.svg'. Shown small. (optional)
+ *   gallery        Photos: [{ src: '/assets/events/x.jpg', alt: 'What the photo shows', caption: 'Optional', credit: 'Optional' }].
  *   featured       true for the event highlighted at the top. Use it on one event.
  *   published      false hides an event everywhere without deleting it.
  *
@@ -45,7 +47,6 @@ window.TF_EVENTS = [
         booth: null,
         url: 'https://www.bengalurutechsummit.com/',
         banner: null,
-        theme: 'grid',
         gallery: [],
         featured: true,
         published: true
@@ -65,7 +66,6 @@ window.TF_EVENTS = [
         booth: null,
         url: 'https://www.techexpogujarat.com/',
         banner: null,
-        theme: 'arcs',
         gallery: [],
         featured: false,
         published: true
@@ -85,7 +85,6 @@ window.TF_EVENTS = [
         booth: null,
         url: 'https://www.dsci.in/event/aiss-2026/',
         banner: null,
-        theme: 'lines',
         gallery: [],
         featured: false,
         published: true
@@ -105,7 +104,6 @@ window.TF_EVENTS = [
         booth: null,
         url: 'https://www.rsaconference.com/usa',
         banner: null,
-        theme: 'dots',
         gallery: [],
         featured: false,
         published: true
@@ -126,7 +124,6 @@ window.TF_EVENTS = [
         booth: 'Booth details here',
         url: 'https://example.com',
         banner: '/assets/events/example-banner.jpg',
-        theme: 'grid',
         gallery: [
             { src: '/assets/events/example-1.jpg', alt: 'The TrustFabric team at the stand', caption: 'Day one' }
         ],

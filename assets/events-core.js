@@ -4,7 +4,9 @@
  *
  *   TFEvents.events          published events, in data order
  *   TFEvents.statusOf(e,now) 'upcoming' | 'past' | 'tbc' (no confirmed date)
- *   TFEvents.visual(e)       banner photo, or the designed graphic when there is none
+ *   TFEvents.banner(e)       the event's real photograph with its caption, or '' when there is none
+ *   TFEvents.logo(e)         the event's official logo, or '' when there is none
+ *   TFEvents.yearOf(e)       the year an event is filed under
  *   TFEvents.openConnect(s)  opens the "Connect with our team" form (optionally for one event slug)
  *   TFEvents.openLightbox(items, index)
  *   TFEvents.observe(root)   scroll reveals for newly rendered markup
@@ -55,10 +57,21 @@
 
     function url(e) { return '/events/' + encodeURIComponent(e.slug); }
 
-    function visual(e) {
-        var theme = ['grid', 'arcs', 'lines', 'dots'].indexOf(e.theme) > -1 ? e.theme : 'grid';
-        if (e.banner) return '<div class="vis has-img" data-theme="' + theme + '"><img src="' + esc(e.banner) + '" alt="" loading="lazy" decoding="async"></div>';
-        return '<div class="vis" data-theme="' + theme + '" aria-hidden="true"><span class="vis-year">' + esc(e.year) + '</span></div>';
+    // The year an event is filed under: its start date when confirmed, otherwise the year in the data.
+    function yearOf(e) {
+        var d = parseDate(e.startDate);
+        return d ? d.getFullYear() : (Number(e.year) || 0);
+    }
+
+    // Real imagery only. If an event has no photograph or logo, nothing is drawn in its place.
+    function banner(e) {
+        if (!e.banner) return '';
+        return '<figure class="photo"><img src="' + esc(e.banner) + '" alt="' + esc(e.bannerAlt || '') + '" loading="lazy" decoding="async">' +
+            (e.bannerCaption ? '<figcaption>' + esc(e.bannerCaption) + '</figcaption>' : '') + '</figure>';
+    }
+    function logo(e) {
+        if (!e.logo) return '';
+        return '<img class="ev-logo" src="' + esc(e.logo) + '" alt="' + esc(e.logoAlt || (e.name + ' logo')) + '" loading="lazy" decoding="async">';
     }
 
     /* ---------- scroll reveals ---------- */
@@ -234,7 +247,7 @@
 
     window.TFEvents = {
         events: events, esc: esc, statusOf: statusOf, statusLabel: statusLabel, fullName: fullName, place: place,
-        partLabel: partLabel, fmtRange: fmtRange, url: url, visual: visual, observe: observe,
+        partLabel: partLabel, fmtRange: fmtRange, url: url, banner: banner, logo: logo, yearOf: yearOf, observe: observe,
         openConnect: openConnect, openLightbox: openLightbox
     };
 })();

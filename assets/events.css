@@ -2,6 +2,9 @@
    Navbar and buttons match the rest of the site. Page-specific layout lives in each page. */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
+    --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+    --warm: #F7F5F1;
+    --hair: #E3DFD7;
     --red: #E31E24;
     --navy: #1E3A8A;
     --blue: #2E7BD6;
@@ -91,27 +94,19 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; }
 .dark { background: var(--slate); color: #fff; }
 .dark .lead { color: rgba(255,255,255,0.74); }
 
-/* ---------- event graphic (used when an event has no banner photo) ---------- */
-.vis { position: relative; width: 100%; height: 100%; min-height: 160px; overflow: hidden; background-color: #12275F; }
-.vis[data-theme="grid"]  { background-color: #12275F; background-image: linear-gradient(rgba(147,197,253,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(147,197,253,0.16) 1px, transparent 1px); background-size: 34px 34px; }
-.vis[data-theme="arcs"]  { background-color: #0F172A; background-image: repeating-radial-gradient(circle at 88% 118%, transparent 0 26px, rgba(255,255,255,0.13) 26px 27px); }
-.vis[data-theme="lines"] { background-color: #1E3A8A; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 15px); }
-.vis[data-theme="dots"]  { background-color: #0B1530; background-image: radial-gradient(rgba(255,255,255,0.26) 1.2px, transparent 1.7px); background-size: 20px 20px; }
-.vis::after { content: ''; position: absolute; left: 0; top: 0; width: 44px; height: 4px; background: var(--red); }
-.vis img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.vis.has-img::after { display: none; }
-.vis-year { position: absolute; left: 20px; bottom: 6px; font-size: clamp(64px, 9vw, 120px); font-weight: 600; letter-spacing: -0.06em; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.42); font-variant-numeric: tabular-nums; pointer-events: none; user-select: none; }
-
-/* ---------- status and participation ---------- */
-.tag { font-size: 13px; color: var(--muted); }
-.status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
-.status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
-.s-upcoming { color: #0B7A4B; }
-.s-tbc { color: #B45309; }
+/* ---------- status and participation (text only, no decorative dots) ---------- */
+.st { font-size: 13px; font-weight: 600; letter-spacing: 0.01em; }
+.s-upcoming { color: var(--navy); }
+.s-tbc { color: #9A5B0B; }
 .s-past { color: var(--muted); }
-.on-dark .s-upcoming { color: #6EE7B7; } .on-dark .s-tbc { color: #FCD34D; } .on-dark .s-past { color: #CBD5E1; }
-.part { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; }
-.part::before { content: ''; width: 12px; height: 2px; background: var(--red); }
+.part { font-size: 14px; font-weight: 500; color: var(--ink); }
+.part::before { content: ''; display: inline-block; width: 14px; height: 1.5px; background: var(--red); vertical-align: middle; margin-right: 10px; }
+
+/* ---------- real photography (only rendered when a real image exists) ---------- */
+.photo { margin: 0; }
+.photo img { width: 100%; height: auto; border-radius: 2px; background: var(--warm); }
+.photo figcaption { margin-top: 10px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.ev-logo { display: block; height: 34px; width: auto; max-width: 150px; object-fit: contain; }
 
 /* ---------- connect dialog and lightbox ---------- */
 dialog { border: none; padding: 0; color: var(--ink); background: #fff; border-radius: var(--radius); max-width: none; }
