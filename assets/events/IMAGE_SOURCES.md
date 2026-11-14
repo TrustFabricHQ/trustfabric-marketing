@@ -25,13 +25,21 @@ Images now on the site:
 
 Booth `H4C316` comes from TrustFabric's own supplied banners, not from the internet.
 
+Organiser images added at the site owner's direction (14 November 2026). **No written permission is on file for these.** They are credited to the organiser, labelled "previous edition" (none of the 2026 events has happened yet), kept inside each event's details, and kept out of "Event highlights", which is for TrustFabric's own photographs. Remove any of them promptly if an organiser asks, and ask the organisers for permission or an exhibitor pack when you can.
+
+| File | Event | What it is | Source URL |
+|---|---|---|---|
+| `bts-2026-logo.webp` | Bengaluru Tech Summit | Official 2026 logo, offered for download on the organiser's Brand Assets page (no terms stated) | https://www.bengalurutechsummit.com/assets/images/downloads/BTS2026_Logo.png |
+| `bts-exhibition-previous-edition.webp` | Bengaluru Tech Summit | Collage of four exhibition booths, edition not stated by the organiser | https://www.bengalurutechsummit.com/assets/images/optimized/bts-exhibition-home-2026.jpg.webp |
+| `bts-venue-biec.webp` | Bengaluru Tech Summit | Aerial view of the venue, BIEC | https://www.bengalurutechsummit.com/assets/images/Event%20Location%20Image.webp |
+| `teg-previous-edition-1.webp` to `-3.webp` | Tech Expo Gujarat | Three photographs from a previous edition (300 px originals) | https://www.techexpogujarat.com/wp-content/themes/techexpogujarat/expo2026/images/glimpse-img1.jpg (also glimpse-img2, glimpse-img3) |
+| `dsci-aiss-previous-edition-1.webp` to `-3.webp` | DSCI AISS | Three session photographs from a previous AISS (one shows an "AISS 2025" screen) | https://event-assets.dsci.in/aiss/assets/images/about-1.png (also about-2, about-3) |
+| `dsci-logo-on-navy.webp` | DSCI AISS | DSCI logo, "Promoting Data Protection, a nasscom Initiative". The original is white on transparent, so it is placed on a navy tile | https://event-assets.dsci.in/aiss/assets/images/dsci-logo.webp |
+
 Not added, and why:
 
-- **DSCI AISS 2026:** the only AISS banner on DSCI's page is a transparent graphic layer meant to sit on a coloured panel, so it is unusable on its own. DSCI states no reuse terms. Ask DSCI (or the exhibitor or partner desk) for an "I will be at AISS" banner or logo pack, as Bengaluru Tech Summit provides.
+- **DSCI AISS banner:** the only banner on DSCI's page is a transparent graphic layer meant to sit on a coloured panel, so it is unusable on its own.
 - **RSA Conference 2027:** the legal notices page requires prior written consent for RSAC's logo, and the site blocks automated access. Needs consent or the RSAC Media Hub (available with a pass).
-- **Photographs from any organiser:** every one found is under "All Rights Reserved" with no stated terms, and several are undated or from earlier editions.
-
-Original research follows, kept for reference.
 
 ## Bengaluru Tech Summit 2026 (17 to 19 November, BIEC, Bengaluru)
 

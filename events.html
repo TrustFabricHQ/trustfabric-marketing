@@ -93,6 +93,8 @@
         .r-event h3 .yr { font-weight: 400; color: var(--muted); }
         .r-cat { margin-top: 4px; font-size: 14px; color: var(--muted); }
         .r-booth { margin-top: 6px; font-size: 14px; font-weight: 600; color: var(--navy); }
+        .r-logo { margin-top: 12px; }
+        .r-logo .ev-logo { height: 34px; max-width: 130px; border-radius: 4px; }
         .r-where { font-size: 15px; color: var(--ink); }
         .r-where.tbd { color: var(--muted); }
         .r-status { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -117,11 +119,12 @@
         .p-act { display: flex; flex-wrap: wrap; gap: 12px; }
         .p-media { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
         .p-media .ev-logo { height: 84px; max-width: 220px; }
-        .p-thumbs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+        .p-group { grid-column: 1 / -1; }
+        .p-thumbs { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
         .p-thumbs .tbtn { padding: 0; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; background: var(--off); cursor: zoom-in; transition: border-color 0.2s; }
         .p-thumbs .tbtn:hover { border-color: var(--ink); }
         .p-thumbs img { height: 180px; width: auto; max-width: 100%; display: block; }
-        .p-thumbs-label { grid-column: 1 / -1; font-size: 13px; color: var(--muted); margin-bottom: -8px; }
+        .p-thumbs-label { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
         .empty { border: 1px solid var(--rule); border-radius: 12px; padding: 48px 32px; background: var(--off); }
         .empty h3 { font-size: 22px; margin-bottom: 8px; }
         .empty p { font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 34em; margin-bottom: 16px; }
@@ -382,6 +385,22 @@
     })();
 
     /* ----- table rows, each with details that open in place ----- */
+    var GROUPS = [
+        ['invite', 'Invitations to share'],
+        ['edition', 'From a previous edition. Images from the organiser.'],
+        ['venue', 'The venue. Image from the organiser.'],
+        ['photo', 'Photographs']
+    ];
+    function groupsHtml(e, imgs) {
+        return GROUPS.map(function (g) {
+            var items = [];
+            imgs.forEach(function (im, i) { if ((im.kind || 'photo') === g[0]) items.push([im, i]); });
+            if (!items.length) return '';
+            return '<div class="p-group"><p class="p-thumbs-label">' + esc(g[1]) + '</p><div class="p-thumbs">' + items.map(function (x) {
+                return '<button type="button" class="tbtn" data-pi="' + x[1] + '" data-event="' + esc(e.slug) + '" aria-label="Open image: ' + esc(x[0].alt || e.name) + '"><img src="' + esc(x[0].src) + '" alt="' + esc(x[0].alt || e.name) + '" loading="lazy" decoding="async"></button>';
+            }).join('') + '</div></div>';
+        }).join('');
+    }
     function panel(e) {
         var s = st[e.slug], facts = [];
         facts.push(e.startDate ? ['Date', T.fmtRange(e), ''] : ['Date', 'To be confirmed', 'tbd']);
@@ -399,9 +418,7 @@
             '<div class="p-act">' + (s === 'past' ? '' : '<button type="button" class="btn btn-red btn-sm" data-connect data-event="' + esc(e.slug) + '">Meet us at this event</button>') +
             (e.url ? '<a class="btn btn-outline btn-sm" href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Event website</a>' : '') + '</div></div>' +
             (media ? '<div class="p-media">' + media + '</div>' : '') +
-            (imgs.length ? '<p class="p-thumbs-label">' + (imgs.every(function (g) { return g.kind === 'invite'; }) ? 'Invitations to share' : 'Photographs') + '</p><div class="p-thumbs">' + imgs.map(function (g, i) {
-                return '<button type="button" class="tbtn" data-pi="' + i + '" data-event="' + esc(e.slug) + '" aria-label="Open image: ' + esc(g.alt || e.name) + '"><img src="' + esc(g.src) + '" alt="' + esc(g.alt || e.name) + '" loading="lazy" decoding="async"></button>';
-            }).join('') + '</div>' : '') +
+            groupsHtml(e, imgs) +
             '</div></div>';
     }
     function row(e) {
@@ -412,7 +429,8 @@
             '<div class="dchip"><b>' + esc(chip.top) + '</b><span>' + esc(chip.bottom) + '</span></div>' +
             '<div class="r-event"><h3>' + esc(e.name) + ' <span class="yr">' + esc(e.year) + '</span></h3>' +
             (e.category ? '<p class="r-cat">' + esc(e.category) + '</p>' : '') +
-            (e.booth ? '<p class="r-booth">Stand ' + esc(e.booth) + '</p>' : '') + '</div>' +
+            (e.booth ? '<p class="r-booth">Stand ' + esc(e.booth) + '</p>' : '') +
+            (e.logo ? '<div class="r-logo">' + T.logo(e) + '</div>' : '') + '</div>' +
             where +
             '<div class="r-status"><span class="chip ' + (isNext ? 'chip-next' : 'chip-' + s) + '">' + esc(isNext ? 'Next event' : T.statusLabel(s)) + '</span><span class="part">' + esc(T.partLabel(e)) + '</span></div>' +
             '<div class="r-act">' + (s === 'past' ? '' : '<button type="button" class="btn btn-red btn-sm" data-connect data-event="' + esc(e.slug) + '">Meet us</button>') +
@@ -496,7 +514,7 @@
         var th = e.target.closest ? e.target.closest('.tbtn') : null;
         if (th) {
             var ev = bySlug[th.getAttribute('data-event')];
-            var imgs = (ev.gallery || []).filter(function (g) { return g && g.src; }).map(function (g) { return { src: g.src, alt: g.alt || ev.name, caption: (g.caption ? g.caption + ' | ' : '') + T.fullName(ev) + (g.credit ? ' | Photo: ' + g.credit : '') }; });
+            var imgs = (ev.gallery || []).filter(function (g) { return g && g.src; }).map(function (g) { return { src: g.src, alt: g.alt || ev.name, caption: (g.caption ? g.caption + ' | ' : '') + T.fullName(ev) + (g.credit ? ' | ' + T.credit(g) : '') }; });
             T.openLightbox(imgs, +th.getAttribute('data-pi'));
         }
     });
@@ -510,12 +528,12 @@
     window.addEventListener('hashchange', fromHash);
     renderFilters(); paint('all'); fromHash();
 
-    /* ----- highlights: real photographs from the data file (promotional invitations stay inside event details) ----- */
+    /* ----- highlights: TrustFabric's own photographs only. Invitations and organiser images stay inside event details. ----- */
     (function () {
         var photos = [];
         ordered.slice().reverse().forEach(function (e) {
             (e.gallery || []).forEach(function (g) {
-                if (g && g.src && g.kind !== 'invite') photos.push({ src: g.src, alt: g.alt || e.name, caption: g.caption || '', credit: g.credit || '', where: T.fullName(e) });
+                if (g && g.src && (!g.kind || g.kind === 'photo')) photos.push({ src: g.src, alt: g.alt || e.name, caption: g.caption || '', credit: g.credit || '', where: T.fullName(e) });
             });
         });
         var el = document.getElementById('galBody');
@@ -526,11 +544,11 @@
         }
         el.innerHTML = '<div class="ggrid">' + photos.map(function (p, i) {
             return '<figure class="gfig reveal"><button type="button" class="gbtn" data-i="' + i + '" aria-label="Open photo: ' + esc(p.alt) + '"><img src="' + esc(p.src) + '" alt="' + esc(p.alt) + '" loading="lazy" decoding="async"></button>' +
-                '<figcaption>' + (p.caption ? '<b>' + esc(p.caption) + '</b>' : '') + esc(p.where) + (p.credit ? ' | Photo: ' + esc(p.credit) : '') + '</figcaption></figure>';
+                '<figcaption>' + (p.caption ? '<b>' + esc(p.caption) + '</b>' : '') + esc(p.where) + (p.credit ? ' | ' + esc(T.credit({ credit: p.credit })) : '') + '</figcaption></figure>';
         }).join('') + '</div>';
         el.addEventListener('click', function (e) {
             var b = e.target.closest('.gbtn'); if (!b) return;
-            T.openLightbox(photos.map(function (p) { return { src: p.src, alt: p.alt, caption: (p.caption ? p.caption + ' | ' : '') + p.where + (p.credit ? ' | Photo: ' + p.credit : '') }; }), +b.getAttribute('data-i'));
+            T.openLightbox(photos.map(function (p) { return { src: p.src, alt: p.alt, caption: (p.caption ? p.caption + ' | ' : '') + p.where + (p.credit ? ' | ' + T.credit({ credit: p.credit }) : '') }; }), +b.getAttribute('data-i'));
         });
         T.observe(el);
     })();

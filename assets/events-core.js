@@ -66,6 +66,13 @@
         return { top: s.getDate() + ' ' + SHORT[s.getMonth()] + ' ' + s.getFullYear(), bottom: 'to ' + f.getDate() + ' ' + SHORT[f.getMonth()] + ' ' + f.getFullYear() };
     }
 
+    // 'Image: DSCI' stays as written; a bare name such as 'TrustFabric' becomes 'Photo: TrustFabric'.
+    function credit(g) {
+        var c = String((g && g.credit) || '');
+        if (!c) return '';
+        return /^(photo|image)\s*:/i.test(c) ? c : 'Photo: ' + c;
+    }
+
     function url(e) { return '/events/' + encodeURIComponent(e.slug); }
 
     // The year an event is filed under: its start date when confirmed, otherwise the year in the data.
@@ -258,7 +265,7 @@
 
     window.TFEvents = {
         events: events, esc: esc, statusOf: statusOf, statusLabel: statusLabel, fullName: fullName, place: place,
-        partLabel: partLabel, fmtRange: fmtRange, dateChip: dateChip, url: url, banner: banner, logo: logo, yearOf: yearOf, observe: observe,
+        partLabel: partLabel, fmtRange: fmtRange, dateChip: dateChip, credit: credit, url: url, banner: banner, logo: logo, yearOf: yearOf, observe: observe,
         openConnect: openConnect, openLightbox: openLightbox
     };
 })();

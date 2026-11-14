@@ -27,7 +27,9 @@
  *   logo           The event's official logo, e.g. '/assets/events/teg-logo.svg'. Shown small. (optional)
  *   gallery        Images: [{ src: '/assets/events/x.jpg', alt: 'What it shows', caption: 'Optional', credit: 'Optional', kind: 'invite' }].
  *                  Leave kind out for event photographs: they also appear in the Event highlights section.
- *                  kind: 'invite' marks promotional artwork: it shows inside the event's details only.
+ *                  kind: 'invite'  promotional artwork (invitations to share). 'edition'  a photo from a previous edition,
+ *                  supplied by the organiser. 'venue'  a photo of the venue. All three show inside the event's details only.
+ *                  Credit organiser images as credit: 'Image: Organiser name'. Your own photos: credit: 'TrustFabric' (shown as 'Photo: TrustFabric').
  *   featured       true for the event highlighted at the top. Use it on one event.
  *   published      false hides an event everywhere without deleting it.
  *
@@ -49,13 +51,17 @@ window.TF_EVENTS = [
         participation: 'exhibiting',
         booth: 'H4C316',
         url: 'https://www.bengalurutechsummit.com/',
+        logo: '/assets/events/bts-2026-logo.webp',
+        logoAlt: 'Bengaluru Tech Summit 2026 logo',
         banner: '/assets/events/bts-2026-banner.webp',
         bannerAlt: 'Bengaluru Tech Summit 2026 banner, 17 to 19 November at BIEC: TrustFabric, visit us at H4C316',
         bannerCaption: 'Visit TrustFabric at H4C316. Event artwork supplied to exhibitors by Bengaluru Tech Summit.',
         gallery: [
             { src: '/assets/events/bts-2026-invite-portrait.webp', alt: 'Portrait invitation to visit TrustFabric at H4C316, Bengaluru Tech Summit 2026', caption: 'Invitation: visit us at H4C316', kind: 'invite' },
             { src: '/assets/events/bts-2026-invite-square.webp', alt: 'Square invitation to visit TrustFabric at H4C316, Bengaluru Tech Summit 2026', caption: 'Invitation: visit us at H4C316', kind: 'invite' },
-            { src: '/assets/events/bts-2026-invite-wide.webp', alt: 'Wide invitation to visit TrustFabric at H4C316, Bengaluru Tech Summit 2026', caption: 'Invitation: visit us at H4C316', kind: 'invite' }
+            { src: '/assets/events/bts-2026-invite-wide.webp', alt: 'Wide invitation to visit TrustFabric at H4C316, Bengaluru Tech Summit 2026', caption: 'Invitation: visit us at H4C316', kind: 'invite' },
+            { src: '/assets/events/bts-exhibition-previous-edition.webp', alt: 'Collage of four exhibition booths from a previous edition of Bengaluru Tech Summit', caption: 'Exhibition hall, previous edition', credit: 'Image: Bengaluru Tech Summit', kind: 'edition' },
+            { src: '/assets/events/bts-venue-biec.webp', alt: 'Aerial view of the Bangalore International Exhibition Centre, the venue', caption: 'The venue: BIEC, Tumkur Road', credit: 'Image: Bengaluru Tech Summit', kind: 'venue' }
         ],
         featured: true,
         published: true
@@ -77,7 +83,11 @@ window.TF_EVENTS = [
         logo: '/assets/events/teg-logo.svg',
         logoAlt: 'Tech Expo Gujarat 2026 logo',
         banner: null,
-        gallery: [],
+        gallery: [
+            { src: '/assets/events/teg-previous-edition-1.webp', alt: 'Attendees applauding at a previous Tech Expo Gujarat', caption: 'Previous edition', credit: 'Image: Tech Expo Gujarat', kind: 'edition' },
+            { src: '/assets/events/teg-previous-edition-2.webp', alt: 'Group photo in front of the Tech Expo Gujarat backdrop at a previous edition', caption: 'Previous edition', credit: 'Image: Tech Expo Gujarat', kind: 'edition' },
+            { src: '/assets/events/teg-previous-edition-3.webp', alt: 'Audience at a session of a previous Tech Expo Gujarat', caption: 'Previous edition', credit: 'Image: Tech Expo Gujarat', kind: 'edition' }
+        ],
         featured: false,
         published: true
     },
@@ -95,8 +105,14 @@ window.TF_EVENTS = [
         participation: 'participating',
         booth: null,
         url: 'https://www.dsci.in/event/aiss-2026/',
+        logo: '/assets/events/dsci-logo-on-navy.webp',
+        logoAlt: 'DSCI, Promoting Data Protection, a nasscom initiative',
         banner: null,
-        gallery: [],
+        gallery: [
+            { src: '/assets/events/dsci-aiss-previous-edition-1.webp', alt: 'A speaker at the podium addressing the audience at a previous AISS', caption: 'Previous edition', credit: 'Image: DSCI', kind: 'edition' },
+            { src: '/assets/events/dsci-aiss-previous-edition-2.webp', alt: 'A panel on stage with the audience watching at a previous AISS', caption: 'Previous edition', credit: 'Image: DSCI', kind: 'edition' },
+            { src: '/assets/events/dsci-aiss-previous-edition-3.webp', alt: 'Delegates listening to a session at a previous AISS', caption: 'Previous edition', credit: 'Image: DSCI', kind: 'edition' }
+        ],
         featured: false,
         published: true
     },
