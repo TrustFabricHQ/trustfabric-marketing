@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/events/:slug", "destination": "/event.html" }
+    { "source": "/events/:slug", "destination": "/event" }
   ],
   "redirects": [
     { "source": "/dpdp-cookie-scanner", "destination": "https://checkdpdp.com", "permanent": true },
