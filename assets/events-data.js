@@ -25,6 +25,7 @@
  *   bannerAlt      What the banner photo shows.                            (optional)
  *   bannerCaption  Caption and credit, and the year the photo is from, e.g. 'BIEC exhibition hall, 2025 edition. Photo: organiser'. (optional)
  *   logo           The event's official logo, e.g. '/assets/events/teg-logo.svg'. Shown small. (optional)
+ *   logoOn         'light' (default) or 'dark': the background the logo needs when it fills a card header. (optional)
  *   gallery        Images: [{ src: '/assets/events/x.jpg', alt: 'What it shows', caption: 'Optional', credit: 'Optional', kind: 'invite' }].
  *                  Leave kind out for event photographs: they also appear in the Event highlights section.
  *                  kind: 'invite'  promotional artwork (invitations to share). 'edition'  a photo from a previous edition,
@@ -106,6 +107,7 @@ window.TF_EVENTS = [
         booth: null,
         url: 'https://www.dsci.in/event/aiss-2026/',
         logo: '/assets/events/dsci-logo-on-navy.webp',
+        logoOn: 'dark',
         logoAlt: 'DSCI, Promoting Data Protection, a nasscom initiative',
         banner: null,
         gallery: [

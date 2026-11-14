@@ -129,6 +129,40 @@
         .empty h3 { font-size: 22px; margin-bottom: 8px; }
         .empty p { font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 34em; margin-bottom: 16px; }
 
+        /* ---------- card layout ---------- */
+        .bar .tools { display: flex; align-items: center; gap: 16px; }
+        .cgroup { margin-bottom: 64px; }
+        .cgroup:last-child { margin-bottom: 0; }
+        .grp-h { display: flex; align-items: baseline; gap: 12px; padding-bottom: 14px; margin-bottom: 28px; border-bottom: 1px solid var(--ink); }
+        .grp-h h3 { font-size: 24px; letter-spacing: -0.02em; }
+        .grp-h span { font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+        .grid12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 28px; align-items: start; }
+        .c7 { grid-column: span 7; } .c5 { grid-column: span 5; }
+        .card { scroll-margin-top: 140px; display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: #fff; transition: border-color 0.25s, box-shadow 0.25s; }
+        .card:hover { border-color: var(--ink); }
+        .card.is-next { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy), 0 18px 40px -24px rgba(30,58,138,0.45); }
+        .c-vis { position: relative; display: flex; align-items: center; justify-content: center; height: 220px; background: var(--deep); overflow: hidden; }
+        .card.c7 .c-vis { height: 300px; }
+        .c-vis.light { background: #F1F5F9; }
+        .c-vis img.fill { width: 100%; height: 100%; object-fit: contain; }
+        .c-vis img.mark { max-height: 72%; max-width: 62%; width: auto; height: auto; object-fit: contain; }
+        .c-vis .yr-out { position: absolute; left: 24px; bottom: 6px; font-size: clamp(72px, 9vw, 120px); font-weight: 600; letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.4); font-variant-numeric: tabular-nums; pointer-events: none; user-select: none; }
+        .c-body { padding: 26px 28px 24px; }
+        .c-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-bottom: 14px; }
+        .c-meta .tag { font-size: 14px; color: var(--muted); }
+        .card h3 { font-size: 26px; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 10px; }
+        .card.c7 h3 { font-size: 32px; }
+        .card h3 .yr { font-weight: 400; color: var(--muted); }
+        .c-when { font-size: 16px; line-height: 1.55; color: var(--ink); margin-bottom: 10px; }
+        .c-when.tbd { color: var(--muted); }
+        .c-booth { display: inline-flex; align-items: baseline; gap: 10px; margin: 2px 0 12px; padding: 8px 14px; border: 1px solid var(--navy); border-radius: 8px; background: #F5F8FF; font-size: 14px; color: var(--muted); }
+        .c-booth b { font-size: 18px; font-weight: 700; color: var(--navy); letter-spacing: 0.01em; }
+        .c-desc { font-size: 15.5px; line-height: 1.7; color: var(--muted); margin: 14px 0 20px; }
+        .c-act { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; }
+        .card .panel { padding: 0 28px 28px; }
+        .card .panel-in { grid-template-columns: 1fr; gap: 24px; }
+        .card[data-status="past"] h3 { color: #475569; }
+
         /* ---------- what to talk about ---------- */
         .talk { background: var(--off); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
         .talk h2 { margin-bottom: 12px; }
@@ -169,6 +203,7 @@
         @media (max-width: 900px) {
             .banner-in { grid-template-columns: 1fr; }
             .panel-in { grid-template-columns: 1fr; }
+            .c7, .c5 { grid-column: 1 / -1; }
             .cols4 { grid-template-columns: 1fr 1fr; row-gap: 32px; }
             .cols4 > div:nth-child(n) { padding: 24px 24px 0 0; border-left: none; }
             .cols4 > div:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--rule-strong); }
@@ -185,6 +220,12 @@
             .seg .n { display: none; }
             .cols, .cols .r-act { grid-template-columns: 1fr; }
             .cols { gap: 14px; }
+            .grid12 { gap: 20px; }
+            .card.c7 .c-vis, .c-vis { height: 190px; }
+            .card.c7 h3 { font-size: 26px; }
+            .c-body { padding: 22px 20px 20px; }
+            .card .panel { padding: 0 20px 22px; }
+            .bar .tools { width: 100%; justify-content: space-between; }
             .row { padding: 20px 18px; }
             .cols .r-act { grid-column: auto; justify-content: flex-start; }
             .row .dchip { flex-direction: row; justify-content: flex-start; gap: 10px; min-height: 0; padding: 8px 12px; width: fit-content; }
@@ -200,7 +241,7 @@
             .btn { width: auto; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .row, .seg button, .gbtn img, .gbtn:hover img, .toggle, .toggle::after { transition: none; }
+            .row, .seg button, .gbtn img, .gbtn:hover img, .toggle, .toggle::after, .card { transition: none; }
             #eventList { transition: none; }
         }
     </style>
@@ -272,7 +313,13 @@
 <div class="bar" id="filterBar">
     <div class="wrap">
         <div class="seg" id="filters" role="group" aria-label="Filter events"></div>
-        <p class="count" id="resultCount"></p>
+        <div class="tools">
+            <p class="count" id="resultCount"></p>
+            <div class="seg" id="views" role="group" aria-label="Layout">
+                <button type="button" data-view="cards" aria-pressed="true">Cards</button>
+                <button type="button" data-view="list" aria-pressed="false">List</button>
+            </div>
+        </div>
     </div>
 </div>
 <p class="sr-only" id="filterStatus" aria-live="polite"></p>
@@ -348,6 +395,11 @@
 (function () {
     var T = window.TFEvents, E = T.events, esc = T.esc, now = new Date();
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Layout of the events: 'cards' or 'list'. The visitor's own choice is remembered in their browser.
+    var DEFAULT_VIEW = 'cards';
+    var view = DEFAULT_VIEW;
+    try { var savedView = localStorage.getItem('tf_events_view'); if (savedView === 'cards' || savedView === 'list') view = savedView; } catch (err) {}
 
     /* Chronological order: by year, dated events by start date, then events still waiting for a date. */
     var ordered = E.map(function (e, i) { return { e: e, i: i }; }).sort(function (a, b) {
@@ -448,6 +500,38 @@
                 return '<div class="yr-h"><h3>' + y + '</h3><span>' + items.length + (items.length === 1 ? ' event' : ' events') + '</span></div>' + items.map(row).join('');
             }).join('') + '</div>';
     }
+    /* ----- card layout: large and small cards alternate (7 + 5, then 5 + 7), grouped by status ----- */
+    function cardVisual(e) {
+        if (e.banner) return '<div class="c-vis"><img class="fill" src="' + esc(e.banner) + '" alt="' + esc(e.bannerAlt || '') + '" loading="lazy" decoding="async"></div>';
+        if (e.logo) return '<div class="c-vis' + (e.logoOn === 'dark' ? '' : ' light') + '"><img class="mark" src="' + esc(e.logo) + '" alt="' + esc(e.logoAlt || (e.name + ' logo')) + '" loading="lazy" decoding="async"></div>';
+        return '<div class="c-vis" aria-hidden="true"><span class="yr-out">' + esc(e.year) + '</span></div>';   // no image: type only, nothing invented
+    }
+    function card(e, span) {
+        var s = st[e.slug], isNext = e.slug === leadSlug;
+        var when = (e.startDate ? T.fmtRange(e) : 'Dates to be confirmed') + (T.place(e) ? ' | ' + T.place(e) : '');
+        return '<article class="card ' + span + (isNext ? ' is-next' : '') + '" id="' + esc(e.slug) + '" data-status="' + s + '">' +
+            cardVisual(e) + '<div class="c-body">' +
+            '<div class="c-meta">' + (e.category ? '<span class="tag">' + esc(e.category) + '</span>' : '') + '<span class="chip ' + (isNext ? 'chip-next' : 'chip-' + s) + '">' + esc(isNext ? 'Next event' : T.statusLabel(s)) + '</span></div>' +
+            '<h3>' + esc(e.name) + ' <span class="yr">' + esc(e.year) + '</span></h3>' +
+            '<p class="c-when' + (e.startDate ? '' : ' tbd') + '">' + esc(when) + '</p>' +
+            (e.booth ? '<p class="c-booth"><span>Visit us at</span><b>' + esc(e.booth) + '</b></p>' : '') +
+            '<p class="part">' + esc(T.partLabel(e)) + '</p>' +
+            (e.description ? '<p class="c-desc">' + esc(e.description) + '</p>' : '') +
+            '<div class="c-act">' + (s === 'past' ? '' : '<button type="button" class="btn btn-red btn-sm" data-connect data-event="' + esc(e.slug) + '">Meet us</button>') +
+            '<button type="button" class="toggle" aria-expanded="false" aria-controls="p-' + esc(e.slug) + '">Details</button></div>' +
+            '</div>' + panel(e) + '</article>';
+    }
+    function cardsHtml(list) {
+        var GROUPS = [['upcoming', 'Upcoming Events'], ['tbc', 'Details coming soon'], ['past', 'Past Events']];
+        return GROUPS.map(function (g) {
+            var items = list.filter(function (e) { return st[e.slug] === g[0]; });
+            if (!items.length) return '';
+            if (g[0] === 'past') items = items.slice().reverse();
+            return '<section class="cgroup" aria-label="' + g[1] + '"><div class="grp-h"><h3>' + g[1] + '</h3><span>' + items.length + '</span></div><div class="grid12">' +
+                items.map(function (e, i) { var r = Math.floor(i / 2), pos = i % 2; return card(e, (r % 2 === 0) === (pos === 0) ? 'c7' : 'c5'); }).join('') + '</div></section>';
+        }).join('');
+    }
+
     var FILTERS = [
         { id: 'all', label: 'All events', n: ordered.length },
         { id: 'upcoming', label: 'Upcoming', n: count('upcoming') },
@@ -459,7 +543,7 @@
     var listEl = document.getElementById('eventList'), statusEl = document.getElementById('filterStatus'), countEl = document.getElementById('resultCount');
     function html(filter) {
         var list = filter === 'all' ? ordered : ordered.filter(function (e) { return st[e.slug] === filter; });
-        if (list.length) return tableHtml(list, filter === 'past');
+        if (list.length) return view === 'cards' ? cardsHtml(list) : tableHtml(list, filter === 'past');
         if (filter === 'upcoming') {
             var w = count('tbc');
             return '<div class="empty"><h3>No dated upcoming events yet</h3><p>' + (w ? w + (w === 1 ? ' event is' : ' events are') + ' waiting on confirmed dates.' : 'New events are added here as soon as they are confirmed.') + '</p>' +
@@ -509,8 +593,10 @@
     document.addEventListener('click', function (e) {
         var f = e.target.closest ? e.target.closest('[data-filter]') : null;
         if (f) { setFilter(f.getAttribute('data-filter')); return; }
+        var vw = e.target.closest ? e.target.closest('[data-view]') : null;
+        if (vw) { setView(vw.getAttribute('data-view')); return; }
         var t = e.target.closest ? e.target.closest('.toggle') : null;
-        if (t) { var evEl = t.closest('.ev'); setOpen(evEl, t.getAttribute('aria-expanded') !== 'true'); return; }
+        if (t) { var evEl = t.closest('.ev, .card'); setOpen(evEl, t.getAttribute('aria-expanded') !== 'true'); return; }
         var th = e.target.closest ? e.target.closest('.tbtn') : null;
         if (th) {
             var ev = bySlug[th.getAttribute('data-event')];
@@ -518,6 +604,18 @@
             T.openLightbox(imgs, +th.getAttribute('data-pi'));
         }
     });
+    function renderViews() {
+        [].forEach.call(document.querySelectorAll('#views button'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-view') === view ? 'true' : 'false'); });
+    }
+    function setView(v) {
+        if ((v !== 'cards' && v !== 'list') || v === view) return;
+        view = v;
+        try { localStorage.setItem('tf_events_view', v); } catch (err) {}
+        renderViews();
+        if (reduce) { paint(current); return; }
+        listEl.classList.add('swap');
+        setTimeout(function () { paint(current); listEl.classList.remove('swap'); }, 160);
+    }
     // a link such as /events#bengaluru-tech-summit-2026 opens that event's details
     function fromHash() {
         var slug = decodeURIComponent((location.hash || '').replace(/^#/, ''));
@@ -526,7 +624,7 @@
         setFilter(current === 'all' || current === needs ? current : 'all', function () { openEvent(slug, true); });
     }
     window.addEventListener('hashchange', fromHash);
-    renderFilters(); paint('all'); fromHash();
+    renderViews(); renderFilters(); paint('all'); fromHash();
 
     /* ----- highlights: TrustFabric's own photographs only. Invitations and organiser images stay inside event details. ----- */
     (function () {
