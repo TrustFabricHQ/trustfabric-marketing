@@ -5,7 +5,7 @@ window.COURSE = {
     BATCH_NO: 1,
     DAY1_DATE: 'TBD',   // e.g. '2026-12-13'
     DAY2_DATE: 'TBD',   // e.g. '2026-12-14'
-    PRICE_INR: 14999,   // base price, before GST
+    PRICE_INR: 19999,   // base price, before GST
     GST_PERCENT: 18,
     SEATS: 30,
     CONTACT_EMAIL: 'info@trustfabric.in'
