@@ -2516,6 +2516,14 @@
         .early-access-badge { color: rgba(255,255,255,0.6) !important; }
         .early-access-badge strong { color: rgba(255,255,255,0.9) !important; }
 
+        /* HERO secondary link to the certification course (deliberately quieter than the primary CTA) */
+        .hero-course { margin-top: 14px; }
+        .hero-course a { display: inline-flex; align-items: baseline; gap: 8px; padding: 10px 6px; font-size: 14px; font-weight: 500; color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.45); transition: border-color 0.2s; }
+        .hero-course a .arr { display: inline-block; transition: transform 0.2s; }
+        .hero-course a:hover { border-bottom-color: #ffffff; }
+        .hero-course a:hover .arr { transform: translateX(3px); }
+        .hero-course a:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; border-radius: 4px; }
+
         /* COURSE PROMO: certification programme (deep navy, same navy family as the journey section) */
         .course-promo { position: relative; overflow: hidden; background: #0F1C3F; color: #ffffff; padding: 112px 0; border-top: 1px solid rgba(147,197,253,0.18); }
         .cp-mark { position: absolute; right: -1%; bottom: -0.2em; font-size: clamp(140px, 24vw, 340px); font-weight: 700; letter-spacing: -0.06em; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(147,197,253,0.14); pointer-events: none; user-select: none; }
@@ -2567,7 +2575,7 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .course-promo .fade-up { opacity: 1; transform: none; transition: none; }
-            .cp-cta { transition: none; }
+            .cp-cta, .hero-course a .arr { transition: none; }
         }
 
         /* HOW IT WORKS — blue background */
@@ -2854,6 +2862,10 @@
                     <span class="ea-dot"></span>
                     Early access open <strong>request your demo today</strong>
                 </div>
+            </div>
+
+            <div class="hero-course">
+                <a href="/dpdp-course">Explore our Certification Course <span class="arr" aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
 
