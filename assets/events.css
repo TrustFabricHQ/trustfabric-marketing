@@ -1,22 +1,18 @@
 /* TrustFabric Events: shared styles for /events and /events/<slug>.
-   Navbar and buttons match the rest of the site. Page-specific layout lives in each page. */
+   A B2B events hub: Inter, the site's navbar and buttons, thin rules, clear status. No decoration. */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-    --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
-    --warm: #F7F5F1;
-    --hair: #E3DFD7;
     --red: #E31E24;
     --navy: #1E3A8A;
     --blue: #2E7BD6;
+    --deep: #0F1C3F;
     --slate: #0F172A;
-    --slate-2: #1F2937;
-    --night: #0B1530;
     --ink: #0F172A;
     --muted: #5B6779;
     --rule: #E2E8F0;
     --rule-strong: #CBD5E1;
-    --off: #F7F8FA;
-    --radius: 4px;
+    --off: #F8FAFC;
+    --radius: 8px;
     --wrap: 1200px;
 }
 html { scroll-behavior: smooth; }
@@ -26,7 +22,7 @@ img { display: block; max-width: 100%; }
 button { font-family: inherit; }
 ::selection { background: var(--slate); color: #fff; }
 :focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
-.dark :focus-visible, .on-dark :focus-visible { outline-color: #fff; }
+.dark :focus-visible { outline-color: #fff; }
 section[id] { scroll-margin-top: 72px; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -76,37 +72,43 @@ section[id] { scroll-margin-top: 72px; }
 @media (max-width: 900px) { .nav-links { display: none; } .nav-cta-desktop { display: none; } .burger { display: flex; } }
 
 
-.btn-line { border-color: rgba(255,255,255,0.4); color: #fff; }
+.btn-line { border-color: rgba(255,255,255,0.45); color: #fff; }
 .btn-line:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+.btn-outline { border-color: var(--rule-strong); color: var(--ink); background: #fff; }
+.btn-outline:hover { border-color: var(--ink); }
 .btn-dark { background: var(--slate); color: #fff; }
 .btn-dark:hover { background: #1b2740; }
-.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; padding: 10px 2px; border-bottom: 1.5px solid transparent; transition: border-color 0.2s; background: none; border-top: none; border-left: none; border-right: none; cursor: pointer; color: inherit; }
+.btn-sm { height: 38px; padding: 0 16px; font-size: 14px; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; padding: 10px 2px; border: none; border-bottom: 1.5px solid transparent; background: none; cursor: pointer; color: inherit; transition: border-color 0.2s; }
 .link-arrow::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); }
 .link-arrow:hover { border-bottom-color: currentColor; }
 
 /* ---------- motion: transform + opacity only ---------- */
-.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: calc(var(--i, 0) * 80ms); }
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: calc(var(--i, 0) * 70ms); }
 .js .reveal.in { opacity: 1; transform: none; }
 
-h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; }
-.label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); }
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1.12; text-wrap: balance; }
+.label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
 .lead { font-size: 18px; line-height: 1.7; color: var(--muted); }
-.dark { background: var(--slate); color: #fff; }
-.dark .lead { color: rgba(255,255,255,0.74); }
+.dark { background: var(--deep); color: #fff; }
+.dark .lead { color: rgba(255,255,255,0.78); }
 
-/* ---------- status and participation (text only, no decorative dots) ---------- */
-.st { font-size: 13px; font-weight: 600; letter-spacing: 0.01em; }
-.s-upcoming { color: var(--navy); }
-.s-tbc { color: #9A5B0B; }
-.s-past { color: var(--muted); }
-.part { font-size: 14px; font-weight: 500; color: var(--ink); }
-.part::before { content: ''; display: inline-block; width: 14px; height: 1.5px; background: var(--red); vertical-align: middle; margin-right: 10px; }
+/* ---------- status chips ---------- */
+.chip { display: inline-flex; align-items: center; height: 26px; padding: 0 12px; border-radius: 100px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.chip-upcoming { background: #EEF2FF; color: var(--navy); }
+.chip-tbc { background: #FEF3C7; color: #92400E; }
+.chip-past { background: #F1F5F9; color: #475569; }
+.dark .chip-upcoming { background: rgba(147,197,253,0.18); color: #BFDBFE; }
+.dark .chip-tbc { background: rgba(252,211,77,0.18); color: #FDE68A; }
+.part { font-size: 13.5px; color: var(--muted); }
+.part::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--red); margin-right: 8px; vertical-align: 1px; }
+.dark .part { color: rgba(255,255,255,0.78); }
 
-/* ---------- real photography (only rendered when a real image exists) ---------- */
+/* ---------- real imagery (rendered only when a real image exists) ---------- */
 .photo { margin: 0; }
-.photo img { width: 100%; height: auto; border-radius: 2px; background: var(--warm); }
+.photo img { width: 100%; height: auto; border-radius: var(--radius); background: var(--off); }
 .photo figcaption { margin-top: 10px; font-size: 13px; line-height: 1.5; color: var(--muted); }
-.ev-logo { display: block; height: 34px; width: auto; max-width: 150px; object-fit: contain; }
+.ev-logo { display: block; height: 32px; width: auto; max-width: 140px; object-fit: contain; }
 
 /* ---------- connect dialog and lightbox ---------- */
 dialog { border: none; padding: 0; color: var(--ink); background: #fff; border-radius: var(--radius); max-width: none; }
@@ -163,7 +165,6 @@ select.cf-input { appearance: none; cursor: pointer; background-image: url("data
 @media (max-width: 560px) {
     .connect-in { padding: 32px 22px 26px; }
     .cf-row { grid-template-columns: 1fr; gap: 0; }
-    .btn { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

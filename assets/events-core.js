@@ -55,6 +55,17 @@
         return s.getDate() + ' ' + MONTHS[s.getMonth()] + (s.getFullYear() !== f.getFullYear() ? ' ' + s.getFullYear() : '') + ' to ' + f.getDate() + ' ' + MONTHS[f.getMonth()] + ' ' + f.getFullYear();
     }
 
+    var SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // Compact date for the events table: { top: '17 to 19', bottom: 'Nov 2026' }. Undated events say so.
+    function dateChip(e) {
+        var s = parseDate(e.startDate), f = parseDate(e.endDate);
+        if (!s) return { top: 'TBC', bottom: 'Dates soon' };
+        if (!f || f.getTime() === s.getTime()) return { top: String(s.getDate()), bottom: SHORT[s.getMonth()] + ' ' + s.getFullYear() };
+        if (s.getMonth() === f.getMonth() && s.getFullYear() === f.getFullYear()) return { top: s.getDate() + ' to ' + f.getDate(), bottom: SHORT[s.getMonth()] + ' ' + s.getFullYear() };
+        if (s.getFullYear() === f.getFullYear()) return { top: s.getDate() + ' ' + SHORT[s.getMonth()] + ' to ' + f.getDate() + ' ' + SHORT[f.getMonth()], bottom: String(s.getFullYear()) };
+        return { top: s.getDate() + ' ' + SHORT[s.getMonth()] + ' ' + s.getFullYear(), bottom: 'to ' + f.getDate() + ' ' + SHORT[f.getMonth()] + ' ' + f.getFullYear() };
+    }
+
     function url(e) { return '/events/' + encodeURIComponent(e.slug); }
 
     // The year an event is filed under: its start date when confirmed, otherwise the year in the data.
@@ -247,7 +258,7 @@
 
     window.TFEvents = {
         events: events, esc: esc, statusOf: statusOf, statusLabel: statusLabel, fullName: fullName, place: place,
-        partLabel: partLabel, fmtRange: fmtRange, url: url, banner: banner, logo: logo, yearOf: yearOf, observe: observe,
+        partLabel: partLabel, fmtRange: fmtRange, dateChip: dateChip, url: url, banner: banner, logo: logo, yearOf: yearOf, observe: observe,
         openConnect: openConnect, openLightbox: openLightbox
     };
 })();
